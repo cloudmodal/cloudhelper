@@ -20,6 +20,8 @@ from django.conf import settings
 from django.core.cache import cache
 from django.contrib.auth import get_user_model
 
+from common.utils import reverse
+
 
 logger = logging.getLogger('iam')
 
@@ -158,3 +160,13 @@ def get_user_lookup_kwargs(kwargs):
     for key, value in kwargs.items():
         result[key.format(username=username_field)] = value
     return result
+
+
+def redirect_user_first_login_or_index(request, redirect_field_name):
+    if request.user.is_first_login:
+        return reverse('account:user-first-login')
+    url_in_post = request.POST.get(redirect_field_name)
+    if url_in_post:
+        return url_in_post
+    url_in_get = request.GET.get(redirect_field_name, reverse('index'))
+    return url_in_get

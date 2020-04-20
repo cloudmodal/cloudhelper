@@ -1,0 +1,106 @@
+{% extends '_base_create_update.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'account:user-list' %}">{% trans app %}</a></li>
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block form %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-body">
+            <h3 class="box-title">{% trans 'Account' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.name layout="horizontal" %}
+            {% bootstrap_field form.username layout="horizontal" %}
+            {% bootstrap_field form.email layout="horizontal" %}
+            {% bootstrap_field form.groups layout="horizontal" %}
+
+            <h3 class="box-title">{% trans 'Auth' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% block password %}{% endblock %}
+            {% bootstrap_field form.mfa_level layout="horizontal" %}
+            {% bootstrap_field form.source layout="horizontal" %}
+
+
+            <h3 class="box-title">{% trans 'Security and Role' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.role layout="horizontal" %}
+            <div class="form-group row {% if form.date_expired.errors %} has-error {% endif %}" id="date_5">
+                <label for="{{ form.date_expired.id_for_label }}" class="col-sm-3 control-label">{{ form.date_expired.label }}</label>
+                <div class="col-sm-9">
+                    <div class="input-group date">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        {% if form.errors %}
+                            <input id="{{ form.date_expired.id_for_label }}" name="{{ form.date_expired.html_name }}" type="text" class="form-control"  value="{{ form.date_expired.value }}">
+                        {% else %}
+                            <input id="{{ form.date_expired.id_for_label }}" name="{{ form.date_expired.html_name }}" type="text" class="form-control"  value="{{ form.date_expired.value|date:'Y-m-d H:i' }}">
+                        {% endif %}
+                    </div>
+                    <span class="help-block ">{{ form.date_expired.errors }}</span>
+                </div>
+            </div>
+
+            <h3 class="box-title">{% trans 'Profile' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.phone layout="horizontal" %}
+            {% bootstrap_field form.wechat layout="horizontal" %}
+            {% bootstrap_field form.comment layout="horizontal" %}
+        </div>
+        <hr>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn btn-outline-success">{% trans 'Submit' %}</button>
+                            <button type="reset" class="btn btn-outline-warning">{% trans 'Reset' %}</button>
+                            <a href="{% url 'account:user-list' %}" class="btn btn-outline-info">{% trans 'Cancel' %}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script src="{% static 'assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js' %}"></script>
+    <script type="text/javascript" src='{% static "assets/plugins/bootstrap-daterangepicker/moment.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "assets/plugins/bootstrap-daterangepicker/daterangepicker.min.js" %}'></script>
+    <link rel="stylesheet" type="text/css" href={% static "assets/plugins/bootstrap-daterangepicker/daterangepicker.min.css" %} />
+
+    <script>
+        let role_id = '#' + '{{ form.role.id_for_label }}';
+        let groups_id = '#' + '{{ form.groups.id_for_label }}';
+        function fieldDisplay(){
+            let role = $(role_id).val();
+            if (role === 'Auditor'){
+                $(groups_id).closest('.form-group').addClass('hidden');
+            }
+            else {
+                $(groups_id).closest('.form-group').removeClass('hidden');
+            }}
+
+        $(document).ready(function () {
+            $('.select2').select2();
+            initDateRangePicker('#id_date_expired');
+            let mfa_radio = $('#id_mfa_level');
+            mfa_radio.addClass("form-inline");
+            mfa_radio.children().css("margin-right","15px");
+            fieldDisplay()
+        }).on('change', role_id, function(){
+            fieldDisplay();
+        })
+    </script>
+{% endblock %}

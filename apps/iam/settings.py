@@ -61,11 +61,14 @@ INSTALLED_APPS = [
     'tickets.apps.TicketsConfig',
     'audits.apps.AuditsConfig',
     'ops.apps.OpsConfig',
+    'common.apps.CommonConfig',
 
     'rest_framework',
     # 'drf_yasg',
+    'captcha',
     'django_filters',
     'corsheaders',
+    'bootstrap4',
     'django_celery_beat',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -101,6 +104,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'iam.context_processor.iam_processor',
             ],
         },
     },
@@ -108,6 +112,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'iam.wsgi.application'
 
+
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGIN_URL = reverse_lazy('authentication:login')
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -594,10 +601,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
-
-LOGIN_URL = CONFIG.LOGIN_URL
-REST_PASSWORD_URL = CONFIG.REST_PASSWORD_URL
-FORGET_PASSWORD_URL = CONFIG.FORGET_PASSWORD_URL
 
 SES_EMAIL_SENDER = CONFIG.SES_EMAIL_SENDER
 SES_EMAIL_SENDERNAME = CONFIG.SES_EMAIL_SENDERNAME

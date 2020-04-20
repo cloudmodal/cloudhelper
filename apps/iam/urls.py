@@ -13,10 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from . import api
+# from . import api
 from django.conf import settings
 from django.urls import path, include, re_path
+from django.conf.urls.i18n import i18n_patterns
+from django.views.i18n import JavaScriptCatalog
+
 from .swagger import get_swagger_view
+from . import views
 
 
 api_v1 = [
@@ -27,10 +31,29 @@ api_v1 = [
     path('orgs/', include('organization.urls.api_urls', namespace='api-orgs')),
 ]
 
-urlpatterns = [
-    path('', api.IndexAPI.as_view(), name='index'),
-    path('v1/', include(api_v1)),
+
+app_view_patterns = [
+    path('auth/', include('authentication.urls.views_urls', namespace='auth')),
+    path('account/', include('account.urls.views_urls', namespace='account')),
 ]
+
+
+js_i18n_patterns = i18n_patterns(
+    path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+)
+
+
+urlpatterns = [
+    # path('', api.IndexAPI.as_view(), name='index'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('v1/', include(api_v1)),
+    path('i18n/<str:lang>/', views.I18NView.as_view(), name='i18n-switch'),
+    # External apps url
+    path('captcha/', include('captcha.urls')),
+]
+
+urlpatterns += app_view_patterns
+urlpatterns += js_i18n_patterns
 
 if settings.DEBUG:
     urlpatterns += [

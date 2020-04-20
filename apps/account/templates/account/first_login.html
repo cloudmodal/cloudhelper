@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans "FirstLogin" %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item active">{% trans "FirstLogin" %}</li>
+{% endblock %}
+
+{% block custom_head_css_js %}
+    {{ wizard.form.media }}
+    <link href="{% static 'assets/plugins/wizard/steps.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card wizard-content">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap">
+                            <div>
+                                <h4 class="card-title">{% trans 'First Login' %}</h4>
+                                <h6 class="card-subtitle">{% trans "Successful login for the first time! Please complete your personal information" %}</h6>
+                            </div>
+                        </div>
+
+                        <div class="wizard tab-wizard wizard-circle">
+                            <div class="steps clearfix">
+                                <ul role="tablist">
+                                    {% for step in wizard.steps.all %}
+                                        <li role="tab" class="{% ifequal step wizard.steps.first %}first{% endifequal %} {% ifequal step wizard.steps.current %}current{% else %}disabled{% endifequal %} {% ifequal step wizard.steps.last %}last{% endifequal %}"
+                                            aria-disabled="false" aria-selected="true">
+                                            <a class="fl_goto" name="wizard_goto_step" data-goto="{{ step }}">
+                                   <span class="number">
+                                       {% ifequal step '0' %}
+                                           <span class="step">1</span>
+                                           <h6>{% trans "Profile" %}</h6>
+                                       {% endifequal %}
+                                       {% ifequal step '1' %}
+                                           <span class="step">2</span>
+                                           <h6>{% trans "MFA" %}</h6>
+                                       {% endifequal %}
+                                       {% ifequal step '2' %}
+                                           <span class="step">3</span>
+                                           <h6>{% trans "Finish" %}</h6>
+                                       {% endifequal %}
+                                       {% ifequal step '3' %}
+                                           <span class="step">4</span>
+                                           <h6>{% trans "Finish" %}</h6>
+                                       {% endifequal %}
+                                   </span>
+                                            </a>
+                                        </li>
+                                    {% endfor > %}
+                                </ul>
+                            </div>
+                            <div class="content clearfix">
+                                <div class="">
+                                    <form action="" method="post" class="validation-wizard wizard-circle m-t-40"
+                                          id="fl_form" style="padding-left: 40px;">
+                                        {% csrf_token %}
+                                        {{ wizard.management_form }}
+                                        {% if form.finish_description %}
+                                            <b>{{ form.finish_description }}</b>
+                                            <br>
+                                            <input type="checkbox" id="acceptTerms">
+                                            <label for="acceptTerms"
+                                                   style="margin-top:20px">{% trans "I agree with the terms and conditions." %}</label>
+                                            <p id="noTerms" class="red-fonts"
+                                               style="visibility: hidden; font-size: 10px; margin-top: 10px;">
+                                                * {% trans 'Please choose the terms and conditions.' %}</p>
+                                        {% endif %}
+
+                                        {% bootstrap_form wizard.form %}
+
+                                        {% if form.mfa_description %}
+                                            <p class="text-danger">{{ form.mfa_description }}</p>
+                                        {% endif %}
+
+                                        {% if form.pubkey_description %}
+                                            <span>或者：</span>
+                                            <a type="button" id="btn-reset-pubkey">{{ form.pubkey_description }}</a>
+                                        {% endif %}
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            <div class="actions carousel slide">
+                                <ul>
+                                    {% if wizard.steps.prev %}
+                                        <li>
+                                            <a class="fl_goto" name="wizard_goto_step" data-goto="{{ wizard.steps.prev }}">{% trans "Previous" %}</a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% if wizard.steps.next %}
+                                        <li><a id="fl_submit">{% trans "Next" %}</a></li>
+                                    {% else %}
+                                        <li><a id="fl_submit">{% trans "Finish" %}</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block custom_foot_js %}
+<script>
+    $(document).on('click', ".fl_goto", function(){
+        let $form = $('#fl_form');
+        $('<input />', {'name': 'wizard_goto_step', 'value': $(this).data('goto'), 'type': 'hidden'}).appendTo($form);
+        $form.submit();
+        return false;
+    }).on('click', '#fl_submit', function(){
+        let isFinish = $('#fl_submit').html() === "{% trans 'Finish' %}";
+        let noChecked = !$('#acceptTerms').prop('checked');
+        if ( isFinish && noChecked){
+            $('#noTerms').css('visibility', 'visible');
+        }
+        else{
+            $('#fl_form').submit();
+            return false;
+        }
+    }).on('click', '#btn-reset-pubkey', function () {
+        let the_url = '';
+        window.open(the_url, "_blank");
+        $('#fl_form').submit();
+    })
+
+</script>
+{% endblock %}

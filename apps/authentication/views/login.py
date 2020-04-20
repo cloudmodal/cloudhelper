@@ -132,7 +132,7 @@ class UserLoginGuardView(mixins.AuthMixin, RedirectView):
             # 启用但是没有设置otp, 排除radius
             if user.mfa_enabled_but_not_set():
                 # 1,2,mfa_setting & F
-                return reverse('users:user-otp-enable-authentication')
+                return reverse('account:user-otp-enable-authentication')
             url = redirect_user_first_login_or_index(
                 self.request, self.redirect_field_name
             )

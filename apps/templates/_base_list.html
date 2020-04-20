@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block custom_head_css_js %}
+    <style>
+        [type=checkbox] + label {
+            height: 10px;
+        }
+    </style>
+
+    <!--alerts CSS -->
+    <link href="{% static 'assets/plugins/sweetalert/sweetalert.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'assets/plugins/sweetalert/sweetalert.min.js' %}"></script>
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script src="{% static 'assets/plugins/select2/js/select2.full.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ action }}</h4>
+                {% block table_container %}
+                    <table class="table m-t-30 table-hover contact-list">
+                        <thead>
+                        <tr>
+                            {% block table_head %} {% endblock %}
+                        </tr>
+                        </thead>
+                        <div class="m-t-40">
+                            <div class="d-flex">
+                                {% block button %}
+                                    <div class="mr-auto">
+                                        <div class="form-group">
+                                            <button class="btn btn-outline-info btn-sm">
+                                                <i class="icon wb-plus" aria-hidden="true"></i>Add New Row
+                                            </button>
+                                        </div>
+                                    </div>
+                                {% endblock %}
+                                {% block table_search %}
+
+                                {% endblock %}
+                            </div>
+                        </div>
+                        <tbody>
+                        {% block table_body %} {% endblock %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="6">
+                                <div class="text-right">
+                                    <ul class="pagination">
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            {% block content_bottom_left %} {% endblock %}
+                        </div>
+                        {% block table_pagination %}
+{#                            {% include '_pagination.html' %}#}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

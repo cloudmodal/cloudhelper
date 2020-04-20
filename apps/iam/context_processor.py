@@ -17,8 +17,11 @@ from django.conf import settings
 def iam_processor(request):
     # Setting default pk
     context = {
+        'CH_TITLE': 'CloudHelper',
         'DEFAULT_PK': '00000000-0000-0000-0000-000000000000',
         'SITE_URL': settings.SITE_URL,
+        'LOGO_URL': static('assets/images/logo-icon.png'),
+        'LOGO_TEXT_URL': static('assets/images/logo-text.png'),
         'VERSION': settings.VERSION,
     }
     return context
