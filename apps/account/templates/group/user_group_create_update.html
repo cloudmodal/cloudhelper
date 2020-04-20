@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'account:user-group-list' %}">{% trans "User group" %}</a></li>
+    <li class="breadcrumb-item active">{% trans "User group" %}</li>
+{% endblock %}
+
+{% block custom_head_css_js %}
+    <link href="{% static 'assets/plugins/select2/css/select2.min.css' %}" rel="stylesheet">
+    <script src="{% static 'assets/plugins/select2/js/select2.full.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">{{ action }}</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+                        <form method="post" action="" class="form-horizontal">
+                            {% csrf_token %}
+                            {% bootstrap_field form.name layout="horizontal" %}
+                            {% bootstrap_field form.users layout="horizontal" %}
+                            {% bootstrap_field form.comment layout="horizontal" %}
+                            <hr>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button id="submit_button" type="submit" class="btn btn-outline-success">{% trans 'Submit' %}</button>
+                                                <button type="reset"
+                                                        class="btn btn-outline-warning">{% trans 'Reset' %}</button>
+                                                <a href="{% url 'account:user-group-list' %}"
+                                                   class="btn btn-outline-info">{% trans 'Cancel' %}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% include "users/_select_user_modal.html" %}
+{% endblock %}
+{% block custom_foot_js %}
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2({
+                closeOnSelect: false
+            });
+            usersSelect2Init('.users-select2')
+        })
+            .on("submit", "form", function (evt) {
+                evt.preventDefault();
+                let the_url = '{% url 'api-account:user-group-list' %}';
+                let redirect_to = '{% url "account:user-group-list" %}';
+                let method = "POST";
+                {% if type == "update" %}
+                    the_url = '{% url 'api-account:user-group-detail' pk=object.id %}';
+                    method = "PUT";
+                {% endif %}
+                let form = $("form");
+                let data = form.serializeObject();
+                objectAttrsIsList(data, ['users']);
+                let props = {
+                    url: the_url,
+                    data: data,
+                    method: method,
+                    form: form,
+                    redirect_to: redirect_to
+                };
+                formSubmit(props);
+            })
+    </script>
+{% endblock %}

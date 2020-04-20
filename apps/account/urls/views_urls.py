@@ -24,4 +24,11 @@ urlpatterns = [
     path('user/<uuid:pk>/update/', views.UserUpdateView.as_view(), name='user-update'),
     path('user/update/', views.UserBulkUpdateView.as_view(), name='user-bulk-update'),
     path('user/<uuid:pk>/', views.UserDetailView.as_view(), name='user-detail'),
+
+    # User group view
+    path('user-group/', views.UserGroupListView.as_view(), name='user-group-list'),
+    path('user-group/<uuid:pk>/', views.UserGroupDetailView.as_view(), name='user-group-detail'),
+    path('user-group/create/', views.UserGroupCreateView.as_view(), name='user-group-create'),
+    path('user-group/<uuid:pk>/update/', views.UserGroupUpdateView.as_view(), name='user-group-update'),
+    path('user-group/<uuid:pk>/assets/', views.UserGroupGrantedAssetView.as_view(), name='user-group-granted-asset'),
 ]
