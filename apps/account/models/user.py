@@ -562,8 +562,8 @@ class User(AuthMixin, TokenMixin, RoleMixin, MFAMixin, AbstractUser):
         return False
 
     def avatar_url(self):
-        admin_default = settings.STATIC_URL + "img/avatar/admin.png"
-        user_default = settings.STATIC_URL + "img/avatar/user.png"
+        admin_default = settings.STATIC_URL + "img/avatar/admin.gif"
+        user_default = settings.STATIC_URL + "img/avatar/user.gif"
         if self.avatar:
             return self.avatar.url
         if self.is_superuser:

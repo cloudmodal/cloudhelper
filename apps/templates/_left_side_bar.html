@@ -7,18 +7,23 @@
         <!-- User profile -->
         <div class="user-profile">
             <!-- User profile image -->
-            <div class="profile-img"><img src="{% static 'assets/images/users/profile.png' %}" alt="user"/>
+            <div class="profile-img"><img src="{{ request.user.avatar_url }}" alt="user"/>
                 <!-- this is blinking heartbit-->
-                <div class="notify setpos"><span class="heartbit"></span> <span class="point"></span></div>
+                <div class="notify setpos">
+                    <span class="heartbit"></span>
+                    <span class="point"></span>
+                </div>
             </div>
             <!-- User profile text-->
             <div class="profile-text">
-                <h5>Markarn Doe</h5>
+                <h5>{{ request.user.name }}</h5>
                 <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true"
-                   aria-expanded="true"><i class="mdi mdi-settings"></i></a>
-                <a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                <a href="pages-login.html" class="" data-toggle="tooltip" title="Logout"><i
-                        class="mdi mdi-power"></i></a>
+                   aria-expanded="true"><i class="mdi mdi-settings"></i>
+                </a>
+                <a href="" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+                <a href="{% url 'authentication:logout' %}" class="" data-toggle="tooltip" title="{% trans 'Logout' %}">
+                    <i class="mdi mdi-power"></i>
+                </a>
                 <div class="dropdown-menu animated flipInY">
                     <!-- text-->
                     <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
@@ -33,7 +38,9 @@
                     <!-- text-->
                     <div class="dropdown-divider"></div>
                     <!-- text-->
-                    <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                    <a href="{% url 'authentication:logout' %}" class="dropdown-item">
+                        <i class="fa fa-power-off"></i> {% trans 'Logout' %}
+                    </a>
                     <!-- text-->
                 </div>
             </div>
@@ -45,9 +52,12 @@
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">{% trans "PERSONAL" %}</li>
                 <li>
-                    <a class="waves-effect waves-dark" href="{% url 'index' %}" aria-expanded="false">
-                        <i class="mdi mdi-gauge"></i><span class="hide-menu">{% trans "Dashboard " %}</span>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-gauge"></i><span class="hide-menu">{% trans "Home" %}</span>
                     </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'index' %}">{% trans "Dashboard" %}</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
@@ -58,7 +68,14 @@
                         <li><a href="{% url 'account:user-group-list' %}">{% trans 'User group' %}</a></li>
                     </ul>
                 </li>
-
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-key"></i><span class="hide-menu">{% trans "Credentials" %}</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'account:user-list' %}">{% trans "Credentials" %}</a></li>
+                    </ul>
+                </li>
 
 
 

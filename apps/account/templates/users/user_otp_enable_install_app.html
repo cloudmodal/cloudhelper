@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'sub/_sub_base.html' %}
+{% load static %}
+{% load i18n %}
 
-</body>
-</html>
+{% block head_title %}{% trans 'Install' %}{% endblock %}
+
+{% block content %}
+    <div class="fix-width">
+        <div class="row banner-text justify-content-center">
+            <div class="col-md-8 m-t-20 text-center">
+                <h1>{% trans 'Download and install the Microsoft Authenticator or Google Authenticator application on your phone' %}
+                    <span class="text-info"></span>
+                </h1>
+
+                <div class="down-btn">
+                    <a href="" class="btn btn-info m-b-10">{% trans 'Android downloads' %}</a>
+                    <a href="" class="btn btn-success m-b-10">{% trans 'iPhone downloads' %}</a>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <div class="hero-banner"><img src="{% static 'img/banner.png' %}" alt="Admin Press template" class="img-fluid"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row white-space">
+        <div class="col-md-12 ">
+            <div class="fix-width icon-section">
+                <div class="text-center m-b-20">
+                    <h2 class="display-7">{% trans 'After installation, click the next step to enter the binding page (if installed, go to the next step directly).' %}</h2>
+                </div>
+                <!-- Row -->
+                <div class="row m-t-40">
+
+                </div>
+                <div class="text-center">
+                    <!-- Row -->
+                    <a href="{% url 'account:user-otp-enable-bind' %}" class="btn btn-lg btn-info m-t-40">{% trans 'Next' %}</a>
+                    <!-- Row -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

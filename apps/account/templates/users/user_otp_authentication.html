@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'users/_base_login.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap4 %}
 
-</body>
-</html>
+{% block head_title %}{% trans 'Authenticate' %}{% endblock %}
+{% block content %}
+    <div class="card-body">
+        <form class="form-horizontal form-material" method="post" action="">{% csrf_token %}
+            <a href="{% url 'index' %}" class="text-center db">
+            <img src="{{ LOGO_URL }}" alt="LOGO"/><br/>
+            <img src="{{ LOGO_TEXT_URL }}" alt="LOGO"/>
+        </a>
+        <div class="text-center">
+            <p>
+                <strong>{% trans 'The account protection has been opened, please complete the following operations according to the prompts' %}</strong>
+            </p>
+            <img src="{% static 'img/otp_auth.png' %}" alt="" width="72px" height="117">
+            <p>{% trans 'Open Authenticator and enter the 6-bit dynamic code' %}</p>
+        </div>
+
+            {% if 'otp_code' in form.errors %}
+                <p class="red-fonts">{{ form.otp_code.errors.as_text }}</p>
+            {% endif %}
+
+            <div class="form-group">
+                <label class="control-label"></label>
+                <input type="text" class="form-control" name="otp_code" placeholder="{% trans 'Six figures' %}" required="">
+                <small class="form-control-feedback"> {% trans 'Six figures' %} </small>
+            </div>
+
+            <div class="form-group text-center m-t-20">
+                <div class="col-xs-12">
+                    <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">{% trans "Next" %}</button>
+                </div>
+            </div>
+
+            <script>
+                $(function () {
+                    $('.change-color li').eq(2).remove();
+                    $('.change-color li:eq(1) div').eq(1).html("{% trans 'Unbind' %}")
+                })
+            </script>
+        </form>
+    </div>
+{% endblock %}

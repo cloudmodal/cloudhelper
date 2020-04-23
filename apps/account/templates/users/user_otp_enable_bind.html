@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'sub/_sub_base.html' %}
+{% load static %}
+{% load i18n %}
 
-</body>
-</html>
+{% block head_title %}{% trans 'Bind' %}{% endblock %}
+
+{% block content %}
+    <div class="fix-width">
+        <div class="row banner-text justify-content-center">
+            <div class="col-md-8 m-t-20 text-center">
+                <h1>{% trans 'Use the mobile Google Authenticator application to scan the following qr code for a 6-bit verification code' %}
+                    <span class="text-info"></span>
+                </h1>
+                <div id="qr_code" class="hero-banner" style="margin-left:296px"></div>
+                <div class="down-btn">Secret: {{ otp_secret_key }}</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row white-space">
+        <div class="col-md-12 ">
+            <div class="fix-width icon-section">
+                <div class="text-center m-b-20">
+                    <form class="" role="form" method="post" action="">{% csrf_token %}
+                        <div class="form-input">
+                            <label>
+                                <input type="text" class="form-control" name="otp_code" placeholder="{% trans 'Six figures' %}" required="">
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-info m-t-40"> {% trans 'Next' %}</button>
+                        {% if 'otp_code' in form.errors %}
+                            <p style="color: #ed5565">{{ form.otp_code.errors.as_text }}</p>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script src="{% static "js/qrcode.min.js" %}"></script>
+    <script>
+        $('.change-color li:eq(1) i').css('color', '#1ab394');
+        $('.change-color li:eq(2) i').css('color', '#1ab394');
+
+        $(document).ready(function () {
+            // 生成用户绑定otp的二维码
+            new QRCode(document.getElementById('qr_code'), {
+                text: "{{ otp_uri|safe}}",
+                width: 300,
+                height: 300,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctlevel: QRCode.CorrectLevel.H
+            });
+
+            document.getElementById('qr_code').removeAttribute("title");
+        })
+
+    </script>
+{% endblock %}

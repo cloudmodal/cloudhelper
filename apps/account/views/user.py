@@ -75,7 +75,7 @@ class UserCreateView(PermissionsMixin, SuccessMessageMixin, CreateView):
     model = User
     form_class = forms.UserCreateForm
     template_name = 'users/user_create.html'
-    success_url = reverse_lazy('users:user-list')
+    success_url = reverse_lazy('account:user-list')
     success_message = create_success_msg
     permission_classes = [IsOrgAdmin]
 
@@ -110,7 +110,7 @@ class UserUpdateView(PermissionsMixin, SuccessMessageMixin, UpdateView):
     form_class = forms.UserUpdateForm
     template_name = 'users/user_update.html'
     context_object_name = 'user_object'
-    success_url = reverse_lazy('users:user-list')
+    success_url = reverse_lazy('account:user-list')
     success_message = update_success_msg
     permission_classes = [IsOrgAdmin]
 
@@ -144,7 +144,7 @@ class UserBulkUpdateView(PermissionsMixin, TemplateView):
     model = User
     form_class = forms.UserBulkUpdateForm
     template_name = 'users/user_bulk_update.html'
-    success_url = reverse_lazy('users:user-list')
+    success_url = reverse_lazy('account:user-list')
     success_message = _("Bulk update user success")
     form = None
     id_list = None
@@ -247,7 +247,7 @@ class UserProfileUpdateView(PermissionsMixin, UpdateView):
     model = User
     permission_classes = [IsValidUser]
     form_class = forms.UserProfileForm
-    success_url = reverse_lazy('users:user-profile')
+    success_url = reverse_lazy('account:user-profile')
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -265,7 +265,7 @@ class UserPasswordUpdateView(PermissionsMixin, UpdateView):
     template_name = 'users/user_password_update.html'
     model = User
     form_class = forms.UserPasswordForm
-    success_url = reverse_lazy('users:user-profile')
+    success_url = reverse_lazy('account:user-profile')
     permission_classes = [IsValidUser, UserCanUpdatePassword]
 
     def get_object(self, queryset=None):
@@ -302,7 +302,7 @@ class UserPublicKeyUpdateView(PermissionsMixin, UpdateView):
     model = User
     form_class = forms.UserPublicKeyForm
     permission_classes = [IsValidUser, UserCanUpdateSSHKey]
-    success_url = reverse_lazy('users:user-profile')
+    success_url = reverse_lazy('account:user-profile')
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -360,10 +360,10 @@ class UserOtpEnableAuthenticationView(FormView):
         else:
             user.enable_mfa()
             user.save()
-            return redirect('users:user-otp-settings-success')
+            return redirect('account:user-otp-settings-success')
 
     def get_success_url(self):
-        return reverse('users:user-otp-enable-install-app')
+        return reverse('account:user-otp-enable-install-app')
 
 
 class UserOtpEnableInstallAppView(TemplateView):
@@ -381,7 +381,7 @@ class UserOtpEnableInstallAppView(TemplateView):
 class UserOtpEnableBindView(TemplateView, FormView):
     template_name = 'users/user_otp_enable_bind.html'
     form_class = forms.UserCheckOtpCodeForm
-    success_url = reverse_lazy('users:user-otp-settings-success')
+    success_url = reverse_lazy('account:user-otp-settings-success')
 
     def get_context_data(self, **kwargs):
         user = get_user_or_tmp_user(self.request)
@@ -416,7 +416,7 @@ class UserOtpEnableBindView(TemplateView, FormView):
 class UserOtpDisableAuthenticationView(FormView):
     template_name = 'users/user_otp_authentication.html'
     form_class = forms.UserCheckOtpCodeForm
-    success_url = reverse_lazy('users:user-otp-settings-success')
+    success_url = reverse_lazy('account:user-otp-settings-success')
 
     def form_valid(self, form):
         user = self.request.user
@@ -433,7 +433,7 @@ class UserOtpDisableAuthenticationView(FormView):
 
 
 class UserOtpUpdateView(UserOtpDisableAuthenticationView):
-    success_url = reverse_lazy('users:user-otp-enable-bind')
+    success_url = reverse_lazy('account:user-otp-enable-bind')
 
 
 class UserOtpSettingsSuccessView(TemplateView):

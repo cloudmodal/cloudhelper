@@ -7,20 +7,23 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{% url 'index' %}">
                 <!-- Logo icon --><b>
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
-                <img src="{% static 'assets/images/logo-icon.png' %}" alt="homepage" class="dark-logo"/>
+                <img src="{{ LOGO_URL }}" alt="homepage" class="dark-logo"/>
                 <!-- Light Logo icon -->
-                <img src="{% static 'assets/images/logo-light-icon.png' %}" alt="homepage" class="light-logo"/>
+                <img src="{{ LOGO_URL }}" alt="homepage" class="light-logo"/>
             </b>
                 <!--End Logo icon -->
-                <!-- Logo text --><span>
-                         <!-- dark Logo text -->
-                         <img src="{% static 'assets/images/logo-text.png' %}" alt="homepage" class="dark-logo"/>
+                <!-- Logo text -->
+                <span>
+                    <!-- dark Logo text -->
+                    <img src="{{ LOGO_TEXT_URL }}" alt="homepage" class="dark-logo"/>
                 <!-- Light Logo text -->
-                         <img src="{% static 'assets/images/logo-light-text.png' %}" class="light-logo" alt="homepage"/></span> </a>
+                    <img src="{{ LOGO_LIGHT_TEXT_URL }}" class="light-logo" alt="homepage"/>
+                </span>
+            </a>
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->
@@ -31,18 +34,23 @@
             <!-- ============================================================== -->
             <ul class="navbar-nav mr-auto mt-md-0">
                 <!-- This is  -->
-                <li class="nav-item"><a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
-                                        href="javascript:void(0)"><i class="mdi mdi-menu"></i></a></li>
-                <li class="nav-item m-l-10"><a
-                        class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
-                        href="javascript:void(0)"><i class="ti-menu"></i></a></li>
+                <li class="nav-item">
+                    <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)">
+                        <i class="mdi mdi-menu"></i>
+                    </a>
+                </li>
+                <li class="nav-item m-l-10">
+                    <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)">
+                    <i class="ti-menu"></i>
+                    </a>
+                </li>
                 <!-- ============================================================== -->
                 <!-- Comment -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted text-muted waves-effect waves-dark" href=""
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                            class="mdi mdi-message"></i>
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="mdi mdi-message"></i>
                         <div class="notify"><span class="heartbit"></span> <span class="point"></span></div>
                     </a>
                     <div class="dropdown-menu mailbox animated slideInUp">
@@ -301,14 +309,14 @@
             <!-- ============================================================== -->
             <ul class="navbar-nav my-lg-0">
                 <!-- ============================================================== -->
-                <!-- Search -->
+                <!-- Documentation -->
                 <!-- ============================================================== -->
-                <li class="nav-item hidden-sm-down search-box"><a
-                        class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i
-                        class="ti-search"></i></a>
-                    <form class="app-search">
-                        <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i
-                            class="ti-close"></i></a></form>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-book"></i> {% trans "Documentation" %}
+                    </a>
+
                 </li>
                 <!-- ============================================================== -->
                 <!-- Language -->
@@ -342,29 +350,35 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                            src="{% static 'assets/images/users/1.jpg' %}" alt="user" class="profile-pic"/></a>
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ request.user.username }}
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img src="{% static 'assets/images/users/1.jpg' %}" alt="user"></div>
+                                    <div class="u-img"><img src="{{ request.user.avatar_url }}" alt="user"></div>
                                     <div class="u-text">
-                                        <h4>Steave Jobs</h4>
-                                        <p class="text-muted">varun@gmail.com</p>
-                                        <a href="pages-profile.html"
-                                           class="btn btn-rounded btn-danger btn-sm">View
-                                        Profile</a></div>
+                                        <h4>{{ request.user.username }}</h4>
+                                        <p class="text-muted">{{ request.user.email }}</p>
+                                    </div>
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            <li>
+                                <a href="{% url 'account:user-profile' %}">
+                                <i class="ti-user"></i> {% trans 'Profile' %}</a>
+                            </li>
                             <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
                             <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li>
+                                <a href="{% url 'authentication:logout' %}">
+                                    <i class="fa fa-power-off"></i> {% trans 'Logout' %}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block custom_foot_js %}
-    <script src="{% static 'assets/plugins/select2/js/select2.full.min.js' %}"></script>
+{#    <script src="{% static 'assets/plugins/select2/js/select2.full.min.js' %}"></script>#}
 {% endblock %}
 
 {% block content %}
@@ -65,7 +65,7 @@
                             {% block content_bottom_left %} {% endblock %}
                         </div>
                         {% block table_pagination %}
-{#                            {% include '_pagination.html' %}#}
+                            {% include '_pagination.html' %}
                         {% endblock %}
                     </div>
                 {% endblock %}

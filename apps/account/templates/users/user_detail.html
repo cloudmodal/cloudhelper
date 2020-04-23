@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block head_title %}{% trans action %}{% endblock %}
 
@@ -8,208 +9,651 @@
     <li class="breadcrumb-item active">{% trans action %}</li>
 {% endblock %}
 
+{% block custom_head_css_js %}
+    <link href="{% static 'assets/plugins/select2/css/select2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/plugins/sweetalert/sweetalert.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'assets/plugins/select2/js/select2.full.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/sweetalert/sweetalert.min.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <div class="container-fluid">
-
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card card-outline-info">
-                    <div class="card-header">
-                        <h4 class="m-b-0 text-white">{% trans 'User detail' %}</h4>
-                    </div>
-                    <div class="card-body">
-                        <form class="form-horizontal" role="form">
-                            <div class="form-body">
-                                <h3 class="box-title">{% trans 'Account' %}</h3>
-                                <hr class="m-t-0 m-b-40">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Name' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.name }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Username' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.username }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Email' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.email }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans "Account ID" %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.account_id }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Wechat' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.wechat }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Phone' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.phone }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-                                <h3 class="box-title">{% trans 'Security and Role' %}</h3>
-                                <hr class="m-t-0 m-b-40">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Role' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.role_display }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'MFA certification' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static">
-                                                    {% if user_object.mfa_force_enabled %}
-                                                        {% trans 'Force enabled' %}
-                                                    {% elif  user_object.mfa_enabled %}
-                                                        {% trans 'Enabled' %}
-                                                    {% else %}
-                                                        {% trans 'Disabled' %}
-                                                    {% endif %}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Created by' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.created_by }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Source' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.get_source_display }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Date joined' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.date_joined|date:"Y-m-j H:i:s" }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Date expired' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.date_expired|date:"Y-m-j H:i:s" }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/row-->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Last password updated' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.date_password_last_updated|date:"Y-m-j H:i:s" }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Last login' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.last_login|date:"Y-m-j H:i:s" }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-                                <div class="row">
-                                    <!--/span-->
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="control-label text-right col-md-3">{% trans 'Comment' %}:</label>
-                                            <div class="col-md-9">
-                                                <p class="form-control-static"> {{ user_object.comment }} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
-                            </div><hr class="m-t-0 m-b-40">
-                            <div class="form-actions">
-                                <div class="row">
-                                    <div class="col-md-6">
+            <!-- Column -->
+            <div class="col-lg-8 col-xlg-9 col-md-7">
+                <div class="card">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs profile-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#summary" role="tab">{% trans 'Summary' %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#profile" role="tab">{% trans "Profile" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#credentials" role="tab">{% trans "Security credentials" %}</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="summary" role="tabpanel">
+                            <div class="card-body">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-body">
+                                        <h3 class="box-title">{% trans 'Account' %}</h3>
+                                        <hr class="m-t-0 m-b-40">
                                         <div class="row">
-                                            <div class="col-md-offset-3 col-md-9">
-                                                <a class="btn btn-outline-info {% if can_update %} {% else %} disabled {% endif %}" href="{% url 'account:user-update' pk=user_object.id %}">
-                                                    <i class="fa fa-edit"></i>{% trans 'Update' %}
-                                                </a>
-                                                <a class="btn btn-outline-danger{% if can_delete %} btn-delete-user {% else %} disabled {% endif %}">
-                                                    <i class="fa fa-trash-o"></i>{% trans 'Delete' %}
-                                                </a>
-                                                <button type="button" class="btn btn-outline-inverse">Cancel</button>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Name' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.name }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Username' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.username }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Email' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.email }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans "Account ID" %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.account_id }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Wechat' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.wechat }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Phone' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.phone }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <h3 class="box-title">{% trans 'Security and Role' %}</h3>
+                                        <hr class="m-t-0 m-b-40">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Role' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.role_display }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'MFA certification' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static">
+                                                            {% if user_object.mfa_force_enabled %}
+                                                                {% trans 'Force enabled' %}
+                                                            {% elif  user_object.mfa_enabled %}
+                                                                {% trans 'Enabled' %}
+                                                            {% else %}
+                                                                {% trans 'Disabled' %}
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Created by' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.created_by }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Source' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.get_source_display }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Date joined' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.date_joined|date:"Y-m-j H:i:s" }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Date expired' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.date_expired|date:"Y-m-j H:i:s" }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Last password updated' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.date_password_last_updated|date:"Y-m-j H:i:s" }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Last login' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.last_login|date:"Y-m-j H:i:s" }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">{% trans 'Comment' %}:</label>
+                                                    <div class="col-md-9">
+                                                        <p class="form-control-static"> {{ user_object.comment }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
                                     </div>
-                                    <div class="col-md-6"></div>
-                                </div>
+                                    <hr class="m-t-0 m-b-40">
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-offset-3 col-md-9">
+                                                        <a class="btn btn-outline-info {% if can_update %} {% else %} disabled {% endif %}"
+                                                           href="{% url 'account:user-update' pk=user_object.id %}">
+                                                            <i class="fa fa-edit"></i>{% trans 'Update' %}
+                                                        </a>
+                                                        <a class="btn btn-outline-danger{% if can_delete %} btn-delete-user {% else %} disabled {% endif %}"
+                                                           href="javascript:void(0)">
+                                                            <i class="fa fa-trash-o"></i>{% trans 'Delete' %}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6"></div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
+                        <!--second tab-->
+                        <div class="tab-pane" id="profile" role="tabpanel">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="credentials" role="tabpanel">
+                            <div class="card-body">
+                                {% include 'authentication/_access_key.html' %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-4">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">
+                            <i class="fa fa-info-circle"></i> {% trans 'Quick modify' %}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                            <tr class="no-borders-tr">
+                                <td>{% trans 'Active' %}:</td>
+                                <td class="pull-right">
+                                    <div class="switch">
+                                        <label for="is_active">
+                                            <input type="checkbox" {% if user_object.is_active %} checked {% endif %}
+                                                    {% if request.user == user_object %} disabled {% endif %}id="is_active">
+                                            <span class="lever switch-col-blue"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{% trans 'Force enabled MFA' %}:</td>
+                                <td class="pull-right">
+                                    <div class="switch">
+                                        <label for="force_enable_otp">
+                                            <input type="checkbox" {% if user_object.otp_force_enabled %} checked {% endif %} id="force_enable_otp">
+                                            <span class="lever switch-col-red"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{% trans 'Reset MFA' %}:</td>
+                                <td>
+                                    <span class="pull-right">
+                                        <button type="button" class="btn btn-primary btn-xs"
+                                                id="btn-reset-mfa"
+                                                style="width: 54px">{% trans 'Reset' %}</button>
+                                    </span>
+                                </td>
+                            </tr>
+                            {% if user_object.can_update_password %}
+                                <tr>
+                                    <td>{% trans 'Send reset password mail' %}:</td>
+                                    <td>
+                                        <span class="pull-right">
+                                            <button type="button" class="btn btn-primary btn-xs"
+                                                    {% if request.user == user_object %}
+                                                    disabled="disabled" {% endif %} id="btn-reset-password"
+                                                    style="width: 54px">{% trans 'Send' %}</button>
+                                        </span>
+                                    </td>
+                                </tr>
+                            {% endif %}
 
+                            <tr style="{% if not unblock %}display:none{% endif %}">
+                                <td>{% trans 'Unblock user' %}</td>
+                                <td>
+                                    <span class="pull-right">
+                                        <button type="button" class="btn btn-primary btn-xs" id="btn-unblock-user"
+                                                style="width: 54px">{% trans 'Unblock' %}</button>
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% if request.user.can_admin_current_org %}
+                    {% if user_object.can_user_current_org or user_object.can_admin_current_org %}
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">
+                                    <i class="fa fa-info-circle"></i> {% trans 'User group' %}
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <table class="table group_edit">
+                                    <tbody>
+                                    <form>
+                                        <tr>
+                                            <td colspan="2" class="no-borders">
+                                                <select data-placeholder="{% trans 'Join user groups' %}"
+                                                        id="groups_selected"
+                                                        class="select2" style="width: 100%" multiple="" tabindex="4">
+                                                    {% for group in groups %}
+                                                        <option value="{{ group.id }}"
+                                                                id="opt_{{ group.id }}">{{ group.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="no-borders">
+                                                <button type="button" class="btn btn-info btn-small"
+                                                        id="btn_join_group">{% trans 'Join' %}</button>
+                                            </td>
+                                        </tr>
+                                    </form>
+
+                                    {% for group in user_object.groups.all %}
+                                        <tr>
+                                            <td>
+                                                <b class="bdg_group" data-gid={{ group.id }}>{{ group.name }}</b>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger pull-right btn-xs btn_leave_group"
+                                                        type="button">
+                                                    <i class="fa fa-minus"></i></button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <!-- Column -->
+        </div>
     </div>
+    {% include 'users/_user_update_pk_modal.html' %}
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script>
+        jumpserver.nodes_selected = {};
+        let usersSelect2;
+
+        function updateUserGroups(groups) {
+            let the_url = "{% url 'api-account:user-update-group' pk=user_object.id %}";
+            let body = {
+                groups: Object.assign([], groups)
+            };
+            let success = function (data) {
+                // remove all the selected groups from select > option and rendered ul element;
+                $('.select2-selection__rendered').empty();
+                $('#groups_selected').val('');
+                $.map(jumpserver.nodes_selected, function (group_name, index) {
+                    $('#opt_' + index).remove();
+                    // change tr html of user groups.
+                    $('.group_edit tbody').append(
+                        '<tr>' +
+                        '<td><b class="bdg_group" data-gid="' + index + '">' + group_name + '</b></td>' +
+                        '<td><button class="btn btn-danger btn-xs pull-right btn_leave_group" type="button"><i class="fa fa-minus"></i></button></td>' +
+                        '</tr>'
+                    )
+                });
+                // clear jumpserver.groups_selected
+                jumpserver.nodes_selected = {};
+            };
+            requestApi({
+                url: the_url,
+                body: JSON.stringify(body),
+                success: success
+            });
+        }
+
+        function updateUserLoginReviewer(reviewers) {
+            let url = "{% url 'api-auth:login-confirm-setting-update' user_id=user_object.id %}";
+            let data = {reviewers: reviewers};
+            requestApi({
+                url: url,
+                data: JSON.stringify(data),
+                method: 'PATCH',
+                success: function () {
+                    window.location.reload();
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            $('.select2').select2()
+                .on('select2:select', function (evt) {
+                    let data = evt.params.data;
+                    jumpserver.nodes_selected[data.id] = data.text;
+                })
+                .on('select2:unselect', function (evt) {
+                    let data = evt.params.data;
+                    delete jumpserver.nodes_selected[data.id];
+                });
+            usersSelect2 = usersSelect2Init('.users-select2')
+        })
+            .on('click', '#is_active', function () {
+                let the_url = "{% url 'api-account:user-detail' pk=user_object.id %}";
+                let checked = $(this).prop('checked');
+                let body = {
+                    'is_active': checked
+                };
+                let success = '{% trans "Update successfully!" %}';
+                requestApi({
+                    url: the_url,
+                    body: JSON.stringify(body),
+                    success_message: success
+                });
+            })
+            .on('click', '#force_enable_mfa', function () {
+                {% if request.user == user_object %}
+                    toastr.error("{% trans 'Goto profile page enable MFA' %}");
+                    return;
+                {% endif %}
+
+                let the_url = "{% url 'api-account:user-detail' pk=user_object.id %}";
+                let checked = $(this).prop('checked');
+                let mfa_level;
+                let otp_secret_key;
+                if (checked) {
+                    mfa_level = 2
+                } else {
+                    mfa_level = 0;
+                    otp_secret_key = '';
+                }
+                let body = {
+                    'mfa_level': mfa_level,
+                    'otp_secret_key': otp_secret_key
+                };
+                let success = '{% trans "Update successfully!" %}';
+                requestApi({
+                    url: the_url,
+                    body: JSON.stringify(body),
+                    success_message: success
+                });
+            })
+            .on('click', '#btn_join_group', function () {
+                if (Object.keys(jumpserver.nodes_selected).length === 0) {
+                    return false;
+                }
+                let groups = $('.bdg_group').map(function () {
+                    return $(this).data('gid');
+                }).get();
+                $.map(jumpserver.nodes_selected, function (value, index) {
+                    groups.push(index);
+                    $('#opt_' + index).remove();
+                });
+                updateUserGroups(groups)
+            }).on('click', '.btn_leave_group', function () {
+            let $this = $(this);
+            let $tr = $this.closest('tr');
+            let $badge = $tr.find('.bdg_group');
+            let gid = $badge.data('gid');
+            let group_name = $badge.html() || $badge.text();
+            $('#groups_selected').append(
+                '<option value="' + gid + '" id="opt_' + gid + '">' + group_name + '</option>'
+            );
+            $tr.remove();
+            let groups = $('.bdg_group').map(function () {
+                return $(this).data('gid');
+            }).get();
+            updateUserGroups(groups)
+        }).on('click', '#btn-reset-password', function () {
+            function doReset() {
+                {#{% url "api-account:user-reset-password" pk=user_object.id %}#}
+                let the_url = '';
+                let body = {};
+                let success = function () {
+                    let msg = "{% trans "An e-mail has been sent to the user`s mailbox." %}";
+                    swal("{% trans 'Reset password' %}", msg, "success");
+                };
+                requestApi({
+                    url: the_url,
+                    body: JSON.stringify(body),
+                    success: success
+                });
+            }
+
+            swal({
+                title: "{% trans 'Are you sure?' %}",
+                text: "{% trans "This will reset the user password and send a reset mail"%}",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: "{% trans 'Cancel' %}",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "{% trans 'Confirm' %}",
+                closeOnConfirm: false
+            }, function () {
+                doReset();
+            });
+        }).on('click', '#btn-reset-pk', function () {
+            function doReset() {
+                let the_url = '{% url "api-account:user-public-key-reset" pk=user_object.id %}';
+                let body = {};
+                let success = function () {
+                    let msg = "{% trans 'The reset-ssh-public-key E-mail has been sent successfully. Please inform the user to update his new ssh public key.' %}";
+                    swal("{% trans 'Reset SSH public key' %}", msg, "success");
+                };
+                requestApi({
+                    url: the_url,
+                    body: body,
+                    success: success
+                });
+            }
+
+            swal({
+                title: "{% trans 'Are you sure?' %}",
+                text: "{% trans 'This will reset the user public key and send a reset mail' %}",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: "{% trans 'Cancel' %}",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "{% trans 'Confirm' %}",
+                closeOnConfirm: false
+            }, function () {
+                doReset();
+            });
+        }).on('click', '#btn-user-update-pk', function () {
+            let $this = $(this);
+            let pk = $('#txt_pk').val();
+            let the_url = '{% url "api-account:user-public-key-reset" pk=user.id %}';
+            let body = {'_public_key': pk};
+            let success = function () {
+                $('#txt_pk').val('');
+                $this.closest('.modal').modal('hide');
+                let msg = "{% trans 'Successfully updated the SSH public key.' %}";
+                swal("{% trans 'User SSH public key update' %}", msg, "success");
+            };
+            let fail = function (msg) {
+                swal({
+                        title: "{% trans 'User SSH public key update' %}",
+                        text: msg,
+                        type: "error",
+                        showCancelButton: false,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "{% trans 'Confirm' %}",
+                        closeOnConfirm: true
+                    }, function () {
+                        $('#txt_pk').focus();
+                    }
+                );
+            };
+            requestApi({url: the_url, body: JSON.stringify(body), success: success, error: fail});
+        }).on('click', '.btn-delete-user', function () {
+            let $this = $(this);
+            let name = "{{ user_object.name }}";
+            let uid = "{{ user_object.id }}";
+            let the_url = '{% url "api-account:user-detail" pk=DEFAULT_PK %}'.replace('{{ DEFAULT_PK }}', uid);
+            let redirect_url = "{% url 'account:user-list' %}";
+            objectDelete($this, name, the_url, redirect_url);
+        }).on('click', '#btn-unblock-user', function () {
+            function doReset() {
+                {#let the_url = '{% url "api-users:user-reset-password" pk=user_object.id %}';#}
+                let the_url = '{%  url "api-account:user-unblock" pk=user_object.id %}';
+                let body = {};
+                let success = function () {
+                    let msg = "{% trans "Success" %}";
+                    {#swal("{% trans 'Unblock user' %}", msg, "success");#}
+                    swal({
+                            title: "{% trans 'Unblock user' %}",
+                            text: msg,
+                            type: "success"
+                        }, function () {
+                            location.reload()
+                        }
+                    );
+                };
+                requestApi({
+                    url: the_url,
+                    body: JSON.stringify(body),
+                    success: success
+                });
+            }
+
+            swal({
+                title: "{% trans 'Are you sure?' %}",
+                text: "{% trans "After unlocking the user, the user can log in normally."%}",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: "{% trans 'Cancel' %}",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "{% trans 'Confirm' %}",
+                closeOnConfirm: false
+            }, function () {
+                doReset();
+            });
+        }).on('click', '#btn-reset-mfa', function () {
+            requestApi({
+                url: "{% url 'api-account:user-reset-otp' pk=user_object.id %}",
+                method: "GET",
+                success_message: "{% trans 'Reset user MFA success' %}"
+            })
+        }).on('click', '.btn-leave-reviewer', function () {
+            let reviewersId = [];
+            let removeReviewerId = $(this).data('uid');
+            $('.btn-leave-reviewer').each(function (i, v) {
+                let reviewerId = $(v).data('uid');
+                if (reviewerId !== removeReviewerId) {
+                    reviewersId.push(reviewerId);
+                }
+            });
+            updateUserLoginReviewer(reviewersId);
+        }).on('click', '#btn_reviewer_confirm', function () {
+            let reviewersId = [];
+            $('.btn-leave-reviewer').each(function (i, v) {
+                let reviewerId = $(v).data('uid');
+                reviewersId.push(reviewerId);
+            });
+            let selectedId = usersSelect2.val();
+            if (selectedId.length === 0) {
+                return
+            }
+            selectedId.forEach(function (i) {
+                if (reviewersId.indexOf(i) === -1) {
+                    reviewersId.push(i)
+                }
+            });
+            updateUserLoginReviewer(reviewersId);
+        })
+    </script>
 {% endblock %}

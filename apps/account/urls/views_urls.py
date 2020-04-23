@@ -17,6 +17,29 @@ from .. import views
 app_name = 'account'
 
 urlpatterns = [
+    # login
+    path('password/forgot/', views.UserForgotPasswordView.as_view(), name='forgot-password'),
+    path('password/forgot/sendmail-success/', views.UserForgotPasswordSendmailSuccessView.as_view(),
+         name='forgot-password-sendmail-success'),
+    path('password/reset/', views.UserResetPasswordView.as_view(), name='reset-password'),
+    path('password/reset/success/', views.UserResetPasswordSuccessView.as_view(), name='reset-password-success'),
+
+    # Profile
+    path('profile/', views.UserProfileView.as_view(), name='user-profile'),
+    path('profile/update/', views.UserProfileUpdateView.as_view(), name='user-profile-update'),
+    path('profile/password/update/', views.UserPasswordUpdateView.as_view(), name='user-password-update'),
+    path('profile/pubkey/update/', views.UserPublicKeyUpdateView.as_view(), name='user-pubkey-update'),
+    path('profile/pubkey/generate/', views.UserPublicKeyGenerateView.as_view(), name='user-pubkey-generate'),
+    path('profile/otp/enable/authentication/', views.UserOtpEnableAuthenticationView.as_view(),
+         name='user-otp-enable-authentication'),
+    path('profile/otp/enable/install-app/', views.UserOtpEnableInstallAppView.as_view(),
+         name='user-otp-enable-install-app'),
+    path('profile/otp/enable/bind/', views.UserOtpEnableBindView.as_view(), name='user-otp-enable-bind'),
+    path('profile/otp/disable/authentication/', views.UserOtpDisableAuthenticationView.as_view(),
+         name='user-otp-disable-authentication'),
+    path('profile/otp/update/', views.UserOtpUpdateView.as_view(), name='user-otp-update'),
+    path('profile/otp/settings-success/', views.UserOtpSettingsSuccessView.as_view(), name='user-otp-settings-success'),
+
     path('first-login/', views.UserFirstLoginView.as_view(), name='user-first-login'),
 
     path('user/', views.UserListView.as_view(), name='user-list'),

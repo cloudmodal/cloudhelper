@@ -16,7 +16,7 @@ from .. import api
 
 app_name = 'authentication'
 router = BulkRouter()
-router.register(r'access-keys', api.AccessKeyViewSet, 'access-key')
+router.register(r'access-keys', api.AccessKeyViewSet, 'access-keys')
 
 
 urlpatterns = [

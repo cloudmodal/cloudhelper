@@ -35,12 +35,8 @@
         </thead>
         <div class="m-t-40">
             <div class="d-flex">
-                {% block button %}
-
-                {% endblock %}
-                {% block table_search %}
-
-                {% endblock %}
+                {% block button %}{% endblock %}
+                {% block table_search %}{% endblock %}
             </div>
         </div>
         <tbody>
@@ -48,7 +44,7 @@
     </table>
     <div id="actions" class="hide">
         <div class="input-group">
-            <select class="form-control m-b" id="slct_bulk_update">
+            <select class="form-control m-b" style="width: auto" id="slct_bulk_update">
                 <option value="delete">{% trans 'Delete selected' %}</option>
                 <option value="update">{% trans 'Update selected' %}</option>
                 <option value="deactive">{% trans 'Deactive selected' %}</option>
@@ -65,6 +61,7 @@
 
 {% block custom_foot_js %}
     <script src="{% static 'js/jquery.form.min.js' %}"></script>
+
     <script>
         let users_table = 0;
         function initTable() {
@@ -97,9 +94,8 @@
                     {
                         targets: 6, createdCell: function (td, cellData, rowData) {
                             if (cellData) {
-                                $(td).html('<i class="fa fa-check text-success"></i>')
+                                $(td).html('<i class="fa fa-check text-success activated"></i>')
                             } else if (!rowData.is_active) {
-
                                 $(td).html('<i class="fa fa-times text-danger inactive"></i>')
                             } else if (rowData.is_expired) {
                                 $(td).html('<i class="fa fa-times text-danger expired"></i>')
@@ -217,9 +213,8 @@
         }).on('click', '#btn_bulk_update', function () {
             let action = $('#slct_bulk_update').val();
             let id_list = users_table.selected;
-            //console.log(id_list)
-            //console.log(users_table)
             if (id_list.length === 0) {
+                toastr.warning("{% trans "Please select at least one row!" %}")
                 return false;
             }
             let the_url = "{% url 'api-account:user-list' %}";
@@ -346,6 +341,9 @@
             let uid = $this.data('uid');
             let the_url = '{% url "api-account:user-detail" pk=DEFAULT_PK %}'.replace("{{ DEFAULT_PK }}", uid);
             objectDelete($this, name, the_url);
+        }).on('click', '.activated', function () {
+            let msg = '{% trans "User is active" %}'
+            toastr.success(msg)
         }).on('click', '.expired', function () {
             let msg = '{% trans "User is expired" %}';
             toastr.error(msg)

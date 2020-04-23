@@ -22,6 +22,7 @@ def iam_processor(request):
         'SITE_URL': settings.SITE_URL,
         'LOGO_URL': static('assets/images/logo-icon.png'),
         'LOGO_TEXT_URL': static('assets/images/logo-text.png'),
+        'LOGO_LIGHT_TEXT_URL': static('assets/images/logo-light-text.png'),
         'VERSION': settings.VERSION,
     }
     return context

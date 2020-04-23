@@ -1,10 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% load i18n %}
 
-</body>
-</html>
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <!-- Column -->
+            <div class="col-lg-12 col-xlg-9 col-md-7">
+                <div class="card">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs profile-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'account:user-profile-update' %}" role="tab">{% trans 'Profile' %}</a>
+                        </li>
+                        {% if request.user.can_update_password %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'account:user-password-update' %}" role="tab">{% trans 'Password' %}</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!--second tab-->
+                        <div class="tab-pane active" id="profile" role="tabpanel">
+                            <div class="card-body">
+                                <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <h4 class="font-medium m-t-30">{% trans 'Account' %}</h4><hr>
+                                    {% bootstrap_field form.username layout="horizontal" %}
+                                    {% bootstrap_field form.name layout="horizontal" %}
+                                    {% bootstrap_field form.email layout="horizontal" %}
+
+                                    <div class="hr-line-dashed"></div>
+                                    <h4 class="font-medium m-t-30">{% trans 'Profile' %}</h4><hr>
+                                    {% bootstrap_field form.phone layout="horizontal" %}
+                                    {% bootstrap_field form.wechat layout="horizontal" %}
+                                    <div class="hr-line-dashed"></div><hr>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <button id="submit_button" type="submit" class="btn btn-outline-success">{% trans 'Submit' %}</button>
+                                            <button type="reset" class="btn btn-outline-warning">{% trans 'Reset' %}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}

@@ -1,10 +1,210 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
-</body>
-</html>
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <!-- Column -->
+            <div class="col-lg-4 col-xlg-3 col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center m-t-30">
+                            <img src="{{ user.avatar_url }}" class="img-circle" width="150" alt="{{ user.username }}"/>
+                            <h4 class="card-title m-t-10">{{ user.username }}</h4>
+                            <h6 class="card-subtitle">{{ user.role }}</h6>
+                            <div class="row text-center justify-content-md-center">
+                                <div class="col-4">
+                                    <a class="link" href="{% url 'account:user-profile-update' %}">
+                                        <i class="fa fa-edit"></i> {% trans 'Update' %}
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="javascript:void(0)" class="link">
+                                        <i class="icon-picture"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <hr>
+                    </div>
+                    <div class="card-body">
+                        <small class="text-muted">{% trans 'Email' %} </small>
+                        <h6>{{ user.email }}</h6>
+                        <small class="text-muted p-t-30 db">{% trans "Phone" %}</small>
+                        <h6>{{ user.phone }}</h6>
+                        <small class="text-muted p-t-30 db">{% trans "Address" %}</small>
+                        <h6>{{ user.address }}</h6>
+                        <div class="map-box">
+                            <iframe src="" width="100%" height="150" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-8 col-xlg-9 col-md-7">
+                <div class="card">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs profile-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">{% trans "Profile" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#setting" role="tab">{% trans "Setting" %}</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!--second tab-->
+                        <div class="tab-pane active" id="profile" role="tabpanel">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-6 b-r"><strong>{% trans 'Username' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.username }}</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6"><strong>{% trans "Name" %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.name }}</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 b-r"><strong>{% trans 'Role' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.get_role_display }}</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6"><strong>{% trans 'Email' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.email }}</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 b-r"><strong>{% trans 'Active' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.is_active|yesno:"Yes,No,Unkown" }}</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6"><strong>{% trans 'MFA certification' %}</strong>
+                                        <br>
+                                        <p class="text-muted">
+                                            {% if user.mfa_force_enabled %}
+                                                {% trans 'Force enable' %}
+                                            {% elif  user.mfa_enabled %}
+                                                {% trans 'Enable' %}
+                                            {% else %}
+                                                {% trans 'Disable' %}
+                                            {% endif %}
+                                            {% if mfa_setting %}
+                                                ( {% trans 'Administrator Settings force MFA login' %} )
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 b-r"><strong>{% trans 'Source' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.get_source_display }}</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6"><strong>{% trans 'Date joined' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.date_joined|date:"Y-m-d H:i:s" }}</p>
+                                    </div>
+                                    <hr>
+                                    <div class="col-md-12 col-xs-12"><strong>{% trans 'Last login' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.last_login|date:"Y-m-d H:i:s" }}</p>
+                                    </div>
+                                    {% if user.can_update_password %}
+                                        <div class="col-md-12 col-xs-12"><strong>{% trans 'Last password updated' %}</strong>
+                                            <br>
+                                            <p class="text-muted">{{ user.date_password_last_updated|date:"Y-m-d H:i:s" }}</p>
+                                        </div>
+                                    {% endif %}
+                                    <div class="col-md-12 col-xs-12"><strong>{% trans 'Date expired' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.date_expired|date:"Y-m-d H:i:s" }}</p>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12"><strong>{% trans 'User groups' %}</strong>
+                                        <br>
+                                        <table>
+                                            {% for group in user.groups.all %}
+                                                <tr>
+                                                    <td>
+                                                        {{ group.name }}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12"><strong>{% trans 'Comment' %}</strong>
+                                        <br>
+                                        <p class="text-muted">{{ user.comment|default:'' }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="setting" role="tabpanel">
+                            <div class="card-body">
+                                <table class="table">
+                                    <tbody>
+                                    <tr class="no-borders-tr">
+                                        <td>{% trans 'Set MFA' %}:</td>
+                                        <td>
+                                            <span class="pull-right">
+                                                <a type="button" class="btn btn-primary btn-xs" style="width: 54px" id=""
+                                                   href="{% if request.user.mfa_enabled %}
+                                                            {% if request.user.mfa_force_enabled %}
+                                                                " disabled >{% trans 'Disable' %}
+                                                            {% else %}
+                                                                {% url 'account:user-otp-disable-authentication' %}
+                                                                ">{% trans 'Disable' %}
+                                                            {% endif %}
+                                                        {% else %}
+                                                            {% url 'account:user-otp-enable-authentication' %}
+                                                            ">{% trans 'Enable' %}
+                                                        {% endif %}
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% if request.user.mfa_enabled %}
+                                    <tr>
+                                        <td>{% trans 'Update MFA' %}:</td>
+                                        <td>
+                                            <span class="pull-right">
+                                                <a type="button" class="btn btn-primary btn-xs" style="width: 54px" href="{% url 'account:user-otp-update' %}">{% trans 'Update' %}</a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    {% if request.user.can_update_password %}
+                                    <tr class="no-borders">
+                                        <td>{% trans 'Update password' %}:</td>
+                                        <td>
+                                            <span class="pull-right">
+                                                <a type="button" class="btn btn-primary btn-xs" style="width: 54px" href="{% url 'account:user-password-update' %}">{% trans 'Update' %}</a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
