@@ -20,56 +20,53 @@
 
 {% block content %}
     <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{ action }}</h4>
-                {% block table_container %}
-                    <table class="table m-t-30 table-hover contact-list">
-                        <thead>
-                        <tr>
-                            {% block table_head %} {% endblock %}
-                        </tr>
-                        </thead>
-                        <div class="m-t-40">
-                            <div class="d-flex">
-                                {% block button %}
-                                    <div class="mr-auto">
-                                        <div class="form-group">
-                                            <button class="btn btn-outline-info btn-sm">
-                                                <i class="icon wb-plus" aria-hidden="true"></i>Add New Row
-                                            </button>
-                                        </div>
+        {% block title_head %}{% endblock %}
+        <div class="row">
+            <div class="col-{% block col %}12{% endblock %}">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ action }}</h4>
+                        {% block table_container %}
+                            <table class="table m-t-30 table-hover contact-list">
+                                <thead><tr>{% block table_head %} {% endblock %}</tr></thead>
+                                <div class="m-t-40">
+                                    <div class="d-flex">
+                                        {% block button %}
+                                            <div class="mr-auto">
+                                                <div class="form-group">
+                                                    <button class="btn btn-outline-info btn-sm">
+                                                        <i class="icon wb-plus" aria-hidden="true"></i>Add New Row
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+                                        {% block table_search %}{% endblock %}
                                     </div>
-                                {% endblock %}
-                                {% block table_search %}
-
-                                {% endblock %}
-                            </div>
-                        </div>
-                        <tbody>
-                        {% block table_body %} {% endblock %}
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td colspan="6">
-                                <div class="text-right">
-                                    <ul class="pagination">
-                                    </ul>
                                 </div>
-                            </td>
-                        </tr>
-                        </tfoot>
-                    </table>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            {% block content_bottom_left %} {% endblock %}
-                        </div>
-                        {% block table_pagination %}
-                            {% include '_pagination.html' %}
+                                <tbody>{% block table_body %}{% endblock %}</tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="text-right">
+                                            <ul class="pagination">
+
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    {% block content_bottom_left %} {% endblock %}
+                                </div>
+                                {% block table_pagination %}{% include '_pagination.html' %}{% endblock %}
+                            </div>
                         {% endblock %}
                     </div>
-                {% endblock %}
+                </div>
             </div>
+            {% block right %}{% endblock %}
         </div>
     </div>
 {% endblock %}

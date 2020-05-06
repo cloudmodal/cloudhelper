@@ -1,0 +1,207 @@
+{% extends '_base_create_update.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'credentials:credentials-list' %}">{% trans app %}</a></li>
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block width %}8{% endblock %}
+{% block title %}
+    <div class="card card-outline-info">
+        <div class="card-header">
+            <h5 class="m-b-0 text-white">{% trans "Instructions" %}</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-body">
+                <ol>
+                    <li class="font-weight-light small">
+                        {% trans "Sign in to the IAM Managment Console" %}
+                        <a href="https://console.amazonaws.cn/iam/home?#roles"
+                           target="_blank">{% trans 'Amazon China' %}</a>
+                        {% trans 'or' %}
+                        <a href="https://console.aws.amazon.com/iam/home?#roles"
+                           target="_blank">{% trans 'Amazon Standard' %}</a>
+                    </li>
+                    <li class="font-weight-light small">{% trans 'Click the blue "Create role" button.' %}</li>
+                    <li class="font-weight-light small">{% trans 'Under "", select "Another AWS Account".' %}</li>
+                    <li class="font-weight-light small">{% trans 'Enter the following information:' %}
+                        <div class="alert alert-info">
+                            <table class="role-parameters">
+                                <tbody>
+                                {% for account in CROSS_ACCOUNTS %}
+                                <tr>
+                                    <td>{% trans 'Account ID' %}:</td>
+                                    <td id="account-number{{ account.AccountID }}">{{ account.AccountID }}</td>
+                                    <td>
+                                        <button class="btn btn-default btn-xs copy-to-clipboard" data-clipboard-target="#account-number{{ account.AccountID }}">{% trans 'Copy account ID to clipboard' %}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{% trans 'region' %}:</td>
+                                    <td>{{ account.region }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% trans 'Require external ID' %}:</td>
+                                    <td>{{ account.RequireExternalID }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% trans 'External ID' %}:</td>
+                                    <td id="{{ account.ExternalID }}">{{ account.ExternalID }}</td>
+                                    <td>
+                                        <button class="btn btn-default btn-xs copy-to-clipboard" data-clipboard-target="#{{ account.ExternalID }}">{% trans 'Copy External ID to clipboard' %}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{% trans 'Require MFA' %}:</td>
+                                    <td>{{ account.RequireMFA }}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% trans 'Click "Next: Permissions".' %}
+                    </li>
+                    <li class="font-weight-light small">{% trans 'Select zero or more Managed Policies to attach to the role. Choose from:' %}
+                        <ul>
+                            <li>{% trans '<strong>Recommended:</strong> Do not select any managed policies. Selecting this option is more secure, but you will need to return to your role and add permissions later.' %}</li>
+                            <li>{% trans 'Or select the policy called "PowerUserAccess". Selecting this option gets you up and running quickly with L2C, but gives L2C too many permissions.' %}</li>
+                        </ul>
+                        {% trans 'Click "Next: Review".' %}
+                    </li>
+                    <li class="font-weight-light small">{% trans 'Enter <mark>CloudHelper</mark> as your role name. The name does not really matter. It is for your reference.' %}</li>
+                    <li class="font-weight-light small">{% trans 'Click "Create role".' %}</li>
+                    <li class="font-weight-light small">{% trans 'Select the newly created <mark>CloudHelper</mark> role in your roles list.' %}</li>
+                    <li class="font-weight-light small">{% trans 'Find the "Role ARN" value in the "Summary" section. Copy and paste it below' %}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block form %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-body">
+            {% bootstrap_field form.external_id layout="horizontal" %}
+            {% bootstrap_field form.require_mfa layout="horizontal" %}
+            <h3 class="box-title">{% trans 'General' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.credentials_name layout="horizontal" %}
+
+            <h3 class="box-title">{% trans 'IAM Role Information' %}</h3>
+            <hr class="m-t-0 m-b-40">
+
+            {% bootstrap_field form.role_arn layout="horizontal" %}
+            {% bootstrap_field form.account_type layout="horizontal" %}
+
+            <h3 class="box-title">{% trans 'Other' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.comment layout="horizontal" %}
+
+        </div>
+        <hr>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn btn-outline-success">{% trans 'Submit' %}</button>
+                            <button type="reset" class="btn btn-outline-warning">{% trans 'Reset' %}</button>
+                            <a href="{% url 'credentials:credentials-create' %}" class="btn btn-outline-info">{% trans 'Cancel' %}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+
+{% block sidebar %}
+    <div class="col-lg-4">
+        <div class="card card-outline-inverse">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">{% trans "Help" %}</h4>
+            </div>
+            <div class="card-body">
+                <a href="" target="_blank">{% trans "Help Registering IAM Access Keys With Cloud Helper" %}
+                    <i class="fa fa-external-link"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script src="{% static 'assets/plugins/clipboard/clipboard.js' %}"></script>
+    <script>
+        let cross = '{{ CROSS_ACCOUNTS }}'
+        let is_local_role = '#' + '{{ form.is_local_role.id_for_label }}';
+        let account_type = '#' + '{{ form.account_type.id_for_label }}';
+        let btns = document.querySelectorAll('button');
+        let clipboard = new ClipboardJS(btns);
+
+        clipboard.on('success', function () {
+            toastr.success('{% trans "Copy successful" %}');
+        });
+        clipboard.on('error', function () {
+            toastr.warning('{% trans "Copy failed, please copy manually" %}');
+        });
+
+        function CrossAccounts() {
+            let list = {};
+            let account_type_value = $(account_type + " option:selected").val();
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json;charset=UTF-8",
+                url: "{% url 'api-access:amazon-cross-accounts' %}",
+                data: JSON.stringify(list),
+                success: function (result) {
+                    let china = result.data[0];
+                    let standard = result.data[1];
+                    let external_id="ExternalID";
+                    let require_mfa="RequireMFA";
+                    if (account_type_value === 'amazon-china') {
+                        $("#{{ form.external_id.id_for_label }}").attr("value", china[external_id]);
+                        $("#{{ form.require_mfa.id_for_label }}").attr("value", china[require_mfa]);
+                    } else if (account_type_value === 'amazon-standard') {
+                        $("#{{ form.external_id.id_for_label }}").attr("value", standard[external_id]);
+                        $("#{{ form.require_mfa.id_for_label }}").attr("value", standard[require_mfa]);
+                    }
+                },
+                //请求失败，包含具体的错误信息
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }
+        function LocalRole() {
+            // $('input:checkbox').attr("checked", true);
+            let local_role = $(is_local_role).prop('checked');
+            if (local_role) {
+                $('#is_local_role').addClass('d-none');
+            } else {
+                $('#is_local_role').removeClass('d-none');
+            }
+        }
+
+        $(document).ready(function () {
+            CrossAccounts()
+            LocalRole()
+        }).on('change', CrossAccounts, function () {
+                CrossAccounts()
+            }).on('change', is_local_role, function () {
+                LocalRole()
+            })
+    </script>
+{% endblock %}

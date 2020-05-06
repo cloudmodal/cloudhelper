@@ -1,0 +1,18 @@
+{% extends 'access/_amazon_access_key.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block custom_foot_js %}
+    <script src="{% static 'js/validation.js' %}"></script>
+    <script>
+    ! function(window, document, $) {
+        "use strict";
+        $("input,select,textarea").not("[type=submit]").jqBootstrapValidation()
+        $(".skin-square input")
+    }(window, document, jQuery);
+    </script>
+    <script>
+    // let secret_access_key = '#' + '{{ form.secret_access_key.id_for_label }}';
+    // $(secret_access_key).val('');
+    </script>
+{% endblock %}

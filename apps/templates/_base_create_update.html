@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
-{% load bootstrap4 %}
 
 {% block head_title %}{% trans action %}{% endblock %}
 
@@ -15,7 +14,8 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-{% block width %}12{% endblock %}">
+                {% block title %}{% endblock %}
                 <div class="card card-outline-info">
                     <div class="card-header">
                         <h4 class="m-b-0 text-white">{{ action }}</h4>
@@ -30,6 +30,7 @@
                     </div>
                 </div>
             </div>
+            {% block sidebar %}{% endblock %}
         </div>
     </div>
 {% endblock %}

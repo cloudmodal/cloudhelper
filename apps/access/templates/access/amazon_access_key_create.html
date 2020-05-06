@@ -1,0 +1,67 @@
+{% extends '_base_create_update.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'credentials:credentials-list' %}">{% trans app %}</a></li>
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block width %}8{% endblock %}
+
+{% block form %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-body">
+            <h3 class="box-title">{% trans 'General' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.credentials_name layout="horizontal" %}
+
+            <h3 class="box-title">{% trans 'Access Key Information' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.access_key_id layout="horizontal" %}
+            {% bootstrap_field form.secret_access_key layout="horizontal" %}
+            {% bootstrap_field form.account_type layout="horizontal" %}
+
+            <h3 class="box-title">{% trans 'Other' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.comment layout="horizontal" %}
+
+        </div>
+        <hr>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn btn-outline-success">{% trans 'Submit' %}</button>
+                            <button type="reset" class="btn btn-outline-warning">{% trans 'Reset' %}</button>
+                            <a href="{% url 'credentials:credentials-create' %}" class="btn btn-outline-info">{% trans 'Cancel' %}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="col-lg-4">
+        <div class="card card-outline-inverse">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">{% trans "Help" %}</h4>
+            </div>
+            <div class="card-body">
+                <a href="" target="_blank">{% trans "Help Registering IAM Access Keys With Cloud Helper" %}
+                    <i class="fa fa-external-link"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

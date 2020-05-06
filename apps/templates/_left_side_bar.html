@@ -73,7 +73,19 @@
                         <i class="mdi mdi-key"></i><span class="hide-menu">{% trans "Credentials" %}</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{% url 'account:user-list' %}">{% trans "Credentials" %}</a></li>
+                        <li><a href="{% url 'credentials:credentials-list' %}">{% trans "Credentials" %}</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-cube-unfolded"></i><span class="hide-menu">{% trans "CMBD" %}</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="">{% trans "Asset config" %}</a></li>
+                        <li><a href="">{% trans "Asset list" %}</a></li>
+                        <li><a href="">{% trans "Admin user" %}</a></li>
+                        <li><a href="">{% trans "Label list" %}</a></li>
+                        <li><a href="">{% trans "Operational audit" %}</a></li>
                     </ul>
                 </li>
 

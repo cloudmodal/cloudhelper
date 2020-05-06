@@ -35,6 +35,7 @@ api_v1 = [
 app_view_patterns = [
     path('auth/', include('authentication.urls.views_urls', namespace='auth')),
     path('account/', include('account.urls.views_urls', namespace='account')),
+    path('credentials/', include('access.urls.views_urls', namespace='credentials')),
 ]
 
 
