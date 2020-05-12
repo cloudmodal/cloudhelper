@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

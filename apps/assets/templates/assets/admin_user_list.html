@@ -1,0 +1,158 @@
+{% extends '_base_list.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block table_container %}
+    <table class="table m-t-30 table-hover contact-list m-t-30" id="admin_user_list_table">
+        <thead>
+        <tr>
+            <th class="text-center">
+                <input type="checkbox" id="check_all" class="ipt_check_all">
+            </th>
+            <th class="text-center">{% trans 'Name' %}</th>
+            <th class="text-center">{% trans 'Username' %}</th>
+            <th class="text-center">{% trans 'Asset' %}</th>
+            <th class="text-center">{% trans 'Comment' %}</th>
+            <th class="text-center">{% trans 'Action' %}</th>
+        </tr>
+        </thead>
+        <div class="m-t-40">
+            <div class="d-flex">
+                <div class="mr-auto">
+                    <div class="form-group">
+                        <a href="{% url "assets:admin-user-create" %}" class="btn btn-sm btn-outline-primary">
+                            <i class="icon wb-plus" aria-hidden="true"></i>{% trans "Create admin user" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <tbody>
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script>
+        let admin_user_table = 0;
+
+        function initTable() {
+            let options = {
+                ele: $('#admin_user_list_table'),
+                columnDefs: [
+                    {
+                        targets: 1, render: function (cellData, tp, rowData, meta) {
+                            cellData = htmlEscape(cellData);
+                            let detail_btn = '<a href="{% url "assets:admin-user-detail" pk=DEFAULT_PK %}">' + cellData + '</a>';
+                            return detail_btn.replace('{{ DEFAULT_PK }}', rowData.id);
+                        }
+                    },
+                    {
+                        targets: 5, createdCell: function (td, cellData, rowData) {
+                            let update_btn = '<a href="{% url "assets:admin-user-update" pk=DEFAULT_PK %}" data-toggle="tooltip" title="{% trans "Update" %}"><i class="fa fa-pencil text-inverse m-r-10"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
+                            let del_btn = '<a class="btn_admin_user_delete" data-uid="{{ DEFAULT_PK }}" data-toggle="tooltip" title="{% trans "Delete" %}"><i class="fa fa-close text-danger"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
+                            $(td).html(update_btn + del_btn)
+                        }
+                    }],
+                ajax_url: '{% url "api-assets:admin-user-list" %}',
+                columns: [
+                    {
+                        data: function () {
+                            return ""
+                        }
+                    }, {data: "name"}, {data: "username"}, {data: "assets_amount", orderable: false},
+                    {data: "comment"}, {data: "id", orderable: false, width: "100px"}
+                ]
+            };
+            admin_user_table = jumpserver.initServerSideDataTable(options);
+            return admin_user_table
+        }
+
+        $(document).ready(function () {
+            initTable();
+        })
+
+            .on('click', '.btn_admin_user_delete', function () {
+                let $this = $(this);
+                let $data_table = $("#admin_user_list_table").DataTable();
+                let name = $(this).closest("tr").find(":nth-child(2)").children('a').html();
+                let uid = $this.data('uid');
+                let the_url = '{% url "api-assets:admin-user-detail" pk=DEFAULT_PK %}'.replace('{{ DEFAULT_PK }}', uid);
+                objectDelete($this, name, the_url);
+                setTimeout(function () {
+                    $data_table.ajax.reload();
+                }, 3000);
+
+            })
+            .on('click', '.btn_export', function () {
+                let admin_users = admin_user_table.selected;
+                let data = {
+                    'resources': admin_users
+                };
+                let search = $("input[type='search']").val();
+                let props = {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    success_url: "{% url 'api-assets:admin-user-list' %}",
+                    format: "csv",
+                    params: {
+                        search: search
+                    }
+                };
+                APIExportData(props);
+            }).on('click', '#btn_import_confirm', function () {
+            let url = "{% url 'api-assets:admin-user-list' %}";
+            let file = document.getElementById('id_file').files[0];
+            if (!file) {
+                toastr.error("{% trans "Please select file" %}");
+                return
+            }
+            let data_table = $('#admin_user_list_table').DataTable();
+            APIImportData({
+                url: url,
+                method: "POST",
+                body: file,
+                data_table: data_table
+            });
+        })
+            .on('click', '#download_update_template', function () {
+                let admin_users = admin_user_table.selected;
+                let data = {
+                    'resources': admin_users
+                };
+                let search = $("input[type='search']").val();
+                let props = {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    success_url: "{% url 'api-assets:admin-user-list' %}?format=csv&template=update",
+                    format: 'csv',
+                    params: {
+                        search: search
+                    }
+                };
+                APIExportData(props);
+            })
+            .on('click', '#btn_update_confirm', function () {
+                let file = document.getElementById('update_file').files[0];
+                if (!file) {
+                    toastr.error("{% trans "Please select file" %}");
+                    return
+                }
+                let url = "{% url 'api-assets:admin-user-list' %}";
+                let data_table = $('#admin_user_list_table').DataTable();
+
+                APIImportData({
+                    url: url,
+                    method: "PUT",
+                    body: file,
+                    data_table: data_table
+                });
+            })
+    </script>
+{% endblock %}

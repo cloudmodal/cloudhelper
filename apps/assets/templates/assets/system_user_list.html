@@ -1,0 +1,106 @@
+{% extends '_base_list.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block col %}9{% endblock %}
+{% block table_container %}
+    <table class="table m-t-30 table-hover contact-list" id="system_user_list_table">
+        <thead>
+        <tr>
+            <th class="text-center">
+                <input type="checkbox" id="check_all" class="ipt_check_all">
+            </th>
+            <th class="text-center">{% trans 'Name' %}</th>
+            <th class="text-center">{% trans 'Username' %}</th>
+            <th class="text-center">{% trans 'Protocol' %}</th>
+            <th class="text-center">{% trans 'Login mode' %}</th>
+            <th class="text-center">{% trans 'Asset' %}</th>
+            <th class="text-center">{% trans 'Comment' %}</th>
+            <th class="text-center">{% trans 'Action' %}</th>
+        </tr>
+        </thead>
+        <div class="m-t-40">
+            <div class="d-flex">
+                <div class="mr-auto">
+                    <div class="form-group">
+                        <a href="{% url 'assets:system-user-create' %}" class="btn btn-sm btn-outline-primary">
+                            <i class="icon wb-plus" aria-hidden="true"></i>{% trans "Create system user" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <tbody>
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block right %}
+    <div class="col-lg-3">
+        <div class="card card-outline-inverse">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">{% trans "Understand system user" %}</h4>
+            </div>
+            <div class="card-body">
+                <p>
+                    {% block help_message %}
+                        {% trans 'System user refers to a user who can log in to the server.' %}
+                        <a href="#"> {% trans 'to know more information' %} <i class="mdi mdi-open-in-new"></i></a>
+                    {% endblock %}
+                </p>
+                <hr class="my-2">
+                <p>{% trans '' %}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script>
+        let system_user_table = 0;
+        function initTable() {
+            let options = {
+                ele: $('#system_user_list_table'),
+                columnDefs: [
+                    {
+                        targets: 1, render: function (cellData, tp, rowData, meta) {
+                            cellData = htmlEscape(cellData);
+                            let detail_btn = '<a href="{% url "assets:system-user-detail" pk=DEFAULT_PK %}">' + cellData + '</a>';
+                            return detail_btn.replace('{{ DEFAULT_PK }}', rowData.id);
+                        }
+                    },
+                    {
+                        targets: 4, createdCell: function (td, cellData, rowData) {
+                            $(td).html(rowData.login_mode_display);
+                        }
+                    },
+                    {
+                        targets: 7, createdCell: function (td, cellData, rowData) {
+                            let update_btn = '<a href="{% url "assets:system-user-update" pk=DEFAULT_PK %}" data-toggle="tooltip" title="{% trans "Update" %}"><i class="fa fa-pencil text-inverse m-r-10"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
+                            let del_btn = '<a class="btn_asset_config_delete" data-uid="{{ DEFAULT_PK }}" data-toggle="tooltip" title="{% trans "Delete" %}"><i class="fa fa-close text-danger"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
+                            $(td).html(update_btn + del_btn)
+                        }
+                    }],
+                ajax_url: '{% url "api-assets:system-user-list" %}',
+                columns: [
+                    {data: "id"}, {data: "name"}, {data: "username"}, {data: "protocol"},
+                    {data: "login_mode"}, {data: "assets_amount", orderable: false},
+                    {data: "comment"}, {data: "id", orderable: false, width: "100px"}
+                ],
+                op_html: $('#actions').html()
+            };
+            system_user_table = jumpserver.initServerSideDataTable(options);
+            return system_user_table
+        }
+
+        $(document).ready(function () {
+            initTable();
+        })
+    </script>
+{% endblock %}

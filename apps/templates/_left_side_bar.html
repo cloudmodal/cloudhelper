@@ -81,11 +81,12 @@
                         <i class="mdi mdi-cube-unfolded"></i><span class="hide-menu">{% trans "CMBD" %}</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="">{% trans "Asset config" %}</a></li>
-                        <li><a href="">{% trans "Asset list" %}</a></li>
-                        <li><a href="">{% trans "Admin user" %}</a></li>
-                        <li><a href="">{% trans "Label list" %}</a></li>
-                        <li><a href="">{% trans "Operational audit" %}</a></li>
+                        <li><a href="{% url 'assets:asset-config' %}">{% trans "Asset config" %}</a></li>
+                        <li><a href="{% url 'assets:admin-user-list' %}">{% trans "Admin user" %}</a></li>
+                        <li><a href="{% url 'assets:system-user-list' %}">{% trans "System user" %}</a></li>
+                        <li><a href="{% url 'assets:tags-list' %}">{% trans "Tags list" %}</a></li>
+                        <li><a href="{% url 'assets:asset-list' %}">{% trans "Asset list" %}</a></li>
+{#                        <li><a href="#">{% trans "Operational audit" %}</a></li>#}
                     </ul>
                 </li>
 

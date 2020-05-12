@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'organization.apps.OrgConfig',
     'account.apps.AccountConfig',
     'access.apps.AccessConfig',
+    'assets.apps.AssetsConfig',
     'authentication.apps.AuthenticationConfig',  # authentication
     'tickets.apps.TicketsConfig',
     'audits.apps.AuditsConfig',

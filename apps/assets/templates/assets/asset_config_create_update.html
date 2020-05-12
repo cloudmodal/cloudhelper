@@ -1,0 +1,46 @@
+{% extends '_base_create_update.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'assets:asset-config' %}">{% trans "Asset config list" %}</a></li>
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block form %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-body">
+            <h3 class="box-title">{% trans 'Account' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.name layout="horizontal" %}
+            {% bootstrap_field form.account layout="horizontal" %}
+            {% bootstrap_field form.credentials layout="horizontal" %}
+            {% bootstrap_field form.region layout="horizontal" %}
+            {% bootstrap_field form.default_admin_user layout="horizontal" %}
+            {% bootstrap_field form.state layout="horizontal" %}
+            {% bootstrap_field form.comment layout="horizontal" %}
+        </div>
+        <hr>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn btn-outline-success">{% trans 'Submit' %}</button>
+                            <button type="reset" class="btn btn-outline-warning">{% trans 'Reset' %}</button>
+                            <a href="{% url 'assets:asset-config' %}" class="btn btn-outline-info">{% trans 'Cancel' %}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

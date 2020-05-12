@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'assets:admin-user-list' %}">{% trans "Admin user list" %}</a></li>
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs customtab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#detail" role="tab">
+                                <span class="hidden-sm-up"><i class="ti-home"></i></span>
+                                <span class="hidden-xs-down">{% trans 'Detail' %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#asset-list" role="tab">
+                                <span class="hidden-sm-up"><i class="ti-user"></i></span>
+                                <span class="hidden-xs-down">{% trans 'Assets list' %}</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="detail" role="tabpanel">
+                            <div class="p-20">
+                                <table class="table">
+                                    <tbody>
+                                    <tr class="no-borders-tr">
+                                        <td>{% trans 'Name' %}:</td>
+                                        <td><b>{{ admin_user.name }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Username' %}:</td>
+                                        <td><b>{{ admin_user.username }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Date created' %}:</td>
+                                        <td><b>{{ admin_user.date_created }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Created by' %}:</td>
+                                        <td><b>{{ asset_group.created_by }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Comment' %}:</td>
+                                        <td><b>{{ admin_user.comment }}</b></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane  p-20" id="asset-list" role="tabpanel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

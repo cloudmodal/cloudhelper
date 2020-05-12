@@ -1,0 +1,86 @@
+{% extends '_base_create_update.html' %}
+{% load i18n %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'assets:admin-user-list' %}">{% trans "Admin user list" %}</a></li>
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block form %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-body">
+            <h3 class="box-title">{% trans 'Account' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.name layout="horizontal" %}
+            {% bootstrap_field form.username layout="horizontal" %}
+
+            <h3 class="box-title">{% trans 'Security and Role' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.password layout="horizontal" %}
+            {% bootstrap_field form.private_key layout="horizontal" %}
+
+            <h3 class="box-title">{% trans 'Profile' %}</h3>
+            <hr class="m-t-0 m-b-40">
+            {% bootstrap_field form.comment layout="horizontal" %}
+        </div>
+        <hr>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="submit_button" type="submit" class="btn btn-outline-success">{% trans 'Submit' %}</button>
+                            <button type="reset" class="btn btn-outline-warning">{% trans 'Reset' %}</button>
+                            <a href="{% url 'assets:admin-user-list' %}" class="btn btn-outline-info">{% trans 'Cancel' %}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{#{% block custom_foot_js %}#}
+{#    <script>#}
+{#        $(document).ready(function () {#}
+{#            $('.select2').select2();#}
+{#        }).on("submit", "form", function (evt) {#}
+{#            evt.preventDefault();#}
+{#            let the_url = '{% url 'api-assets:admin-user-list' %}';#}
+{#            let redirect_to = '{% url "assets:admin-user-list" %}';#}
+{#            let method = "POST";#}
+{#            {% if type == "update" %}#}
+{#                the_url = '{% url 'api-assets:admin-user-detail' pk=object.id %}';#}
+{#                redirect_to = '{% url "assets:admin-user-list" %}';#}
+{#                method = "PUT";#}
+{#            {% endif %}#}
+{#            let form = $("form");#}
+{#            let data = form.serializeObject();#}
+{#            data["private_key"] = $("#id_private_key").data('file');#}
+{##}
+{#            let props = {#}
+{#                url: the_url,#}
+{#                data: data,#}
+{#                method: method,#}
+{#                form: form,#}
+{#                redirect_to: redirect_to#}
+{#            };#}
+{#            formSubmit(props);#}
+{#        })#}
+{#            .on('change', '#id_private_key', function () {#}
+{#                readFile($(this)).on("onload", function (evt, data) {#}
+{#                    $(this).data("file", data)#}
+{#                })#}
+{#            })#}
+{#    </script>#}
+{#{% endblock %}#}

@@ -1,0 +1,127 @@
+{% extends '_base_list.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block col %}9{% endblock %}
+{% block table_container %}
+    <table class="table m-t-30 table-hover contact-list" id="asset_config_list_table">
+        <thead>
+        <tr>
+            {% block table_head %}
+                <th class="text-center">
+                    <input id="ipt_checks" type="checkbox" class="ipt_check_all chk-col-light-blue">
+                <label for="ipt_checks"></label>
+                </th>
+                <th class="text-center">{% trans 'Name' %}</th>
+                <th class="text-center">{% trans 'Cloud Account' %}</th>
+                <th class="text-center">{% trans 'Region' %}</th>
+                <th class="text-center">{% trans 'State' %}</th>
+                <th class="text-center">{% trans 'Test' %}</th>
+                <th class="text-center">{% trans 'Action' %}</th>
+            {% endblock %}
+        </tr>
+        </thead>
+        <div class="m-t-40">
+            <div class="d-flex">
+                <div class="mr-auto">
+                    <div class="form-group">
+                        <a href="{% url "assets:asset-config-create" %}" class="btn btn-sm btn-outline-primary">
+                            <i class="icon wb-plus" aria-hidden="true"></i>{% trans "Add config" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <tbody>
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block right %}
+    <div class="col-lg-3">
+        <div class="card card-outline-inverse">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">{% trans "Understand more" %}</h4>
+            </div>
+            <div class="card-body">
+                <a href="https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/using-regions-availability-zones.html" class="font-weight-light small" target="_blank">
+                    {% trans "AWS Region Link" %} <i class="fa fa-external-link"></i>
+                </a>
+                <hr class="my-2">
+                <a href="https://help.aliyun.com/document_detail/40654.html" class="font-weight-light small" target="_blank">
+                    {% trans "Aliyun regional links" %} <i class="fa fa-external-link"></i>
+                </a>
+                <hr class="my-2">
+                <a href="https://cloud.tencent.com/document/product/213/6091" class="font-weight-light small" target="_blank">
+                    {% trans "Tencent Cloud Regional Link" %} <i class="fa fa-external-link"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script>
+        let admin_user_table = 0;
+        function initTable() {
+            let options = {
+                ele: $('#asset_config_list_table'),
+                columnDefs: [
+                    {
+                        targets: 1, render: function (cellData, tp, rowData, meta) {
+                            cellData = htmlEscape(cellData);
+                            let detail_btn = '<a href="{% url "assets:asset-config-update" pk=DEFAULT_PK %}">' + cellData + '</a>';
+                            return detail_btn.replace('{{ DEFAULT_PK }}', rowData.id);
+                        }
+                    },
+                    {
+                        targets: 5, createdCell: function (td, cellData, rowData) {
+                            let update_btn = '<button type="button" class="btn waves-effect waves-light btn-sm btn-success">{% trans "Test" %}</button>';
+                            $(td).html(update_btn)
+                        }
+                    },
+                    {
+                        targets: 6, createdCell: function (td, cellData, rowData) {
+                            let update_btn = '<a href="{% url "assets:asset-config-update" pk=DEFAULT_PK %}" data-toggle="tooltip" title="{% trans "Update" %}"><i class="fa fa-pencil text-inverse m-r-10"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
+                            let del_btn = '<a class="btn_asset_config_delete" data-uid="{{ DEFAULT_PK }}" data-toggle="tooltip" title="{% trans "Delete" %}"><i class="fa fa-close text-danger"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
+                            $(td).html(update_btn + del_btn)
+                        }
+                    }],
+                ajax_url: '{% url "api-assets:asset-config-list" %}',
+                columns: [
+                    {
+                        data: function () {
+                            return ""
+                        }
+                    },
+                    {data: "name"}, {data: "account"}, {data: "region", orderable: true},
+                    {data: "state"}, {data: "name", orderable: false},
+                    {data: "id", orderable: false, width: "100px"}
+                ]
+            };
+            admin_user_table = jumpserver.initServerSideDataTable(options);
+            return admin_user_table
+        }
+
+        $(document).ready(function () {
+            initTable();
+        }).on('click', '.btn_asset_config_delete', function () {
+            let $this = $(this);
+            let $data_table = $("#admin_user_list_table").DataTable();
+            let name = $(this).closest("tr").find(":nth-child(2)").children('a').html();
+            let uid = $this.data('uid');
+            let the_url = '{% url "api-assets:asset-config-detail" pk=DEFAULT_PK %}'.replace("{{ DEFAULT_PK }}", uid);
+            objectDelete($this, name, the_url);
+            setTimeout(function () {
+                $data_table.ajax.reload();
+            }, 3000);
+
+        })
+    </script>
+{% endblock %}

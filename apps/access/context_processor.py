@@ -14,7 +14,11 @@ from .utils import cross_accounts
 
 
 def access_processor(request):
+    if request.user.is_authenticated:
+        email = cross_accounts(request.user.email)
+    else:
+        email = ''
     context = {
-        'CROSS_ACCOUNTS': cross_accounts(request.user.email)
+        'CROSS_ACCOUNTS': email
     }
     return context
