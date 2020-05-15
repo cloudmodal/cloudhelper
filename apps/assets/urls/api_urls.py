@@ -28,6 +28,8 @@ router.register(r'system-users', api.SystemUserViewSet, 'system-user')
 router.register(r'asset-config', api.AssetConfigViewSet, 'asset-config')
 
 
-urlpatterns = []
+urlpatterns = [
+    path('<uuid:pk>/synchronize/', api.AssetSynchronizeApi.as_view(), name='asset-synchronize'),
+]
 
 urlpatterns += router.urls

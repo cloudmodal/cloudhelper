@@ -5,13 +5,15 @@
 @license: (C) Copyright 2016-2019, Light2Cloud (Beijing) Web Service Co., LTD
 @contact: wenhaijie@light2cloud.com
 @software: L2CloudCMP
-@file: __init__.py
+@file: local.py
 @ide: PyCharm
-@time: 2020/5/9 17:07
+@time: 2019/12/19 15:55
 @desc:
 """
-from .tags import *
-from .admin_user import *
-from .asset_config import *
-from .system_user import *
-from .asset_sync import *
+from werkzeug.local import Local
+
+thread_local = Local()
+
+
+def _find(attr):
+    return getattr(thread_local, attr, None)

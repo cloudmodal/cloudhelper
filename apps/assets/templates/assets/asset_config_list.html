@@ -19,10 +19,12 @@
                 <label for="ipt_checks"></label>
                 </th>
                 <th class="text-center">{% trans 'Name' %}</th>
-                <th class="text-center">{% trans 'Cloud Account' %}</th>
+                <th class="text-center">{% trans 'Account' %}</th>
                 <th class="text-center">{% trans 'Region' %}</th>
                 <th class="text-center">{% trans 'State' %}</th>
-                <th class="text-center">{% trans 'Test' %}</th>
+                <th class="text-center" data-toggle="tooltip" title="{% trans "Pull asset button: Manually trigger the cloud vendor's host to update to the asset list. By default, it will be automatically updated every 6 hours." %}">
+                    <abbr class="underline">{% trans 'Synchronous' %}</abbr>
+                </th>
                 <th class="text-center">{% trans 'Action' %}</th>
             {% endblock %}
         </tr>
@@ -82,8 +84,8 @@
                     },
                     {
                         targets: 5, createdCell: function (td, cellData, rowData) {
-                            let update_btn = '<button type="button" class="btn waves-effect waves-light btn-sm btn-success">{% trans "Test" %}</button>';
-                            $(td).html(update_btn)
+                            let sync_btn = '<a href="javascript:void(0);" class="btn btn-sm btn-success btn_asset_synchronize" data-uid="{{ DEFAULT_PK }}">{% trans "Pull asset" %}</a>'.replace('{{ DEFAULT_PK }}', cellData);
+                            $(td).html(sync_btn)
                         }
                     },
                     {
@@ -101,12 +103,50 @@
                         }
                     },
                     {data: "name"}, {data: "account"}, {data: "region", orderable: true},
-                    {data: "state"}, {data: "name", orderable: false},
+                    {data: "state"}, {data: "id", orderable: false},
                     {data: "id", orderable: false, width: "100px"}
                 ]
             };
             admin_user_table = jumpserver.initServerSideDataTable(options);
             return admin_user_table
+        }
+
+        function objectPOST(obj, name, url) {
+            function doPOST() {
+                let body = {};
+                let success = function (data) {
+                    if (!data.error) {
+                        toastr.info(data.msg)
+                    } else {
+                        toastr.error(data.msg)
+                    }
+                };
+                let fail = function () {
+                    swal('{% trans 'Error' %}', "[ " + name + " ]" + '{% trans "Pull assets failed" %}', "error");
+                };
+                requestApi({
+                    url: url,
+                    body: JSON.stringify(body),
+                    method: 'POST',
+                    success: function (data) {
+                        success(data)
+                    },
+                    error: fail
+                });
+            }
+
+            swal({
+                title: '{% trans 'Input assets manually' %}',
+                text: "{% trans 'Obtain the EC2 server information in the open state and enter it into the CMDB. For details, see the backend log' %}",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: '{% trans 'Cancel' %}',
+                confirmButtonColor: "#ed5565",
+                confirmButtonText: '{% trans 'Confirm' %}',
+                closeOnConfirm: true,
+            }, function () {
+                doPOST()
+            });
         }
 
         $(document).ready(function () {
@@ -121,7 +161,12 @@
             setTimeout(function () {
                 $data_table.ajax.reload();
             }, 3000);
-
+        }).on('click', '.btn_asset_synchronize', function () {
+            let $this = $(this);
+            let name = $(this).closest("tr").find(":nth-child(2)").children('a').html();
+            let uid = $this.data('uid');
+            let the_url = "{% url 'api-assets:asset-synchronize' pk=DEFAULT_PK %}".replace("{{ DEFAULT_PK }}", uid);
+            objectPOST($this, name, the_url)
         })
     </script>
 {% endblock %}

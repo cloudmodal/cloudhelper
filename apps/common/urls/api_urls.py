@@ -5,17 +5,18 @@
 @license: (C) Copyright 2016-2019, Light2Cloud (Beijing) Web Service Co., LTD
 @contact: wenhaijie@light2cloud.com
 @software: L2CloudCMP
-@file: apps.py
+@file: api_urls.py
 @ide: PyCharm
-@time: 2020/2/21 22:14
+@time: 2020/3/7 12:25
 @desc:
 """
-from django.apps import AppConfig
+from django.urls import path
 
+from .. import api
 
-class OpsConfig(AppConfig):
-    name = 'ops'
+app_name = 'common'
 
-    def ready(self):
-        from .celery import signal_handler
-        super().ready()
+urlpatterns = [
+    path('resources/cache/',
+         api.ResourcesIDCacheApi.as_view(), name='resources-cache'),
+]

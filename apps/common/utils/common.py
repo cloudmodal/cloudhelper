@@ -1,0 +1,306 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+@author: sun
+@license: (C) Copyright 2016-2019, Light2Cloud (Beijing) Web Service Co., LTD
+@contact: wenhaijie@light2cloud.com
+@software: L2CloudCMP
+@file: common.py
+@ide: PyCharm
+@time: 2019/12/19 15:55
+@desc:
+"""
+import re
+import uuid
+import time
+import string
+import random
+import logging
+import datetime
+import ipaddress
+from functools import wraps
+from itertools import chain
+from collections import OrderedDict
+
+from rest_framework import status
+from rest_framework.exceptions import APIException
+from django.utils.translation import gettext_lazy as _
+
+
+UUID_PATTERN = re.compile(r'\w{8}(-\w{4}){3}-\w{12}')
+ipip_db = None
+
+
+class ValidationError(APIException):
+    status_code = status.HTTP_400_BAD_REQUEST
+    default_detail = _('Incorrect mobile.')
+    default_code = 'mobile_failed'
+
+
+def validate_phone_number(mobile, region='+86'):
+    if region == '+86':
+        if mobile and len(mobile) == 11:
+            if not re.match("^(13[0-9]|14[5|7]|15[0-9]|166|17[3678]|18[0-9])[0-9]{8}$", mobile):
+                return False
+            else:
+                return True
+
+
+def combine_seq(s1, s2, callback=None):
+    for s in (s1, s2):
+        if not hasattr(s, '__iter__'):
+            return []
+
+    seq = chain(s1, s2)
+    if callback:
+        seq = map(callback, seq)
+    return seq
+
+
+def get_logger(name=None):
+    return logging.getLogger('iam.%s' % name)
+
+
+def get_syslogger(name=None):
+    return logging.getLogger('l2c.%s' % name)
+
+
+def timesince(dt, since='', default="just now"):
+    """
+    Returns string representing "time since" e.g.
+    3 days, 5 hours.
+    """
+
+    if since is '':
+        since = datetime.datetime.utcnow()
+
+    if since is None:
+        return default
+
+    diff = since - dt
+
+    periods = (
+        (diff.days / 365, "year", "years"),
+        (diff.days / 30, "month", "months"),
+        (diff.days / 7, "week", "weeks"),
+        (diff.days, "day", "days"),
+        (diff.seconds / 3600, "hour", "hours"),
+        (diff.seconds / 60, "minute", "minutes"),
+        (diff.seconds, "second", "seconds"),
+    )
+
+    for period, singular, plural in periods:
+        if period:
+            return "%d %s" % (period, singular if period == 1 else plural)
+    return default
+
+
+def setattr_bulk(seq, key, value):
+    def set_attr(obj):
+        setattr(obj, key, value)
+        return obj
+    return map(set_attr, seq)
+
+
+def set_or_append_attr_bulk(seq, key, value):
+    for obj in seq:
+        ori = getattr(obj, key, None)
+        if ori:
+            value += " " + ori
+        setattr(obj, key, value)
+
+
+def capacity_convert(size, expect='auto', rate=1000):
+    """
+    :param size: '100MB', '1G'
+    :param expect: 'K, M, G, T
+    :param rate: Default 1000, may be 1024
+    :return:
+    """
+    rate_mapping = (
+        ('K', rate),
+        ('KB', rate),
+        ('M', rate**2),
+        ('MB', rate**2),
+        ('G', rate**3),
+        ('GB', rate**3),
+        ('T', rate**4),
+        ('TB', rate**4),
+    )
+
+    rate_mapping = OrderedDict(rate_mapping)
+
+    std_size = 0  # To KB
+    for unit in rate_mapping:
+        if size.endswith(unit):
+            try:
+                std_size = float(size.strip(unit).strip()) * rate_mapping[unit]
+            except ValueError:
+                pass
+
+    if expect == 'auto':
+        for unit, rate_ in rate_mapping.items():
+            if rate > std_size/rate_ >= 1 or unit == "T":
+                expect = unit
+                break
+
+    if expect not in rate_mapping:
+        expect = 'K'
+
+    expect_size = std_size / rate_mapping[expect]
+    return expect_size, expect
+
+
+def sum_capacity(cap_list):
+    total = 0
+    for cap in cap_list:
+        size, _ = capacity_convert(cap, expect='K')
+        total += size
+    total = '{} K'.format(total)
+    return capacity_convert(total, expect='auto')
+
+
+def get_short_uuid_str():
+    return str(uuid.uuid4()).split('-')[-1]
+
+
+def is_uuid(seq):
+    if isinstance(seq, uuid.UUID):
+        return True
+    elif isinstance(seq, str) and UUID_PATTERN.match(seq):
+        return True
+    elif isinstance(seq, (list, tuple)):
+        all([is_uuid(x) for x in seq])
+    return False
+
+
+def get_request_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR', '').split(',')
+
+    if x_forwarded_for and x_forwarded_for[0]:
+        login_ip = x_forwarded_for[0]
+    else:
+        login_ip = request.META.get('REMOTE_ADDR', '')
+    return login_ip
+
+
+def get_request_ip_or_data(request):
+    ip = ''
+    if hasattr(request, 'data'):
+        ip = request.data.get('remote_addr', '')
+    ip = ip or get_request_ip(request)
+    return ip
+
+
+def validate_ip(ip):
+    try:
+        ipaddress.ip_address(ip)
+        return True
+    except ValueError:
+        pass
+    return False
+
+
+def with_cache(func):
+    cache = {}
+    key = "_{}.{}".format(func.__module__, func.__name__)
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        cached = cache.get(key)
+        if cached:
+            return cached
+        res = func(*args, **kwargs)
+        cache[key] = res
+        return res
+    return wrapper
+
+
+def random_string(length):
+    charset = string.ascii_letters + string.digits
+    s = [random.choice(charset) for i in range(length)]
+    return ''.join(s)
+
+
+def generate_random_string(length):
+    charset = string.digits + string.ascii_lowercase
+    s = [random.choice(charset) for i in range(length)]
+    return ''.join(s)
+
+
+def generate_account_id(length=12):
+    return ''.join(
+        random.sample(string.digits + string.octdigits, length)
+    )
+
+
+def generate_access_key(prefix='AKIA', length=14):
+    access_key = prefix + ''.join(random.sample(string.ascii_uppercase + string.digits, length))
+    return access_key
+
+
+def generate_secret_access_key(length=40):
+    return ''.join(random.sample(string.ascii_letters + string.digits + '/=+', length))
+
+
+def create_captcha(length):
+    import random
+    """
+    create and return captcha
+    :return: A six-digit verification code
+    """
+    captcha = ''
+    for i in range(length):
+        now_number = str(random.randint(0, 9))
+        captcha += now_number
+    return captcha
+
+
+logger = get_logger(__name__)
+
+
+def timeit(func):
+    def wrapper(*args, **kwargs):
+        logger.debug("Start call: {}".format(func.__name__))
+        now = time.time()
+        result = func(*args, **kwargs)
+        using = (time.time() - now) * 1000
+        msg = "End call {}, using: {:.1f}ms".format(func.__name__, using)
+        logger.debug(msg)
+        return result
+    return wrapper
+
+
+def group_obj_by_count(objs, count=50):
+    objs_grouped = [
+        objs[i:i + count] for i in range(0, len(objs), count)
+    ]
+    return objs_grouped
+
+
+def dict_get_any(d, keys):
+    for key in keys:
+        value = d.get(key)
+        if value:
+            return value
+    return None
+
+
+class lazyproperty:
+    def __init__(self, func):
+        self.func = func
+
+    def __get__(self, instance, cls):
+        if instance is None:
+            return self
+        else:
+            value = self.func(instance)
+            setattr(instance, self.func.__name__, value)
+            return value
+
+
+def capital_to_lower(dict_info):
+    new_dict = {}
+    for i, j in dict_info.items():
+        new_dict[i.lower()] = j
+    return new_dict

@@ -7,11 +7,9 @@
 @software: L2CloudCMP
 @file: __init__.py
 @ide: PyCharm
-@time: 2020/5/9 17:07
+@time: 2019/12/20 11:21
 @desc:
 """
-from .tags import *
-from .admin_user import *
-from .asset_config import *
-from .system_user import *
-from .asset_sync import *
+from .api import *
+from .models import *
+from .serializers import *
