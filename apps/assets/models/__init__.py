@@ -15,4 +15,5 @@ from .user import *
 from .asset import *
 from .utils import *
 from .config import *
+from .authbook import *
 from .cmd_filter import *

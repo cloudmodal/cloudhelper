@@ -1,0 +1,10 @@
+{% extends 'assets/asset_create.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+
+{% block formUrl %}
+    var the_url = '{% url 'api-assets:asset-detail' pk=object.id %}';
+    var redirect_to = '{% url "assets:asset-list" %}';
+    var method = 'PUT';
+{% endblock %}

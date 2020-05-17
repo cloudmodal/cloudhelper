@@ -221,6 +221,9 @@ class Asset(ProtocolsMixin, OrgModelMixin):
         else:
             return False
 
+    def is_support_ansible(self):
+        return self.has_protocol('ssh') and self.platform not in ("Other",)
+
     @property
     def cpu_info(self):
         info = ""

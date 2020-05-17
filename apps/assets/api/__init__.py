@@ -11,6 +11,8 @@
 @desc:
 """
 from .tags import *
+from .asset import *
+from .asset_user import *
 from .admin_user import *
 from .asset_config import *
 from .system_user import *

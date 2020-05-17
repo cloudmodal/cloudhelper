@@ -1,1 +1,1 @@
-# from .manager import AssetUserManager
+from .manager import AssetUserManager

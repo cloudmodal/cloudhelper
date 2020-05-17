@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans action %}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'assets:asset-list' %}">{% trans "Asset list" %}</a></li>
+    <li class="breadcrumb-item active">{% trans action %}</li>
+{% endblock %}
+
+{% block custom_head_css_js %}
+    <!--alerts CSS -->
+    <link href="{% static 'assets/plugins/sweetalert/sweetalert.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'assets/plugins/sweetalert/sweetalert.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body p-b-0">
+                        <h4 class="card-title">{% trans "Asset" %}</h4>
+                        <h6 class="card-subtitle"></h6>
+                    </div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs customtab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#asset" role="tab">
+                                <span class="hidden-sm-up"><i class="ti-home"></i></span>
+                                <span class="hidden-xs-down"><i class="mdi mdi-server"></i> {% trans 'Asset detail' %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#asset-user" role="tab">
+                                <span class="hidden-sm-up"><i class="ti-user"></i></span>
+                                <span class="hidden-xs-down"><i class="mdi mdi-chart-bar"></i> {% trans 'Asset user list' %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#asset-tags" role="tab">
+                                <span class="hidden-sm-up"><i class="ti-email"></i></span>
+                                <span class="hidden-xs-down"><i class="mdi mdi-shape-plus"></i> {% trans "Asset tags" %}</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="asset" role="tabpanel">
+                            <div class="p-20">
+                                <h3><span class="badge badge-info"><b>{{ asset.hostname }}</b></span></h3>
+
+                                <table class="table  nowrap stylish-table">
+                                    <tbody>
+                                    <tr class="no-borders-tr">
+                                        <td>{% trans 'Hostname' %}:</td>
+                                        <td><b>{{ asset.hostname }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'IP' %}:</td>
+                                        <td><b>{{ asset.ip }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Public IP' %}:</td>
+                                        <td><b>{{ asset.public_ip|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Protocol' %}</td>
+                                        <td><b>{{ asset.protocols }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Admin user' %}:</td>
+                                        <td><b>{{ asset.admin_user }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Domain' %}:</td>
+                                        <td><b>{{ asset.domain|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Vendor' %}:</td>
+                                        <td><b>{{ asset.vendor|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Model' %}:</td>
+                                        <td><b>{{ asset.model|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'CPU' %}:</td>
+                                        <td><b>{{ asset.cpu_info }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Memory' %}:</td>
+                                        <td><b>{{ asset.memory|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Disk' %}:</td>
+                                        <td><b>{{ asset.disk_total|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Platform' %}:</td>
+                                        <td><b>{{ asset.platform|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'OS' %}:</td>
+                                        <td>
+                                            <b>{{ asset.os|default:"" }} {{ asset.os_version|default:"" }} {{ asset.os_arch|default:"" }}</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Is active' %}:</td>
+                                        <td><b>{{ asset.is_active|yesno:"Yes,No" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Serial number' %}:</td>
+                                        <td><b>{{ asset.sn|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Asset number' %}:</td>
+                                        <td><b>{{ asset.number|default:"" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Created by' %}:</td>
+                                        <td><b>{{ asset.created_by }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Date joined' %}:</td>
+                                        <td><b>{{ asset.date_joined|date:"Y-m-j H:i:s" }}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{% trans 'Comment' %}:</td>
+                                        <td><b>{{ asset.comment }}</b></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane  p-20" id="asset-user" role="tabpanel">
+                            {% include 'assets/_asset_user_list.html' %}
+                        </div>
+                        <div class="tab-pane p-20" id="asset-tags" role="tabpanel">
+
+                            <table class="table nowrap stylish-table">
+                                <thead>
+                                <tr>
+                                    <th>{% trans "Key" %}</th>
+                                    <th>{% trans "Value" %}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for tags in asset.tags.all %}
+                                <tr>
+                                    <td>
+                                        <span class="country-name">{{ tags.key }}</span>
+                                    </td>
+                                    <td>{{ tags.value }}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-outline-inverse">
+                    <!-- Nav tabs -->
+                    <div class="card-header">
+                        <h5 class="m-b-0 text-white"><i class="fa fa-info-circle"></i> {% trans 'Quick modify' %}</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                            <tr class="no-borders-tr">
+                                <td>{% trans 'Update' %}:</td>
+                                <td>
+                                    <span class="pull-right">
+                                        <a href="{% url 'assets:asset-update' pk=asset.id %}" class="btn btn-xs waves-effect waves-light btn-outline-info"><i class="fa fa-edit"></i> {% trans 'Update' %}</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="no-borders-tr">
+                                <td>{% trans 'Delete' %}:</td>
+                                <td>
+                                    <span class="pull-right">
+                                        <button type="button" class="btn btn-xs waves-effect waves-light btn-outline-danger btn-delete-asset"><i class="fa fa-trash-o"></i> {% trans 'Delete' %}</button>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="no-borders-tr">
+                                <td>{% trans 'Active' %}:</td>
+                                <td>
+                                    <span class="pull-right">
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" {% if asset.is_active %} checked {% endif %} id="is_active">
+                                                <span class="lever switch-col-light-blue"></span>
+                                            </label>
+                                        </div>
+                                    </span>
+                                </td>
+                            </tr>
+                            {% if asset.is_support_ansible %}
+                                <tr>
+                                    <td>{% trans 'Refresh hardware' %}:</td>
+                                    <td>
+                                        <span class="pull-right">
+                                            <button type="button" class="btn btn-primary btn-xs" id="btn_refresh_asset" style="width: 54px">{% trans 'Refresh' %}</button>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{% trans 'Test connective' %}:</td>
+                                    <td>
+                                        <span class="pull-right">
+                                            <button type="button" class="btn btn-primary btn-xs" id="btn-test-is-alive" style="width: 54px">{% trans 'Test' %}</button>
+                                        </span>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block custom_foot_js %}
+    <script>
+        $(document).ready(function () {
+            assetUserListUrl = setUrlParam(assetUserListUrl, "asset_id", "{{ asset.id }}");
+            initAssetUserTable()
+        }).on('click', '#btn-bulk-test-connective', function () {
+            let the_url = "{% url 'api-assets:asset-user-connective' %}" + "?asset_id={{ asset.id }}";
+            let success = function (data) {
+                let task_id = data.task;
+                showCeleryTaskLog(task_id);
+            };
+            requestApi({
+                url: the_url,
+                method: 'GET',
+                success: success,
+                flash_message: false
+            });
+        }).on('click', '#is_active', function () {
+            let the_url = '{% url "api-assets:asset-detail" pk=asset.id %}';
+            let checked = $(this).prop('checked');
+            let body = {
+                'is_active': checked
+            };
+            let success = '{% trans "Update successfully!" %}';
+            let status = $(".ibox-content > table > tbody > tr:nth-child(13) > td:last >b").text();
+            requestApi({
+                url: the_url,
+                body: JSON.stringify(body),
+                success_message: success
+            });
+            if (status === "False") {
+                $(".ibox-content > table > tbody > tr:nth-child(13) > td:last >b").html('True');
+            } else {
+                $(".ibox-content > table > tbody > tr:nth-child(13) > td:last >b").html('False');
+            }
+        }).on('click', '.btn-delete-asset', function () {
+            let $this = $(this);
+            let name = "{{ asset.hostname }}";
+            let uid = "{{ asset.id }}";
+            let the_url = '{% url "api-assets:asset-detail" pk=DEFAULT_PK %}'.replace('{{ DEFAULT_PK }}', uid);
+            let redirect_url = "{% url 'assets:asset-list' %}";
+            objectDelete($this, name, the_url, redirect_url);
+        })
+    </script>
+{% endblock %}

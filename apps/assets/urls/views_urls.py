@@ -18,6 +18,11 @@ app_name = 'assets'
 urlpatterns = [
     path('', views.AssetListView.as_view(), name='asset-index'),
     path('asset/', views.AssetListView.as_view(), name='asset-list'),
+    path('asset/create/', views.AssetCreateView.as_view(), name='asset-create'),
+    path('asset/<uuid:pk>/', views.AssetDetailView.as_view(), name='asset-detail'),
+    path('asset/<uuid:pk>/update/', views.AssetUpdateView.as_view(), name='asset-update'),
+    # path('asset/<uuid:pk>/delete/', views.AssetDeleteView.as_view(), name='asset-delete'),
+    path('asset/update/', views.AssetBulkUpdateView.as_view(), name='asset-bulk-update'),
 
     path('asset-config/', views.AssetConfigListView.as_view(), name='asset-config'),
     path('asset-config/create/', views.AssetConfigCreateView.as_view(), name='asset-config-create'),

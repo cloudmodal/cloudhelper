@@ -12,4 +12,5 @@
 """
 from .user import *
 from .tags import *
+from .asset import *
 from .asset_config import *

@@ -40,43 +40,21 @@ class ProtocolForm(forms.Form):
 class AssetCreateForm(OrgModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if self.data:
-            return
-        nodes_field = self.fields['nodes']
-        if self.instance:
-            nodes_field.choices = [(n.id, n.full_value) for n in
-                                   self.instance.nodes.all()]
-        else:
-            nodes_field.choices = []
-
-    def add_nodes_initial(self, node):
-        nodes_field = self.fields['nodes']
-        nodes_field.choices.append((node.id, node.full_value))
-        nodes_field.initial = [node]
 
     class Meta:
         model = Asset
         fields = [
-            'hostname', 'ip', 'public_ip', 'protocols', 'comment',
-            'nodes', 'is_active', 'admin_user', 'labels', 'platform',
-            'domain',
+            'hostname', 'ip', 'public_ip', 'protocol', 'comment',
+            'instance_id', 'instance_type', 'instance_state',
+            'is_active', 'admin_user', 'tags', 'platform',
         ]
         widgets = {
-            'nodes': forms.SelectMultiple(attrs={
-                'class': 'nodes-select2', 'data-placeholder': _('Nodes')
+            # 'admin_user': forms.Select(attrs={
+            #     'class': 'select2', 'data-placeholder': _('Admin user')
+            # }),
+            'tags': forms.SelectMultiple(attrs={
+                'class': 'select2', 'data-placeholder': _('Tags')
             }),
-            'admin_user': forms.Select(attrs={
-                'class': 'select2', 'data-placeholder': _('Admin user')
-            }),
-            'labels': forms.SelectMultiple(attrs={
-                'class': 'select2', 'data-placeholder': _('Label')
-            }),
-            'domain': forms.Select(attrs={
-                'class': 'select2', 'data-placeholder': _('Domain')
-            }),
-        }
-        labels = {
-            'nodes': _("Node"),
         }
         help_texts = {
             'hostname': GENERAL_FORBIDDEN_SPECIAL_CHARACTERS_HELP_TEXT,
@@ -84,46 +62,28 @@ class AssetCreateForm(OrgModelForm):
                 'root or other NOPASSWD sudo privilege user existed in asset,'
                 'If asset is windows or other set any one, more see admin user left menu'
             ),
-            'platform': _("Windows 2016 RDP protocol is different, If is window 2016, set it"),
-            'domain': _("If your have some network not connect with each other, you can set domain")
+            'platform': _("Windows 2016 RDP protocol is different, If is window 2016, set it")
         }
 
 
 class AssetUpdateForm(OrgModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if self.data:
-            return
-        nodes_field = self.fields['nodes']
-        if self.instance:
-            nodes_field.choices = ((n.id, n.full_value) for n in
-                                   self.instance.nodes.all())
-        else:
-            nodes_field.choices = []
 
     class Meta:
         model = Asset
         fields = [
-            'hostname', 'ip', 'protocols', 'nodes',  'is_active', 'platform',
-            'public_ip', 'number', 'comment', 'admin_user', 'labels',
-            'domain',
+            'hostname', 'ip', 'public_ip', 'protocol', 'comment',
+            'instance_id', 'instance_type', 'instance_state',
+            'is_active', 'admin_user', 'tags', 'platform',
         ]
         widgets = {
-            'nodes': forms.SelectMultiple(attrs={
-                'class': 'nodes-select2', 'data-placeholder': _('Node')
+            # 'admin_user': forms.Select(attrs={
+            #     'class': 'select2', 'data-placeholder': _('Admin user')
+            # }),
+            'tags': forms.SelectMultiple(attrs={
+                'class': 'select2', 'data-placeholder': _('Tags')
             }),
-            'admin_user': forms.Select(attrs={
-                'class': 'select2', 'data-placeholder': _('Admin user')
-            }),
-            'labels': forms.SelectMultiple(attrs={
-                'class': 'select2', 'data-placeholder': _('Label')
-            }),
-            'domain': forms.Select(attrs={
-                'class': 'select2', 'data-placeholder': _('Domain')
-            }),
-        }
-        labels = {
-            'nodes': _("Node"),
         }
         help_texts = {
             'hostname': GENERAL_FORBIDDEN_SPECIAL_CHARACTERS_HELP_TEXT,
@@ -132,7 +92,6 @@ class AssetUpdateForm(OrgModelForm):
                 'If asset is windows or other set any one, more see admin user left menu'
             ),
             'platform': _("Windows 2016 RDP protocol is different, If is window 2016, set it"),
-            'domain': _("If your have some network not connect with each other, you can set domain")
         }
 
 
@@ -151,12 +110,11 @@ class AssetBulkUpdateForm(OrgModelForm):
     class Meta:
         model = Asset
         fields = [
-            'assets', 'admin_user', 'labels', 'platform',
-            'domain',
+            'assets', 'admin_user', 'tags', 'platform',
         ]
         widgets = {
-            'labels': forms.SelectMultiple(
-                attrs={'class': 'select2', 'data-placeholder': _('Label')}
+            'tags': forms.SelectMultiple(
+                attrs={'class': 'select2', 'data-placeholder': _('Tags')}
             ),
             'nodes': forms.SelectMultiple(
                 attrs={'class': 'select2', 'data-placeholder': _('Node')}

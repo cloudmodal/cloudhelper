@@ -8,6 +8,294 @@
     <li class="breadcrumb-item active">{% trans action %}</li>
 {% endblock %}
 
-{% block content %}
+{% block custom_head_css_js %}
+    <style>
+        [type=checkbox] + label {
+            height: 10px;
+        }
+    </style>
+    <!--alerts CSS -->
+    <link href="{% static 'assets/plugins/sweetalert/sweetalert.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'assets/plugins/sweetalert/sweetalert.min.js' %}"></script>
+{% endblock %}
 
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 col-xs-12">
+                                <h4 class="card-title">Default</h4>
+                                <div id="treeview1" class=""></div>
+                            </div>
+                            <div class="col-md-9 col-xs-12">
+                                <div class="card-body">
+                                    <h4 class="card-title">Add & Remove Rows</h4>
+                                    <h6 class="card-subtitle">You can add or remove rows with Footable</h6>
+                                    <table id="asset_list_table" class="table m-t-30 table-hover contact-list">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <input id="check_all" type="checkbox" class="ipt_check_all chk-col-light-blue">
+                                                <label for="check_all"></label>
+                                            </th>
+                                            <th class="text-center">{% trans 'Hostname' %}</th>
+                                            <th class="text-center">{% trans 'IP' %}</th>
+                                            <th class="text-center">{% trans 'Hardware' %}</th>
+                                            <th class="text-center">{% trans 'Reachable' %}</th>
+                                            <th class="text-center">{% trans 'Action' %}</th>
+                                        </tr>
+                                        </thead>
+                                        <div class="m-t-40">
+                                            <div class="d-flex">
+                                                <div class="mr-auto">
+                                                    <div class="form-group">
+                                                        <button id="demo-btn-addrow" class="btn btn-primary btn-sm btn-create-asset">
+                                                            <i class="icon wb-plus" aria-hidden="true"></i>{% trans "Create asset" %}
+                                                        </button>
+                                                        <small>{% trans "Enter asset information" %}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <tbody></tbody>
+                                    </table>
+                                    <div id="actions" class="hide">
+                                        <div class="input-group">
+                                            <select class="form-control m-b" style="width: auto" id="slct_bulk_update">
+                                                <option value="delete">{% trans 'Delete selected' %}</option>
+                                                <option value="update">{% trans 'Update selected' %}</option>
+{#                                                <option value="remove">{% trans 'Remove from this node' %}</option>#}
+                                                <option value="deactive">{% trans 'Deactive selected' %}</option>
+                                                <option value="active">{% trans 'Active selected' %}</option>
+                                            </select>
+                                            <div class="input-group-btn pull-left" style="padding-left: 5px;">
+                                                <button id='btn_bulk_update' style="height: 32px;" class="btn btn-sm btn-primary">
+                                                    {% trans 'Submit' %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block custom_foot_js %}
+    <!-- Treeview Plugin JavaScript -->
+    <script src="{% static 'assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js' %}"></script>
+
+    <script>
+        let asset_table, show = 0;
+        let testDatetime = "{% trans 'Test datetime: ' %}";
+        function initTable() {
+            let options = {
+                ele: $('#asset_list_table'),
+                columnDefs: [
+                    {
+                        targets: 1, createdCell: function (td, cellData, rowData) {
+                            cellData = htmlEscape(cellData);
+                            {% url 'assets:asset-detail' pk=DEFAULT_PK as the_url  %}
+                            let detail_btn = '<a href="{{ the_url }}">' + cellData + '</a>';
+                            $(td).html(detail_btn.replace('{{ DEFAULT_PK }}', rowData.id));
+                        }
+                    },
+                    {
+                        targets: 3, createdCell: function (td, cellData, rowData) {
+                            $(td).html(rowData.hardware_info)
+                        }
+                    },
+                    {
+                        targets: 4, createdCell: function (td, cellData, rowData) {
+                            let innerHtml = "";
+                            if (cellData.status === 1) {
+                                innerHtml = '<i class="fa fa-circle text-navy"></i>'
+                            } else if (cellData.status === 0) {
+                                innerHtml = '<i class="fa fa-circle text-danger"></i>'
+                            } else {
+                                innerHtml = '<i class="fa fa-circle text-warning"></i>'
+                            }
+                            let dateManual = toSafeLocalDateStr(cellData.datetime);
+                            let dataContent = testDatetime + dateManual;
+                            innerHtml = "<a data-toggle='popover' data-content='" + dataContent + "'" + 'data-placement="auto bottom"' + ">" + innerHtml + "</a>";
+                            $(td).html(innerHtml);
+                        }
+                    },
+                    {
+                        targets: 5, createdCell: function (td, cellData, rowData) {
+                            let update_btn = '<a href="{% url "assets:asset-update" pk=DEFAULT_PK %}" data-toggle="tooltip" title="{% trans "Update" %}"><i class="fa fa-pencil text-inverse m-r-10"></i></a>'.replace("{{ DEFAULT_PK }}", cellData);
+                            let del_btn = '<a class="btn-asset-delete" data-uid="{{ DEFAULT_PK }}" data-toggle="tooltip" title="{% trans "Delete" %}"><i class="fa fa-close text-danger"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
+                            $(td).html(update_btn + del_btn)
+                        }
+                    }
+                ],
+                ajax_url: '{% url "api-assets:asset-list" %}',
+                columns: [
+                    {data: "id"}, {data: "hostname"}, {data: "ip"},
+                    {data: "cpu_cores", orderable: false},
+                    {
+                        data: "connectivity",
+                        orderable: false,
+                        width: '60px'
+                    }, {data: "id", orderable: false, width: "100px"}
+                ],
+                op_html: $('#actions').html()
+            };
+            asset_table = jumpserver.initServerSideDataTable(options);
+            return asset_table
+        }
+
+        $(document).ready(function () {
+            initTable();
+        }).on('click', '.btn-create-asset', function () {
+            let url = "{% url 'assets:asset-create' %}";
+            window.open(url, '_self');
+        }).on('click', '.btn-asset-delete', function () {
+            let $this = $(this);
+            let $data_table = $("#asset_list_table").DataTable();
+            let name = $(this).closest("tr").find(":nth-child(2)").children('a').html();
+            let uid = $this.data('uid');
+            let the_url = '{% url "api-assets:asset-detail" pk=DEFAULT_PK %}'.replace("{{ DEFAULT_PK }}", uid);
+            objectDelete($this, name, the_url);
+            setTimeout(function () {
+                $data_table.ajax.reload();
+            }, 3000);
+        }).on('click', '#btn_bulk_update', function () {
+            let action = $('#slct_bulk_update').val();
+            let id_list = asset_table.selected;
+            console.log(id_list)
+            if (id_list.length === 0) {
+                return false;
+            }
+            let the_url = "{% url 'api-assets:asset-list' %}";
+            let data = {
+                'resources': id_list
+            };
+
+            function refreshPage() {
+                setTimeout(function () {
+                    window.location.reload();
+                }, 300);
+            }
+
+            function reloadTable() {
+                asset_table.ajax.reload();
+            }
+
+            function doDeactive() {
+                let data = [];
+                $.each(id_list, function (index, object_id) {
+                    let obj = {"pk": object_id, "is_active": false};
+                    data.push(obj);
+                });
+                requestApi({
+                    url: the_url,
+                    method: 'PATCH',
+                    body: JSON.stringify(data),
+                    success: reloadTable
+                });
+            }
+
+            function doActive() {
+                let data = [];
+                $.each(id_list, function (index, object_id) {
+                    let obj = {"pk": object_id, "is_active": true};
+                    data.push(obj);
+                });
+                requestApi({
+                    url: the_url,
+                    method: 'PATCH',
+                    body: JSON.stringify(data),
+                    success: reloadTable
+                });
+            }
+
+            function doDelete() {
+                swal({
+                    title: "{% trans 'Are you sure?' %}",
+                    text: "{% trans 'This will delete the selected assets !!!' %}",
+                    type: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "{% trans 'Cancel' %}",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "{% trans 'Confirm' %}",
+                    closeOnConfirm: false
+                }, function () {
+                    function success(data) {
+                        url = setUrlParam(the_url, 'spm', data.spm);
+                        requestApi({
+                            url: url,
+                            method: 'DELETE',
+                            success: function () {
+                                let msg = "{% trans 'Asset Deleted.' %}";
+                                swal("{% trans 'Asset Delete' %}", msg, "success");
+                                reloadTable();
+                            },
+                            flash_message: false,
+                        });
+                    }
+
+                    function fail() {
+                        let msg = "{% trans 'Asset Deleting failed.' %}";
+                        swal("{% trans 'Asset Delete' %}", msg, "error");
+                    }
+
+                    requestApi({
+                        url: "{% url 'api-common:resources-cache' %}",
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        success: success,
+                        error: fail,
+                        flash_message: false
+                    })
+                })
+            }
+
+            function doUpdate() {
+                function fail(data) {
+                    toastr.error(JSON.parse(data))
+                }
+
+                function success(data) {
+                    let url = "{% url 'assets:asset-bulk-update' %}";
+                    location.href = setUrlParam(url, 'spm', data.spm);
+                }
+
+                requestApi({
+                    url: "{% url 'api-common:resources-cache' %}",
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    flash_message: false,
+                    success: success,
+                    error: fail
+                })
+            }
+
+            switch (action) {
+                case 'deactive':
+                    doDeactive();
+                    break;
+                case 'delete':
+                    doDelete();
+                    break;
+                case 'update':
+                    doUpdate();
+                    break;
+                case 'active':
+                    doActive();
+                    break;
+                default:
+                    break;
+            }
+            $(".ipt_check_all").prop("checked", false)
+        })
+    </script>
 {% endblock %}
