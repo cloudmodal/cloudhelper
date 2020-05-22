@@ -83,7 +83,11 @@
                     {
                         targets: 4, createdCell: function (td, cellData) {
                             let innerHtml = cellData.length > 20 ? cellData.substring(0, 20) + '...' : cellData;
-                            $(td).html('<span href="javascript:void(0);" data-toggle="tooltip" title="' + cellData + '">' + innerHtml + '</span>');
+                            let arrvalue = [];//用于存放取出的数组的值
+                            for (let i = 0; i < innerHtml.length; i++) {
+                                arrvalue = innerHtml[i].name;//数组的索引是从0开始的
+                            }
+                            $(td).html('<span href="javascript:void(0);" data-toggle="tooltip" title="' + cellData + '">' + arrvalue + '</span>');
                         }
                     },
                     {

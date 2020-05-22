@@ -767,6 +767,86 @@ jumpserver.initServerSideDataTable = function (options) {
     return table;
 };
 
+jumpserver.initAccessKeyDataTable = function (options) {
+    let ele = options.ele || $('.dataTable');
+    let columnDefs = [
+        {
+            targets: '_all',
+            className: 'text-center',
+            render: $.fn.dataTable.render.text()
+        }
+    ];
+    columnDefs = options.columnDefs ? options.columnDefs.concat(columnDefs) : columnDefs;
+    return ele.DataTable({
+        bInfo: false, //是否显示页脚信息，DataTables插件左下角显示记录数
+        bPaginate: true, //翻页功能
+        ordering: false, //开启排序
+        searching: false, //搜索框，不显示
+        bLengthChange: false,
+        columnDefs: columnDefs,
+        serverSide: true,
+        processing: true,
+        searchDelay: 800,
+        ajax: {
+            url: options.ajax_url,
+            error: function (jqXHR) {
+                if (jqXHR.responseText && jqXHR.responseText.indexOf("%(value)s") !== -1) {
+                    return
+                }
+                let msg = gettext("Unknown error occur");
+                if (jqXHR.responseJSON) {
+                    if (jqXHR.responseJSON.error) {
+                        msg = jqXHR.responseJSON.error
+                    } else if (jqXHR.responseJSON.msg) {
+                        msg = jqXHR.responseJSON.msg
+                    }
+                }
+                alert(msg)
+            },
+            data: function (data) {
+                delete data.columns;
+                if (data.length !== null) {
+                    data.limit = data.length;
+                    delete data.length;
+                }
+                if (data.start !== null) {
+                    data.offset = data.start;
+                    delete data.start;
+                }
+                if (data.search !== null) {
+                    let searchValue = data.search.value;
+                    let searchFilter = parseTableFilter(searchValue);
+                    if (Object.keys(searchFilter).length === 0) {
+                        data.search = searchValue;
+                    } else {
+                        data.search = '';
+                        $.each(searchFilter, function (k, v) {
+                            data[k] = v
+                        })
+                    }
+                }
+                if (data.order !== null && data.order.length === 1) {
+                    let col = data.order[0].column;
+                    let order = options.columns[col].data;
+                    if (data.order[0].dir === "desc") {
+                        order = "-" + order;
+                    }
+                    data.order = order;
+                }
+            },
+            dataFilter: function (data) {
+                let json = jQuery.parseJSON(data);
+                json.recordsTotal = json.count;
+                json.recordsFiltered = json.count;
+                return JSON.stringify(json); // return JSON string
+            },
+            dataSrc: "results"
+        },
+        columns: options.columns || [],
+        language: jumpserver.language,
+    });
+}
+
 /**
  * 替换所有匹配exp的字符串为指定字符串
  * @param exp 被替换部分的正则

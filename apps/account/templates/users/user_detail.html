@@ -112,7 +112,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label text-right col-md-3">{% trans 'Role' %}:</label>
                                                     <div class="col-md-9">
-                                                        <p class="form-control-static"> {{ user_object.role_display }} </p>
+                                                        <p class="form-control-static"> {% for user in user_object.role_display %} {{ user }} {% endfor %}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -215,11 +215,11 @@
                                                     <div class="col-md-offset-3 col-md-9">
                                                         <a class="btn btn-outline-info {% if can_update %} {% else %} disabled {% endif %}"
                                                            href="{% url 'account:user-update' pk=user_object.id %}">
-                                                            <i class="fa fa-edit"></i>{% trans 'Update' %}
+                                                            <i class="fa fa-edit"></i> {% trans 'Update' %}
                                                         </a>
                                                         <a class="btn btn-outline-danger{% if can_delete %} btn-delete-user {% else %} disabled {% endif %}"
                                                            href="javascript:void(0)">
-                                                            <i class="fa fa-trash-o"></i>{% trans 'Delete' %}
+                                                            <i class="fa fa-trash-o"></i> {% trans 'Delete' %}
                                                         </a>
                                                     </div>
                                                 </div>
@@ -247,7 +247,7 @@
             <!-- Column -->
             <!-- Column -->
             <div class="col-lg-4">
-                <div class="card card-outline-info">
+                <div class="card card-outline-inverse">
                     <div class="card-header">
                         <h4 class="m-b-0 text-white">
                             <i class="fa fa-info-circle"></i> {% trans 'Quick modify' %}
@@ -318,7 +318,7 @@
                 </div>
                 {% if request.user.can_admin_current_org %}
                     {% if user_object.can_user_current_org or user_object.can_admin_current_org %}
-                        <div class="card card-outline-info">
+                        <div class="card card-outline-inverse">
                             <div class="card-header">
                                 <h4 class="m-b-0 text-white">
                                     <i class="fa fa-info-circle"></i> {% trans 'User group' %}

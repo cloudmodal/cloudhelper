@@ -1,0 +1,20 @@
+{% extends '_modal.html' %}
+{% load i18n %}
+{% load static %}
+{% block modal_id %}access_key_modal{% endblock %}
+{% block modal_class %}modal-lg{% endblock %}
+{% block modal_title%}{% trans "Create access key" %}{% endblock %}
+{% block modal_body %}
+    <div class="alert" style="border-color: #89f1a2;">
+        <h3 style="color: #28a745!important;">
+            <i class="fa fa-check-circle"></i> {% trans 'Success' %}
+        </h3>
+        {% trans "This is the only time that the secret access keys can be viewed or downloaded. You cannot recover them later. However, you can create new access keys at any time." %}
+    </div>
+    <button id="download_access_keys" class="btn btn-light"><i class="fa fa-download"></i> {% trans 'Download .csv file' %}</button>
+    <table class="table display m-t-20" id="access_key" style="width: 100%"></table>
+{% endblock %}
+
+{% block modal_button %}
+  <button data-dismiss="modal" class="btn btn-light close_btn2" type="button">{% trans "Close" %}</button>
+{% endblock %}
