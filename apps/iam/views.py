@@ -165,7 +165,6 @@ class IndexView(PermissionsMixin, TemplateView):
         return credentials
 
     def get_context_data(self, **kwargs):
-        print(self.get_credentials_type())
 
         context = {
             'assets_count': self.get_asset_count(),
