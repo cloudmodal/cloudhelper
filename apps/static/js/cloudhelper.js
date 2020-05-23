@@ -1,7 +1,8 @@
-//jumpserver 自定义js 2015-01-29
+//部分代码采用
+// jumpserver 自定义js 2015-01-29
 
 //此函数用于checkbox的全选和反选
-var checked = false;
+let checked = false;
 
 function check_all(form) {
     var checkboxes = document.getElementById(form);
@@ -457,10 +458,10 @@ function parseTableFilter(value) {
 }
 
 
-var jumpserver = {};
-jumpserver.checked = false;
-jumpserver.selected = {};
-jumpserver.language = {
+var cloudhelper = {};
+cloudhelper.checked = false;
+cloudhelper.selected = {};
+cloudhelper.language = {
     processing: gettext('Loading') + '...',
     search: gettext('Search'),
     select: {
@@ -487,7 +488,7 @@ function setDataTablePagerLength(num) {
     $.fn.DataTable.ext.pager.numbers_length = num;
 }
 
-jumpserver.initDataTable = function (options) {
+cloudhelper.initDataTable = function (options) {
     // options = {
     //    ele *: $('#dataTable_id'),
     //    ajax_url *: '{% url 'users:user-list-api' %}',
@@ -537,17 +538,17 @@ jumpserver.initDataTable = function (options) {
         },
         columns: options.columns || [],
         select: options.select || select,
-        language: jumpserver.language,
+        language: cloudhelper.language,
         lengthMenu: [[10, 15, 25, 50, -1], [10, 15, 25, 50, "All"]]
     });
     table.on('select', function (e, dt, type, indexes) {
         var $node = table[type](indexes).nodes().to$();
         $node.find('input.ipt_check').prop('checked', true);
-        jumpserver.selected[$node.find('input.ipt_check').prop('id')] = true
+        cloudhelper.selected[$node.find('input.ipt_check').prop('id')] = true
     }).on('deselect', function (e, dt, type, indexes) {
         var $node = table[type](indexes).nodes().to$();
         $node.find('input.ipt_check').prop('checked', false);
-        jumpserver.selected[$node.find('input.ipt_check').prop('id')] = false
+        cloudhelper.selected[$node.find('input.ipt_check').prop('id')] = false
     }).on('draw', function () {
         $('#op').html(options.op_html || '');
         $('#uc').html(options.uc_html || '');
@@ -563,11 +564,11 @@ jumpserver.initDataTable = function (options) {
     $('.ipt_check_all').on('click', function () {
         if ($(this).prop("checked")) {
             $(this).closest('table').find('.ipt_check').prop('checked', true);
-            jumpserver.checked = true;
+            cloudhelper.checked = true;
             table.rows({search: 'applied', page: 'current'}).select();
         } else {
             $(this).closest('table').find('.ipt_check').prop('checked', false);
-            jumpserver.checked = false;
+            cloudhelper.checked = false;
             table.rows({search: 'applied', page: 'current'}).deselect();
         }
     });
@@ -575,17 +576,17 @@ jumpserver.initDataTable = function (options) {
     return table;
 };
 
-jumpserver.initStaticTable = function (selector) {
+cloudhelper.initStaticTable = function (selector) {
     $(selector).DataTable({
         "searching": false,
         "bInfo": false,
         "paging": false,
         "order": [],
-        "language": jumpserver.language
+        "language": cloudhelper.language
     });
 };
 
-jumpserver.initServerSideDataTable = function (options) {
+cloudhelper.initServerSideDataTable = function (options) {
     var pagingNumbersLength = 5;
     if (options.paging_numbers_length){
         pagingNumbersLength = options.paging_numbers_length;
@@ -610,18 +611,15 @@ jumpserver.initServerSideDataTable = function (options) {
     ];
     var select_style = options.select_style || 'multi';
     columnDefs = options.columnDefs ? options.columnDefs.concat(columnDefs) : columnDefs;
-    var select = {
+    let select = {
         style: select_style,
         selector: 'td:first-child'
     };
     // pull-right
-    var dom = '<"#uc.pull-left"> <""<"inline"l> <"#fb.inline"> <"inline"f><"#fa.inline">>' +
-        'tr' +
-        '<"row m-t"<"col-md-8"<"#op.col-md-6"><"col-md-6 text-center"i>><"col-md-4"p>>';
-    var table = ele.DataTable({
+    let dom = '<"#uc.pull-left"> <""<"inline"l> <"#fb.inline"> <"inline"f><"#fa.inline">>' +
+        'tr' + '<"row m-t"<"col-md-8"<"row"<"#op.col-md-4"><"col-md-8 text-center"i>>><"col-md-4"p>>';
+    let table = ele.DataTable({
         pageLength: options.pageLength || 15,
-        // dom: options.dom || '<"#uc.pull-left">fltr<"row m-t"<"col-md-8"<"#op.col-md-6"><"col-md-6 text-center"i>><"col-md-4"p>>',
-        // dom: options.dom || '<"#uc.pull-left"><"pull-right"<"inline"l><"#fb.inline"><"inline"<"table-filter"f>><"#fa.inline">>tr<"row m-t"<"col-md-8"<"#op.col-md-6"><"col-md-6 text-center"i>><"col-md-4"p>>',
         dom: dom,
         order: options.order || [],
         buttons: [],
@@ -636,7 +634,7 @@ jumpserver.initServerSideDataTable = function (options) {
                 if (jqXHR.responseText && jqXHR.responseText.indexOf("%(value)s") !== -1 ) {
                     return
                 }
-                var msg = gettext("Unknown error occur");
+                let msg = gettext("Unknown error occur");
                 if (jqXHR.responseJSON) {
                     if (jqXHR.responseJSON.error) {
                         msg = jqXHR.responseJSON.error
@@ -657,8 +655,8 @@ jumpserver.initServerSideDataTable = function (options) {
                     delete data.start;
                 }
                 if (data.search !== null) {
-                    var searchValue = data.search.value;
-                    var searchFilter = parseTableFilter(searchValue);
+                    let searchValue = data.search.value;
+                    let searchFilter = parseTableFilter(searchValue);
                     if (Object.keys(searchFilter).length === 0) {
                         data.search = searchValue;
                     } else {
@@ -669,8 +667,8 @@ jumpserver.initServerSideDataTable = function (options) {
                     }
                 }
                 if (data.order !== null && data.order.length === 1) {
-                    var col = data.order[0].column;
-                    var order = options.columns[col].data;
+                    let col = data.order[0].column;
+                    let order = options.columns[col].data;
                     if (data.order[0].dir === "desc") {
                         order = "-" + order;
                     }
@@ -678,7 +676,7 @@ jumpserver.initServerSideDataTable = function (options) {
                 }
             },
             dataFilter: function (data) {
-                var json = jQuery.parseJSON(data);
+                let json = jQuery.parseJSON(data);
                 json.recordsTotal = json.count;
                 json.recordsFiltered = json.count;
                 return JSON.stringify(json); // return JSON string
@@ -687,15 +685,16 @@ jumpserver.initServerSideDataTable = function (options) {
         },
         columns: options.columns || [],
         select: options.select || select,
-        language: jumpserver.language,
+        language: cloudhelper.language,
         lengthMenu: options.lengthMenu || [[15, 25, 50, 9999], [15, 25, 50, 'All']]
     });
     table.selected = [];
     table.selected_rows = [];
     table.on('select', function (e, dt, type, indexes) {
-        var $node = table[type](indexes).nodes().to$();
+        let $node = table[type](indexes).nodes().to$();
+        console.log($node)
         $node.find('input.ipt_check').prop('checked', true);
-        jumpserver.selected[$node.find('input.ipt_check').prop('id')] = true;
+        cloudhelper.selected[$node.find('input.ipt_check').prop('id')] = true;
         if (type === 'row') {
             var rows = table.rows(indexes).data();
             $.each(rows, function (id, row) {
@@ -708,7 +707,7 @@ jumpserver.initServerSideDataTable = function (options) {
     }).on('deselect', function (e, dt, type, indexes) {
         var $node = table[type](indexes).nodes().to$();
         $node.find('input.ipt_check').prop('checked', false);
-        jumpserver.selected[$node.find('input.ipt_check').prop('id')] = false;
+        cloudhelper.selected[$node.find('input.ipt_check').prop('id')] = false;
         if (type === 'row') {
             var rows = table.rows(indexes).data();
             $.each(rows, function (id, row) {
@@ -749,14 +748,13 @@ jumpserver.initServerSideDataTable = function (options) {
         $('#fb').html(options.fb_html || '');
         $('#fa').html(options.fa_html || '');
     });
-    var table_id = table.settings()[0].sTableId;
+    let table_id = table.settings()[0].sTableId;
     $('#' + table_id + ' .ipt_check_all').on('click', function () {
         if (select_style !== 'multi') {
             return
         }
         if ($(this).prop("checked")) {
             $(this).closest('table').find('.ipt_check').prop('checked', true);
-            console.log(table.rows({search: 'applied', page: 'current'}))
             table.rows({search: 'applied', page: 'current'}).select();
         } else {
             $(this).closest('table').find('.ipt_check').prop('checked', false);
@@ -767,7 +765,7 @@ jumpserver.initServerSideDataTable = function (options) {
     return table;
 };
 
-jumpserver.initAccessKeyDataTable = function (options) {
+cloudhelper.initAccessKeyDataTable = function (options) {
     let ele = options.ele || $('.dataTable');
     let columnDefs = [
         {
@@ -843,7 +841,7 @@ jumpserver.initAccessKeyDataTable = function (options) {
             dataSrc: "results"
         },
         columns: options.columns || [],
-        language: jumpserver.language,
+        language: cloudhelper.language,
     });
 }
 
@@ -1144,11 +1142,11 @@ function APIImportData(props) {
             props.data_table.ajax.reload()
         },
         error: function (error) {
-            var data = error.responseJSON;
+            let data = error.responseJSON;
             if (data instanceof Array) {
-                var html = '';
-                var li = '';
-                var err = '';
+                let html = '';
+                let li = '';
+                let err = '';
                 $.each(data, function (index, item) {
                     err = '';
                     for (var prop in item) {
@@ -1212,7 +1210,7 @@ function objectAttrsIsBool(obj, attrs) {
 }
 
 function cleanDateStr(d) {
-    for (var i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
         if (!isNaN(Date.parse(d))) {
             return d;
         }
@@ -1237,19 +1235,19 @@ function safeDate(s) {
 }
 
 function toSafeDateISOStr(s) {
-    var d = safeDate(s);
+    let d = safeDate(s);
     return d.toISOString();
 }
 
 function toSafeLocalDateStr(d) {
-    var date = safeDate(d);
-    var date_s = date.toLocaleString(navigator.language, {hour12: false});
+    let date = safeDate(d);
+    let date_s = date.toLocaleString(navigator.language, {hour12: false});
     return date_s.split("/").join('-')
 }
 
 function getUrlParams(url) {
     url = url.split("?");
-    var params = "";
+    let params = "";
     if (url.length === 2) {
         params = url[1];
     }
@@ -1257,7 +1255,7 @@ function getUrlParams(url) {
 }
 
 function getTimeUnits(u) {
-    var units = {
+    let units = {
         "d": "天",
         "h": "时",
         "m": "分",
@@ -1270,17 +1268,17 @@ function getTimeUnits(u) {
 }
 
 function timeOffset(a, b) {
-    var start = safeDate(a);
-    var end = safeDate(b);
-    var offset = (end - start) / 1000;
+    let start = safeDate(a);
+    let end = safeDate(b);
+    let offset = (end - start) / 1000;
     return readableSecond(offset)
 }
 
 function readableSecond(offset) {
-    var days = offset / 3600 / 24;
-    var hours = offset / 3600;
-    var minutes = offset / 60;
-    var seconds = offset;
+    let days = offset / 3600 / 24;
+    let hours = offset / 3600;
+    let minutes = offset / 60;
+    let seconds = offset;
 
     if (days > 1) {
         return days.toFixed(1) + " " + getTimeUnits("d");
@@ -1295,10 +1293,10 @@ function readableSecond(offset) {
 }
 
 function readFile(ref) {
-    var files = ref.prop('files');
-    var hasFile = files && files.length > 0;
+    let files = ref.prop('files');
+    let hasFile = files && files.length > 0;
     if (hasFile) {
-        var reader = new FileReader();//新建一个FileReader
+        let reader = new FileReader();//新建一个FileReader
         reader.readAsText(files[0], "UTF-8");//读取文件
         reader.onload = function (evt) { //读取完文件之后会回来这里
             ref.trigger("onload", evt.target.result);
@@ -1319,8 +1317,8 @@ function nodesSelect2Init(selector, url) {
         ajax: {
             url: url,
             data: function (params) {
-                var page = params.page || 1;
-                var query = {
+                let page = params.page || 1;
+                let query = {
                     search: params.term,
                     offset: (page - 1) * 10,
                     limit: 10
@@ -1328,10 +1326,10 @@ function nodesSelect2Init(selector, url) {
                 return query
             },
             processResults: function (data) {
-                var results = $.map(data.results, function (v, i) {
+                let results = $.map(data.results, function (v, i) {
                     return {id: v.id, text: v.full_value}
                 });
-                var more = !!data.next;
+                let more = !!data.next;
                 return {results: results, pagination: {"more": more}}
             }
         },
@@ -1347,8 +1345,8 @@ function usersSelect2Init(selector, url) {
         ajax: {
             url: url,
             data: function (params) {
-                var page = params.page || 1;
-                var query = {
+                let page = params.page || 1;
+                let query = {
                     search: params.term,
                     offset: (page - 1) * 10,
                     limit: 10
@@ -1356,11 +1354,11 @@ function usersSelect2Init(selector, url) {
                 return query
             },
             processResults: function (data) {
-                var results = $.map(data.results, function (v, i) {
-                    var display = v.name + '(' + v.username +')';
+                let results = $.map(data.results, function (v, i) {
+                    let display = v.name + '(' + v.username +')';
                     return {id: v.id, text: display}
                 });
-                var more = !!data.next;
+                let more = !!data.next;
                 return {results: results, pagination: {"more": more}}
             }
         },
@@ -1369,7 +1367,7 @@ function usersSelect2Init(selector, url) {
 }
 
 function showCeleryTaskLog(taskId) {
-    var url = '/ops/celery/task/taskId/log/'.replace('taskId', taskId);
+    let url = '/ops/celery/task/taskId/log/'.replace('taskId', taskId);
     window.open(url, '', 'width=900,height=600')
 }
 
@@ -1377,7 +1375,7 @@ function initDateRangePicker(selector, options) {
     if (!options) {
         options = {}
     }
-    var zhLocale = {
+    let zhLocale = {
         format: 'YYYY-MM-DD HH:mm',
         separator: ' ~ ',
         applyLabel: "应用",
@@ -1386,14 +1384,14 @@ function initDateRangePicker(selector, options) {
         daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],//汉化处理
         monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
     };
-    var defaultOption = {
+    let defaultOption = {
         singleDatePicker: true,
         showDropdowns: true,
         timePicker: true,
         timePicker24Hour: true,
         autoApply: true,
     };
-    var userLang = navigator.language || navigator.userLanguage;;
+    let userLang = navigator.language || navigator.userLanguage;;
     if (userLang.indexOf('zh') !== -1) {
         defaultOption.locale = zhLocale;
     }
@@ -1408,13 +1406,13 @@ function reloadPage() {
 // Thanks https://blog.csdn.net/qq_36963372/article/details/82713044
 $(document).ajaxSend(function(event, xhr, settings) {
     function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie != '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            let cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = jQuery.trim(cookies[i]);
                 // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                     break;
                 }
@@ -1424,13 +1422,13 @@ $(document).ajaxSend(function(event, xhr, settings) {
     }
     function sameOrigin(url) {
         // url could be relative or scheme relative or absolute
-        var host = document.location.host; // host + port
-        var protocol = document.location.protocol;
-        var sr_origin = '//' + host;
-        var origin = protocol + sr_origin;
+        let host = document.location.host; // host + port
+        let protocol = document.location.protocol;
+        let sr_origin = '//' + host;
+        let origin = protocol + sr_origin;
         // Allow absolute or scheme relative URLs to same origin
-        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
-            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+        return (url === origin || url.slice(0, origin.length + 1) === origin + '/') ||
+            (url === sr_origin || url.slice(0, sr_origin.length + 1) === sr_origin + '/') ||
             // or any other URL that isn't scheme relative or absolute i.e relative.
             !(/^(\/\/|http:|https:).*/.test(url));
     }
