@@ -309,16 +309,6 @@
             <!-- ============================================================== -->
             <ul class="navbar-nav my-lg-0">
                 <!-- ============================================================== -->
-                <!-- Documentation -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-book"></i> {% trans "Documentation" %}
-                    </a>
-
-                </li>
-                <!-- ============================================================== -->
                 <!-- Language -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
@@ -349,36 +339,61 @@
                 <!-- Profile -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
+                    {% if request.user.is_authenticated %}
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ request.user.username }}<i class="mdi mdi-menu-down"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right scale-up">
+                            <ul class="dropdown-user">
+                                <li>
+                                    <div class="dw-user-box">
+                                        <div class="u-img">
+                                            <img src="{{ request.user.avatar_url }}" alt="user">
+                                        </div>
+                                        <div class="u-text">
+                                            <h4>{{ request.user.username }}</h4>
+                                            <p class="text-muted">{{ request.user.email }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="{% url 'account:user-profile' %}">
+                                        <i class="ti-user"></i> {% trans 'Profile' %}
+                                    </a>
+                                </li>
+                                <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                                <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="{% url 'authentication:logout' %}">
+                                        <i class="fa fa-sign-out"></i> {% trans 'Logout' %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'authentication:login' %}">
+                            <i class="fa fa-sign-in"></i> {% trans 'Login' %}
+                        </a>
+                    {% endif %}
+                </li>
+                <!-- ============================================================== -->
+                <!-- Documentation -->
+                <!-- ============================================================== -->
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ request.user.username }}
+                        {% trans "Support" %}<i class="mdi mdi-menu-down"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right scale-up">
-                        <ul class="dropdown-user">
-                            <li>
-                                <div class="dw-user-box">
-                                    <div class="u-img"><img src="{{ request.user.avatar_url }}" alt="user"></div>
-                                    <div class="u-text">
-                                        <h4>{{ request.user.username }}</h4>
-                                        <p class="text-muted">{{ request.user.email }}</p>
-                                    </div>
-                                </div>
-                            </li>
+                        <ul class="dropdown-user m-t-10">
+                            <li><a href="#"><i class="fa fa-book"></i> {% trans "Documentation" %}</a></li>
                             <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="{% url 'account:user-profile' %}">
-                                <i class="ti-user"></i> {% trans 'Profile' %}</a>
-                            </li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="{% url 'authentication:logout' %}">
-                                    <i class="fa fa-power-off"></i> {% trans 'Logout' %}
-                                </a>
-                            </li>
+                            <li><a href="#"><i class="fa fa-exclamation"></i> {% trans "Other Resources" %}</a></li>
                         </ul>
                     </div>
                 </li>
