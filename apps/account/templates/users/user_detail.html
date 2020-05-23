@@ -375,7 +375,7 @@
 
 {% block custom_foot_js %}
     <script>
-        jumpserver.nodes_selected = {};
+        cloudhelper.nodes_selected = {};
         let usersSelect2;
 
         function updateUserGroups(groups) {
@@ -387,7 +387,7 @@
                 // remove all the selected groups from select > option and rendered ul element;
                 $('.select2-selection__rendered').empty();
                 $('#groups_selected').val('');
-                $.map(jumpserver.nodes_selected, function (group_name, index) {
+                $.map(cloudhelper.nodes_selected, function (group_name, index) {
                     $('#opt_' + index).remove();
                     // change tr html of user groups.
                     $('.group_edit tbody').append(
@@ -397,8 +397,8 @@
                         '</tr>'
                     )
                 });
-                // clear jumpserver.groups_selected
-                jumpserver.nodes_selected = {};
+                // clear cloudhelper.groups_selected
+                cloudhelper.nodes_selected = {};
             };
             requestApi({
                 url: the_url,
@@ -424,11 +424,11 @@
             $('.select2').select2()
                 .on('select2:select', function (evt) {
                     let data = evt.params.data;
-                    jumpserver.nodes_selected[data.id] = data.text;
+                    cloudhelper.nodes_selected[data.id] = data.text;
                 })
                 .on('select2:unselect', function (evt) {
                     let data = evt.params.data;
-                    delete jumpserver.nodes_selected[data.id];
+                    delete cloudhelper.nodes_selected[data.id];
                 });
             usersSelect2 = usersSelect2Init('.users-select2')
         })
@@ -473,13 +473,13 @@
                 });
             })
             .on('click', '#btn_join_group', function () {
-                if (Object.keys(jumpserver.nodes_selected).length === 0) {
+                if (Object.keys(cloudhelper.nodes_selected).length === 0) {
                     return false;
                 }
                 let groups = $('.bdg_group').map(function () {
                     return $(this).data('gid');
                 }).get();
-                $.map(jumpserver.nodes_selected, function (value, index) {
+                $.map(cloudhelper.nodes_selected, function (value, index) {
                     groups.push(index);
                     $('#opt_' + index).remove();
                 });

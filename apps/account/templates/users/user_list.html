@@ -20,8 +20,8 @@
         <tr>
             {% block table_head %}
                 <th class="text-center">
-                    <input id="ipt_checks" type="checkbox" class="ipt_check_all chk-col-light-blue">
-                <label for="ipt_checks"></label>
+                    <input id="ipt_check" type="checkbox" class="ipt_check_all chk-col-light-blue">
+                <label for="ipt_check"></label>
                 </th>
                 <th class="text-center">{% trans 'Name' %}</th>
                 <th class="text-center">{% trans 'Username' %}</th>
@@ -140,7 +140,7 @@
                 ],
                 op_html: $('#actions').html()
             };
-            users_table = jumpserver.initServerSideDataTable(options);
+            users_table = cloudhelper.initServerSideDataTable(options);
             return users_table
         }
 
