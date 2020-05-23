@@ -70,7 +70,7 @@
                 ele: $('#system_user_list_table'),
                 columnDefs: [
                     {
-                        targets: 1, render: function (cellData, tp, rowData, meta) {
+                        targets: 1, render: function (cellData, tp, rowData) {
                             cellData = htmlEscape(cellData);
                             let detail_btn = '<a href="{% url "assets:system-user-detail" pk=DEFAULT_PK %}">' + cellData + '</a>';
                             return detail_btn.replace('{{ DEFAULT_PK }}', rowData.id);
@@ -82,7 +82,7 @@
                         }
                     },
                     {
-                        targets: 7, createdCell: function (td, cellData, rowData) {
+                        targets: 7, createdCell: function (td, cellData) {
                             let update_btn = '<a href="{% url "assets:system-user-update" pk=DEFAULT_PK %}" data-toggle="tooltip" title="{% trans "Update" %}"><i class="fa fa-pencil text-inverse m-r-10"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
                             let del_btn = '<a class="btn_asset_config_delete" data-uid="{{ DEFAULT_PK }}" data-toggle="tooltip" title="{% trans "Delete" %}"><i class="fa fa-close text-danger"></i></a>'.replace('{{ DEFAULT_PK }}', cellData);
                             $(td).html(update_btn + del_btn)
@@ -96,7 +96,7 @@
                 ],
                 op_html: $('#actions').html()
             };
-            system_user_table = jumpserver.initServerSideDataTable(options);
+            system_user_table = cloudhelper.initServerSideDataTable(options);
             return system_user_table
         }
 
