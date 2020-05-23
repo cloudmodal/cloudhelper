@@ -95,7 +95,7 @@
 
 {% block custom_foot_js %}
     <script>
-        jumpserver.users_selected = {};
+        cloudhelper.users_selected = {};
 
         function updateGroupMember(users) {
             let the_url = "{% url 'api-account:user-group-update-user' pk=user_group.id %}";
@@ -106,7 +106,7 @@
                 // remove all the selected groups from select > option and rendered ul element;
                 $('.select2-selection__rendered').empty();
                 $('#slct_users').val('');
-                $.map(jumpserver.users_selected, function (user_name, index) {
+                $.map(cloudhelper.users_selected, function (user_name, index) {
                     $('#opt_' + index).remove();
                     // change tr html of users
                     $('.user_edit tbody').append(
@@ -116,7 +116,7 @@
                         '</tr>'
                     )
                 });
-                jumpserver.users_selected = {};
+                cloudhelper.users_selected = {};
             };
             requestApi({
                 url: the_url,
@@ -129,10 +129,10 @@
             $('.select2').select2()
                 .on('select2:select', function (evt) {
                     let data = evt.params.data;
-                    jumpserver.users_selected[data.id] = data.text;
+                    cloudhelper.users_selected[data.id] = data.text;
                 }).on('select2:unselect', function (evt) {
                 let data = evt.params.data;
-                delete jumpserver.users_selected[data.id]
+                delete cloudhelper.users_selected[data.id]
             });
             usersSelect2Init('#slct_users')
         }).on('click', '.btn_remove_user', function () {
@@ -150,13 +150,13 @@
             }).get();
             updateGroupMember(users)
         }).on('click', '#btn_add_user', function () {
-            if (Object.keys(jumpserver.users_selected).length === 0) {
+            if (Object.keys(cloudhelper.users_selected).length === 0) {
                 return false;
             }
             let users = $('.bdg_user').map(function () {
                 return $(this).data('uid');
             }).get();
-            $.map(jumpserver.users_selected, function (value, index) {
+            $.map(cloudhelper.users_selected, function (value, index) {
                 users.push(index);
                 $('#opt_' + index).remove();
             });

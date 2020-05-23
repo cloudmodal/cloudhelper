@@ -60,7 +60,7 @@ function initTable() {
                 let detail_btn = '<a href="{% url "account:user-group-detail" pk=DEFAULT_PK %}">' + cellData + '</a>';
                 $(td).html(detail_btn.replace('{{ DEFAULT_PK }}', rowData.id));
              }},
-            {targets: 2, createdCell: function (td, cellData, rowData) {
+            {targets: 2, createdCell: function (td, cellData) {
                 let html = createPopover(cellData);
                 $(td).html(html);
              }},
@@ -89,7 +89,7 @@ function initTable() {
         order: [],
         op_html: $('#actions').html()
     };
-    groups_table = jumpserver.initServerSideDataTable(options);
+    groups_table = cloudhelper.initServerSideDataTable(options);
     return groups_table
 }
 $(document).ready(function() {
@@ -134,7 +134,7 @@ $(document).ready(function() {
             };
             let url_delete = the_url + '?id__in=' + JSON.stringify(plain_id_list);
             requestApi({url: url_delete, method: 'DELETE', success: success, error: fail});
-            jumpserver.checked = false;
+            cloudhelper.checked = false;
         });
     }
     switch(action) {
