@@ -321,11 +321,11 @@ class UserPublicKeyGenerateView(PermissionsMixin, View):
 
     @staticmethod
     def get(request, *args, **kwargs):
-        private, public = ssh_key_gen(username=request.user.username, hostname='jumpserver')
+        private, public = ssh_key_gen(username=request.user.username, hostname='CloudHelper')
         request.user.public_key = public
         request.user.save()
         response = HttpResponse(private, content_type='text/plain')
-        filename = "{0}-jumpserver.pem".format(request.user.username)
+        filename = "{0}-CloudHelper.pem".format(request.user.username)
         response['Content-Disposition'] = 'attachment; filename={}'.format(filename)
         return response
 
