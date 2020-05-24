@@ -121,7 +121,7 @@
         let msg = '{% trans "User is active" %}'
         toastr.success(msg)
     }).on('click', '.access_modal', function () {
-        let url = "{% url "api-auth:access-keys-list" %}";
+        let url = "{% url "api-auth:access-key-create" pk=DEFAULT_PK %}".replace("{{ DEFAULT_PK }}", uid);
         requestApi({
             url: url,
             method: 'POST',
