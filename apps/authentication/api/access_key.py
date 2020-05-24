@@ -10,17 +10,30 @@
 @time: 2019/12/20 12:13
 @desc:
 """
-from rest_framework import status
-from rest_framework.response import Response
 from rest_framework_bulk import BulkModelViewSet
-from rest_framework.serializers import ValidationError
+from django.shortcuts import get_object_or_404
 from organization.mixins import generics
 from common.permissions import IsValidUser, IsOrgAdminOrAppUser
 from .. import serializers
 from ..models import AccessKey
+from account.models import User
+from ..utils import access_keys
 __all__ = [
-    'AccessKeyViewSet', 'AccessKeyListView'
+    'AccessKeyCreateView', 'AccessKeyViewSet', 'AccessKeyListView'
 ]
+
+
+class AccessKeyCreateView(generics.CreateAPIView):
+    """
+    Create access key connective
+    """
+    serializer_class = serializers.AccessKeySerializer
+    permission_classes = (IsValidUser,)
+
+    def create(self, request, *args, **kwargs):
+        user_id = kwargs.get('pk')
+        user = get_object_or_404(User, pk=user_id)
+        return access_keys(user)
 
 
 class AccessKeyViewSet(BulkModelViewSet):
@@ -33,27 +46,7 @@ class AccessKeyViewSet(BulkModelViewSet):
 
     def create(self, request, *args, **kwargs):
         user = self.request.user
-        access_key = user.create_access_key()
-        if user.access_keys.all().count() > 3:
-            raise ValidationError(
-                {
-                    'code': 400, 'error_code': '40002',
-                    'msg': 'The access key has reached the upper limit and a new access key cannot be generated.'
-                }
-            )
-        else:
-            return Response(
-                {
-                    'code': 201,
-                    'data': {
-                        'access_key_id': access_key.access_key_id,
-                        'secret_access_key': access_key.secret_access_key
-                    },
-                    'msg': 'This is the only opportunity to view or download the private access key. '
-                           'You cannot restore them later. However, you can always create a new access key'
-                },
-                status=status.HTTP_201_CREATED
-            )
+        access_keys(user)
 
 
 class AccessKeyListView(generics.ListAPIView):

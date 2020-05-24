@@ -20,6 +20,7 @@ router.register(r'access-keys', api.AccessKeyViewSet, 'access-keys')
 
 
 urlpatterns = [
+    path('access-keys/<uuid:pk>/create/', api.AccessKeyCreateView.as_view(), name='access-key-create'),
     path('access-keys/<uuid:pk>/user/', api.AccessKeyListView.as_view(), name='access-key-list'),
     path('sms/', api.SMSCreateApi.as_view(), name='sms'),
     path('tokens/', api.TokenCreateApi.as_view(), name='auth-token'),

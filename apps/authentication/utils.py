@@ -10,8 +10,12 @@
 @time: 2019/12/20 12:16
 @desc:
 """
+from rest_framework import status
 from django.core.cache import cache
+from rest_framework.response import Response
 from django.contrib.auth import authenticate
+from django.utils.translation import ugettext_lazy as _
+from rest_framework.serializers import ValidationError
 from common.utils import get_object_or_none
 from account.models import User
 from . import errors
@@ -64,3 +68,27 @@ def check_user_valid(**kwargs):
         return user, ''
 
     return None, errors.reason_password_failed
+
+
+def access_keys(user):
+    if user.access_keys.all().count() >= 3:
+        raise ValidationError(
+            {
+                'code': 400, 'error_code': '40002',
+                'msg': _('The access key has reached the upper limit and a new access key cannot be generated.')
+            }
+        )
+    else:
+        access_key = user.create_access_key()
+        return Response(
+            {
+                'code': 201,
+                'data': {
+                    'access_key_id': access_key.access_key_id,
+                    'secret_access_key': access_key.secret_access_key
+                },
+                'msg': _('This is the only opportunity to view or download the private access key. '
+                         'You cannot restore them later. However, you can always create a new access key')
+            },
+            status=status.HTTP_201_CREATED
+        )
