@@ -7,10 +7,6 @@
 @software: L2CloudCMP
 @file: __init__.py
 @ide: PyCharm
-@time: 2019/12/20 11:21
+@time: 2020/5/25 13:03
 @desc:
 """
-from .api import *
-from .views import *
-from .models import *
-from .serializers import *

@@ -1,0 +1,143 @@
+{% extends '_base_list.html' %}
+{% load i18n %}
+{% load static %}
+{% load common_tags %}
+
+{% block head_title %}{{ action }}{% endblock %}
+
+{% block bread_crumbs %}
+    <li class="breadcrumb-item active">{{ action }}</li>
+{% endblock %}
+
+<div class="table-responsive m-t-40">
+    {% block table_container %}
+        <table class="table m-t-30 table-hover contact-list" id="login_log_table">
+            <thead>
+            <tr>
+                <th class="text-center">{% trans 'ID' %}</th>
+                <th class="text-center">{% trans 'Username' %}</th>
+                <th class="text-center">{% trans 'Type' %}</th>
+                <th class="text-center">{% trans 'UA' %}</th>
+                <th class="text-center">{% trans 'IP' %}</th>
+                <th class="text-center">{% trans 'City' %}</th>
+                <th class="text-center">{% trans 'MFA' %}</th>
+                <th class="text-center">{% trans 'Reason' %}</th>
+                <th class="text-center">{% trans 'Status' %}</th>
+                <th class="text-center">{% trans 'Date' %}</th>
+            </tr>
+            <thead>
+            <div class="m-t-40">
+                <form id="search_form" method="get" action="" class="pull-right form-inline">
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <div class="input-daterange input-group" id="datepicker">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" id="id_date_from" class="form-control" name="date_from" value="{{ date_from|date:'Y-m-d' }}">
+                                <span class="input-group-addon">to</span>
+                                <input type="text" id="id_date_to" class="form-control" name="date_to" value="{{ date_to|date:'Y-m-d' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="select2 form-control custom-select select2-hidden-accessible" name="user">
+                                <option>{% trans 'Select user' %}</option>
+                                {% for u in user_list %}
+                                    <option value="{{ u }}" {% if u == user %} selected {% endif %}>{{ u }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="controls">
+                                <div class="input-group">
+                                    <input type="text" id="search" name="keyword" class="form-control" placeholder="{% trans 'Search' %}" value="{{ keyword }}" aria-invalid="false">
+                                    <span class="input-group-btn">
+                                        <button id='search_btn' class="btn btn-info" type="submit">Go!</button>
+                                    </span>
+                                </div>
+                                <div class="help-block"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <tbody>
+            {% for login_log in object_list %}
+                <tr class="gradeX">
+                    <td class="text-center">{{ forloop.counter }}</td>
+                    <td class="text-center">{{ login_log.username }}</td>
+                    <td class="text-center">{{ login_log.get_type_display }}</td>
+                    <td class="text-center">
+                    <span href="javascript:void(0);" data-toggle="tooltips"
+                          title="{{ login_log.user_agent }}">{{ login_log.user_agent | truncatechars:10 }}</span>
+                    </td>
+                    <td class="text-center">{{ login_log.ip }}</td>
+                    <td class="text-center">{{ login_log.city }}</td>
+                    <td class="text-center">{{ login_log.get_mfa_display }}</td>
+                    <td class="text-center">{{ login_log.reason_display }}</td>
+                    <td class="text-center">{{ login_log.get_status_display }}</td>
+                    <td class="text-center">{{ login_log.datetime }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div id="actions" class="" style="margin-top: -20px">
+            <div class="input-group">
+                <select class="form-control m-b" style="width: auto" id="slct_bulk_update">
+                    <option value="export">{% trans 'Export' %}</option>
+                </select>
+                <div class="input-group-btn pull-left" style="padding-left: 5px;">
+                    <button id='btn_bulk_update' style="height: 32px;" class="btn btn-sm btn-primary btn_export">
+                        {% trans 'Submit' %}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+</div>
+
+{% block custom_foot_js %}
+    <link href="{% static '/assets/plugins/select2/css/select2.min.css.bak.css' %}" rel="stylesheet" type="text/css" />
+    <script src="{% static 'assets/plugins/select2/js/select2.full.min.js.bak.js' %}"></script>
+    <script src="{% static 'assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            cloudhelper.initStaticTable('#login_log_table');
+            $('#date .input-daterange').datepicker({
+                format: "yyyy-mm-dd",
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+
+            });
+            $('.select2').select2({
+                dropdownAutoWidth: true,
+                width: 'auto'
+            });
+        })
+            .on('click', '.btn_export', function () {
+                let date_from = $('#id_date_from').val();
+                let date_to = $('#id_date_to').val();
+                let user = $('.select2 option:selected').val();
+                let keyword = $('#search').val();
+                $.ajax({
+                    url: "{% url "audits:login-log-export" %}",
+                    method: 'POST',
+                    data: JSON.stringify({
+                        'date_from': date_from,
+                        'date_to': date_to,
+                        'user': user,
+                        'keyword': keyword
+                    }),
+                    dataType: "json",
+                    success: function (data) {
+                        window.open(data.redirect)
+                    },
+                    error: function () {
+                        toastr.error('Export failed');
+                    }
+                })
+            })
+    </script>
+{% endblock %}

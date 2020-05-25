@@ -86,11 +86,30 @@
                         <li><a href="{% url 'assets:system-user-list' %}">{% trans "System user" %}</a></li>
                         <li><a href="{% url 'assets:tags-list' %}">{% trans "Tags list" %}</a></li>
                         <li><a href="{% url 'assets:asset-list' %}">{% trans "Asset list" %}</a></li>
-{#                        <li><a href="#">{% trans "Operational audit" %}</a></li>#}
                     </ul>
                 </li>
-
-
+                {% if request.user.can_admin_or_audit_current_org %}
+                    <li class="nav-small-cap">{% trans "AUDITS" %}</li>
+                    <li id="audits">
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                            <i class="mdi mdi-history" ></i>
+                            <span class="hide-menu">{% trans 'Operational audit' %}</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{% url 'audits:login-log-list' %}">{% trans 'Login log' %}</a></li>
+                            <li><a href="{% url 'audits:operate-log-list' %}">{% trans 'Operate log' %}</a></li>
+                            <li><a href="{% url 'audits:password-log-list' %}">{% trans 'Password log' %}</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                    <li class="nav-small-cap">{% trans "SYSTEM MANAGE AND SETTINGS" %}</li>
+                    <li><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-settings"></i>
+                        <span class="hide-menu">{% trans 'Settings' %}</span>
+                    </a>
+                    </li>
+                {% endif %}
 
 
             </ul>

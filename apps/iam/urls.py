@@ -29,12 +29,14 @@ api_v1 = [
     path('account/', include('account.urls.api_urls', namespace='api-account')),
     path('access/', include('access.urls.api_urls', namespace='api-access')),
     path('orgs/', include('organization.urls.api_urls', namespace='api-orgs')),
+    path('audits/', include('audits.urls.api_urls', namespace='api-audits')),
     path('assets/', include('assets.urls.api_urls', namespace='api-assets')),
 ]
 
 
 app_view_patterns = [
     path('auth/', include('authentication.urls.views_urls', namespace='auth')),
+    path('audits/', include('audits.urls.views_urls', namespace='audits')),
     path('assets/', include('assets.urls.views_urls', namespace='assets')),
     path('account/', include('account.urls.views_urls', namespace='account')),
     path('credentials/', include('access.urls.views_urls', namespace='credentials')),
