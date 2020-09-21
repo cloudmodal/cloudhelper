@@ -1,0 +1,1 @@
+gcc krb5-devel libtiff-devel libjpeg-devel libzip-devel freetype-devel libwebp-devel tcl-devel tk-devel openldap-devel libffi-devel openssh-clients telnet openldap-clients libevent-devel

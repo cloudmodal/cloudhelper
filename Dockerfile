@@ -1,4 +1,4 @@
-FROM 907457203140.dkr.ecr.us-west-2.amazonaws.com/python:latest
+FROM cloudhelper/python3:latest
 MAINTAINER Sun <wenhaijie@cloudhelper.xyz>
 
 WORKDIR /opt/cloudhelper
