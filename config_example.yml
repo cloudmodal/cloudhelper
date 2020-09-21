@@ -33,15 +33,15 @@ DEBUG: true
 # postgres setting like:
 # 使用postgres作为数据库
 DB_ENGINE: postgresql_psycopg2
-DB_HOST: cmp-dev.cluster-c2ougvsywdsj.us-west-2.rds.amazonaws.com
+DB_HOST: 127.0.0.1
 DB_PORT: 5432
-DB_USER: im_admin
-DB_PASSWORD: 5b140km28yfvtiw
-DB_NAME: identity_management
+DB_USER: db_user
+DB_PASSWORD: db_password
+DB_NAME: db_name
 
 # Site URL
 # 站点的网址
-SITE_URL: http://wenhj.com
+SITE_URL: http://cloudhelper.xyz
 
 # When Django start it will bind this host and port
 # ./manage.py runserver 127.0.0.1:8080
@@ -103,8 +103,8 @@ SYSLOG_ADDR: ''
 # OTP settings
 # OTP/MFA 配置
 OTP_VALID_WINDOW: 0
-OTP_ISSUER_NAME: L2CloudCMP
+OTP_ISSUER_NAME: CloudHelper
 
 # An identifier for the assumed role session.
 # 在跨帐户角色会话名称唯一地标识
-ROLE_SESSION_NAME: L2CloudCMP
+ROLE_SESSION_NAME: CloudHelper
