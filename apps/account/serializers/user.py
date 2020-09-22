@@ -263,7 +263,7 @@ class UserResetPasswordSerializer(serializers.Serializer):
 
 class UserOtpEnableAuthenticationSerializer(serializers.Serializer):
     password = serializers.CharField(
-        label=_('密码'), write_only=True, max_length=128, required=True
+        label=_('Password'), write_only=True, max_length=128, required=True
     )
     mobile = serializers.CharField(max_length=11, min_length=11, required=False)
     email = serializers.CharField(required=False)

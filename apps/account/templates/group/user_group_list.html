@@ -124,7 +124,7 @@ $(document).ready(function() {
             closeOnConfirm: false
         }, function() {
             let success = function() {
-                let msg = "{% trans 'UserGroups Deleted.' %}";
+                let msg = "{% trans 'UserGroups Delete.' %}";
                 swal("{% trans 'UserGroups Delete' %}", msg, "success");
                 $data_table.ajax.reload();
             };

@@ -8,14 +8,12 @@
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 ----
 
-# 特别感谢JumpServer给的启发
-[thank JumpServer](https://github.com/jumpserver/jumpserver.git)
-
 ### 说明
 [English](README.md) | [中文](README-zh.md)
 
 ### 产品特色
-> 功能仍在改进中...
+* 开源 - 完全免费，快速安装部署
+* 多云支持 - 一套系统可以关系全球大部分公有云
 
 ### 产品架构
 > 功能仍在改进中...
