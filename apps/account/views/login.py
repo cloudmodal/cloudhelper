@@ -58,7 +58,7 @@ class UserForgotPasswordView(TemplateView):
         else:
             send_email.send_reset_password_mail(user)
             return HttpResponseRedirect(
-                reverse('users:forgot-password-sendmail-success'))
+                reverse('account:forgot-password-sendmail-success'))
 
 
 class UserForgotPasswordSendmailSuccessView(TemplateView):
@@ -126,7 +126,7 @@ class UserResetPasswordView(TemplateView):
 
         user.reset_password(password)
         User.expired_reset_password_token(token)
-        return HttpResponseRedirect(reverse('users:reset-password-success'))
+        return HttpResponseRedirect(reverse('account:reset-password-success'))
 
 
 class UserFirstLoginView(PermissionsMixin, SessionWizardView):

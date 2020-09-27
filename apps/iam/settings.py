@@ -498,8 +498,12 @@ CACHES = {
 # Captcha settings, more see https://django-simple-captcha.readthedocs.io/en/latest/advanced.html
 CAPTCHA_IMAGE_SIZE = (80, 33)
 CAPTCHA_FOREGROUND_COLOR = '#001100'
-CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots', 'captcha.helpers.noise_arcs')
 CAPTCHA_TEST_MODE = CONFIG.CAPTCHA_TEST_MODE
+CAPTCHA_FIELD_TEMPLATE = 'captcha/text_field.html'
+CAPTCHA_IMAGE_TEMPLATE = 'captcha/image.html'
+CAPTCHA_HIDDEN_FIELD_TEMPLATE = 'captcha/hidden_field.html'
+CAPTCHA_OUTPUT_FORMAT = '%(image)s %(hidden_field)s %(text_field)s'
 
 COMMAND_STORAGE = {
     'ENGINE': 'terminal.backends.command.db',

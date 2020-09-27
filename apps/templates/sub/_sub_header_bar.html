@@ -7,9 +7,6 @@
             <a class="navbar-brand" href="{% url 'index' %}">
                 <img src="{% static 'assets/images/admin-logo.png' %}" alt="admin template"/>
             </a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <!-- This is the navigation menu -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto stylish-nav">
@@ -17,32 +14,15 @@
 
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="" target="_blank">{% trans "Sign Up" %}</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'auth:login' %}" target="_blank">{% trans "Log In" %}</a>
                         </li>
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'index' %}" target="_blank">{% trans "CloudHelper Home" %}</a>
                     </li>
-                    <!--<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demos</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="../main/index.html" target="_blank">Main</a>
-                            <a class="dropdown-item" href="../mini-sidebar/index2.html" target="_blank">MiniSidebar</a>
-                            <a class="dropdown-item" href="../dark/index.html" target="_blank">Dark</a>
-                            <a class="dropdown-item" href="../horizontal/index3.html" target="_blank">Horizontal</a>
-                            <!- <a class="dropdown-item" href="#" target="_blank">Angular starter kit</a> ->
-                            <a class="dropdown-item" href="../rtl/index4.html" target="_blank">Main-RTL</a>
-                        </div>
-                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="" target="_blank">{% trans "Documentation" %}</a>
                     </li>
-                    <!--<li class="nav-item">
-                        <a class="m-t-5 btn btn-info font-13" href="" style="width:120px;">BUY NOW1</a>
-                    </li>-->
                 </ul>
             </div>
         </nav>

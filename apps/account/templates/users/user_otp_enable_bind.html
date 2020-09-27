@@ -4,16 +4,43 @@
 
 {% block head_title %}{% trans 'Bind' %}{% endblock %}
 
+{% block page-titles %}
+    <div class="row page-titles">
+        <div class="col-lg-12 text-center">
+            <h1 class="m-t-30">{% trans 'Bind Authenticator' %}</h1>
+            <h5 class="text-muted m-b-30">
+                <i class="ti-pin"></i>
+                <span class="text-info">{% trans 'Use the mobile Google Authenticator application to scan the following qr code for a 6-bit verification code' %}</span>
+            </h5>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
     <div class="fix-width">
         <div class="row banner-text justify-content-center">
-            <div class="col-md-8 m-t-20 text-center">
-                <h1>{% trans 'Use the mobile Google Authenticator application to scan the following qr code for a 6-bit verification code' %}
-                    <span class="text-info"></span>
-                </h1>
+            <div class="col-md-8 text-center">
+                {% if 'otp_code' in form.errors %}
+                    <p style="color: #ed5565">{{ form.otp_code.errors.as_text }}</p>
+                {% endif %}
                 <div id="qr_code" class="hero-banner" style="margin-left:296px"></div>
-                <div class="down-btn">Secret: {{ otp_secret_key }}</div>
-
+                <div class="">
+                    <h4 class="card-title m-t-20" style="font-size: 1.5rem">
+                        {% trans "Secret" %}: <code>{{ otp_secret_key }}</code>
+                    </h4>
+                    <form class="" role="form" method="post" action="">{% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="otp_code"></label>
+                                    <input type="text" id="otp_code" name="otp_code" class="form-control" placeholder="{% trans 'Six figures' %}" required="">
+                                </div>
+                                <button type="submit" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"> {% trans 'Next' %}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -21,18 +48,8 @@
     <div class="row white-space">
         <div class="col-md-12 ">
             <div class="fix-width icon-section">
-                <div class="text-center m-b-20">
-                    <form class="" role="form" method="post" action="">{% csrf_token %}
-                        <div class="form-input">
-                            <label>
-                                <input type="text" class="form-control" name="otp_code" placeholder="{% trans 'Six figures' %}" required="">
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-lg btn-info m-t-40"> {% trans 'Next' %}</button>
-                        {% if 'otp_code' in form.errors %}
-                            <p style="color: #ed5565">{{ form.otp_code.errors.as_text }}</p>
-                        {% endif %}
-                    </form>
+                <div class="text-center">
+
                 </div>
             </div>
         </div>

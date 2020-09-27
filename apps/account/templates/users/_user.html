@@ -27,9 +27,28 @@
             <h3 class="box-title">{% trans 'Auth' %}</h3>
             <hr class="m-t-0 m-b-40">
             {% block password %}{% endblock %}
-            {% bootstrap_field form.mfa_level layout="horizontal" %}
-            {% bootstrap_field form.source layout="horizontal" %}
 
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="{{ form.mfa_level.id_for_label }}">{{ form.mfa_level.label }}</label>
+                <div class="col-md-9">
+                    <div class="radio radio-success form-inline" id="id_mfa_level">
+                        <div class="form-check" style="margin-right: 15px;">
+                            <input {% if form.mfa_level.value == 0 %}checked{% endif %} class="with-gap radio-col-blue" id="{{ form.mfa_level.id_for_label }}" name="mfa_level" required="" title="" type="radio" value="0">
+                            <label class="form-check-label" for="{{ form.mfa_level.id_for_label }}">{% trans "Disable" %}</label>
+                        </div>
+                        <div class="form-check" style="margin-right: 15px;">
+                            <input {% if form.mfa_level.value == 1 %}checked{% endif %} class="with-gap radio-col-blue" id="id_mfa_level_1" name="mfa_level" required="" title="" type="radio" value="1">
+                            <label class="form-check-label" for="id_mfa_level_1">{% trans "Enable" %}</label>
+                        </div>
+                        <div class="form-check" style="margin-right: 15px;">
+                            <input {% if form.mfa_level.value == 2 %}checked{% endif %} class="with-gap radio-col-blue" id="id_mfa_level_2" name="mfa_level" required="" title="" type="radio" value="2">
+                            <label class="form-check-label" for="id_mfa_level_2">{% trans "Force enable" %}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% bootstrap_field form.source layout="horizontal" %}
 
             <h3 class="box-title">{% trans 'Security and Role' %}</h3>
             <hr class="m-t-0 m-b-40">
@@ -48,7 +67,6 @@
                     <span class="help-block ">{{ form.date_expired.errors }}</span>
                 </div>
             </div>
-
             <h3 class="box-title">{% trans 'Profile' %}</h3>
             <hr class="m-t-0 m-b-40">
             {% bootstrap_field form.phone layout="horizontal" %}

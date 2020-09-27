@@ -25,20 +25,15 @@
 </head>
 
 <body>
-<!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
-<!-- ============================================================== -->
 <div class="preloader">
     <svg class="circular" viewBox="25 25 50 50">
         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
     </svg>
 </div>
-<!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
 <section id="wrapper">
-    <div class="login-register"
-         style="background-image:url({% static 'assets/images/background/login-register.jpg' %});">
+    <div class="login-register" style="background-image:url({% static 'assets/images/background/login-register.jpg' %});">
         <div class="login-box card">
             <div class="card-body">
                 <form class="form-horizontal form-material" method="post" action="">{% csrf_token %}
@@ -46,12 +41,21 @@
                         <img src="{{ LOGO_URL }}" alt="LOGO"/><br/>
                         <img src="{{ LOGO_TEXT_URL }}" alt="LOGO"/>
                     </a>
+                    {% if form.non_field_errors %}
+                        <div style="line-height: 17px;">
+                            <p class="text-danger subtext">
+                                <span class="font-medium">{{ form.non_field_errors.as_text }}</span>
+                            </p>
+                        </div>
+                    {% elif form.errors.captcha %}
+                        <p class="text-danger subtext">
+                            <span class="font-medium">{% trans 'Captcha invalid' %}</span>
+                        </p>
+                    {% endif %}
                     <div class="m-t-40"></div>
-
                     {% bootstrap_field form.username layout='inline' %}
                     {% bootstrap_field form.password layout='inline' %}
                     {{ form.captcha }}
-                    {{ captcha.image_url }}
                     <div class="m-t-20"></div>
 
                     <div class="form-group row">
@@ -70,42 +74,38 @@
                             <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">{% trans "Log In" %}</button>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                            <div class="social">
-                        <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip" title="{% trans "Login with Google" %}">
-                            <i aria-hidden="true" class="fa fa-google-plus"></i>
-                        </a>
-                        <a href="javascript:void(0)" class="btn btn-amazon" data-toggle="tooltip" title="{% trans "Login with Amazon" %}">
-                            <i aria-hidden="true" class="fa fa-amazon"></i>
-                        </a>
-                        <a href="javascript:void(0)" class="btn btn-github" data-toggle="tooltip" title="{% trans "Login with Github" %}">
-                            <i aria-hidden="true" class="fa fa-github"></i>
-                        </a>
-                        <a href="{% if AUTH_OPENID %}{% url 'authentication:openid:openid-login' %}{% endif %}" class="btn btn-openid" data-toggle="tooltip" title="{% trans "Login with OpenID" %}">
-                            <i aria-hidden="true" class="fa fa-openid"></i>
-                        </a>
-                    </div>
-                        </div>
-                    </div>
-                    <div class="form-group m-b-0">
-                        <div class="col-sm-12 text-center">
-                            <div>{% trans "Don't have an account" %}?
-                                <a href="" class="text-info m-l-5"><b>{% trans "Sign Up" %}</b></a>
-                            </div>
-                        </div>
-                    </div>
+{#                    <div class="row">#}
+{#                        <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">#}
+{#                            <div class="social">#}
+{#                                <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip" title="{% trans "Login with Google" %}">#}
+{#                                    <i aria-hidden="true" class="fa fa-google-plus"></i>#}
+{#                                </a>#}
+{#                                <a href="javascript:void(0)" class="btn btn-amazon" data-toggle="tooltip" title="{% trans "Login with Amazon" %}">#}
+{#                                    <i aria-hidden="true" class="fa fa-amazon"></i>#}
+{#                                </a>#}
+{#                                <a href="javascript:void(0)" class="btn btn-github" data-toggle="tooltip" title="{% trans "Login with Github" %}">#}
+{#                                    <i aria-hidden="true" class="fa fa-github"></i>#}
+{#                                </a>#}
+{#                                <a href="{% if AUTH_OPENID %}{% url 'authentication:openid:openid-login' %}{% endif %}" class="btn btn-openid" data-toggle="tooltip" title="{% trans "Login with OpenID" %}">#}
+{#                                    <i aria-hidden="true" class="fa fa-openid"></i>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group m-b-0">#}
+{#                        <div class="col-sm-12 text-center">#}
+{#                            <div>{% trans "Don't have an account" %}?#}
+{#                                <a href="" class="text-info m-l-5"><b>{% trans "Sign Up" %}</b></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
                 </form>
             </div>
         </div>
     </div>
 </section>
-<!-- ============================================================== -->
 <!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
 <!-- All Jquery -->
-<!-- ============================================================== -->
 <script src="{% static 'assets/plugins/jquery/jquery.min.js' %}"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{% static 'assets/plugins/bootstrap/js/popper.min.js' %}"></script>
@@ -121,9 +121,7 @@
 <script src="{% static 'assets/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
 <!--Custom JavaScript -->
 <script src="{% static 'js/custom.min.js' %}"></script>
-<!-- ============================================================== -->
 <!-- Style switcher -->
-<!-- ============================================================== -->
 <script src="{% static 'assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
 </body>
 
