@@ -151,7 +151,7 @@ class UserCreateUpdateFormMixin(OrgModelForm):
 
 
 class UserCreateForm(UserCreateUpdateFormMixin):
-    EMAIL_SET_PASSWORD = _('Reset link will be generated and sent to the user')
+    EMAIL_SET_PASSWORD = _('Generate a reset connection and send it to the user')
     CUSTOM_PASSWORD = _('Set password')
     PASSWORD_STRATEGY_CHOICES = (
         (0, EMAIL_SET_PASSWORD),

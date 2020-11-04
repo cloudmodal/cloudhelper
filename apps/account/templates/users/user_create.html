@@ -3,15 +3,22 @@
 {% load bootstrap4 %}
 
 {% block password %}
-    <style>
-    [type=radio]:checked, [type=radio]:not(:checked) {
-    position: static;
-    left: -9999px;
-    opacity: 1;
-}
-    </style>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="{{ form.password_strategy.id_for_label }}">{{ form.password_strategy.label }}</label>
+        <div class="col-md-9">
+            <div class="radio radio-success" id="id_password_strategy">
+                <div class="form-check">
+                    <input checked="" class="with-gap radio-col-blue" id="id_password_strategy_0" name="password_strategy" required="" title="" type="radio" value="0">
+                    <label class="form-check-label" for="id_password_strategy_0">{% trans "Generate a reset connection and send it to the user" %}</label>
+                </div>
+                <div class="form-check">
+                    <input class="with-gap radio-col-blue" id="id_password_strategy_1" name="password_strategy" required="" title="" type="radio" value="1">
+                    <label class="form-check-label" for="id_password_strategy_1">{% trans "Set password" %}</label>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    {% bootstrap_field form.password_strategy layout="horizontal" %}
     {% bootstrap_field form.password layout="horizontal" %}
 
     <div id="container">
