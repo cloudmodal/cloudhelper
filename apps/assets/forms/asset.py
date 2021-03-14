@@ -46,7 +46,7 @@ class AssetCreateForm(OrgModelForm):
         fields = [
             'hostname', 'ip', 'public_ip', 'protocol', 'comment',
             'instance_id', 'instance_type', 'instance_state',
-            'is_active', 'admin_user', 'tags', 'platform',
+            'is_active', 'admin_user', 'tags', 'platform', 'region'
         ]
         widgets = {
             # 'admin_user': forms.Select(attrs={
@@ -75,7 +75,7 @@ class AssetUpdateForm(OrgModelForm):
         fields = [
             'hostname', 'ip', 'public_ip', 'protocol', 'comment',
             'instance_id', 'instance_type', 'instance_state',
-            'is_active', 'admin_user', 'tags', 'platform',
+            'is_active', 'admin_user', 'tags', 'platform', 'region'
         ]
         widgets = {
             # 'admin_user': forms.Select(attrs={
@@ -110,7 +110,7 @@ class AssetBulkUpdateForm(OrgModelForm):
     class Meta:
         model = Asset
         fields = [
-            'assets', 'admin_user', 'tags', 'platform',
+            'assets', 'admin_user', 'tags', 'platform', 'region'
         ]
         widgets = {
             'tags': forms.SelectMultiple(

@@ -11,7 +11,7 @@
 @desc:
 """
 from django.shortcuts import render
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, UpdateView
 from django.core.files.storage import default_storage
 from django.http import HttpResponseRedirect
 from django.shortcuts import reverse, redirect
@@ -29,7 +29,6 @@ from ..utils import (
     get_password_check_rules, check_password_rules
 )
 from .. import forms
-
 
 __all__ = [
     'UserLoginView', 'UserForgotPasswordSendmailSuccessView',
@@ -129,63 +128,38 @@ class UserResetPasswordView(TemplateView):
         return HttpResponseRedirect(reverse('account:reset-password-success'))
 
 
-class UserFirstLoginView(PermissionsMixin, SessionWizardView):
-    template_name = 'account/first_login.html'
+class UserFirstLoginView(PermissionsMixin, UpdateView):
+    """用户首次登录成功后，完善个人信息视图"""
+    model = User
     permission_classes = [IsValidUser]
-    form_list = [
-        forms.UserProfileForm,
-        forms.UserPublicKeyForm,
-        forms.UserMFAForm,
-        forms.UserFirstLoginFinishForm
-    ]
-    file_storage = default_storage
+    form_class = forms.UserFirstLoginForm
+    template_name = 'account/first_login.html'
+    success_url = reverse_lazy('account:user-profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated and not request.user.is_first_login:
             return redirect(reverse('index'))
         return super().dispatch(request, *args, **kwargs)
 
-    def done(self, form_list, **kwargs):
-        user = self.request.user
-        for form in form_list:
-            for field in form:
-                if field.value():
-                    setattr(user, field.name, field.value())
-        user.is_first_login = False
-        user.save()
-        context = {
-            'user_guide_url': settings.USER_GUIDE_URL
-        }
-        return render(self.request, 'account/first_login_done.html', context)
-
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({'app': _('Users'), 'action': _('First login')})
-        return context
+        context = {
+            'app': _('User'),
+            'action': _('First login'),
+        }
+        kwargs.update(context)
+        return super().get_context_data(**kwargs)
 
-    def get_form_initial(self, step):
-        user = self.request.user
-        if step == '0':
-            return {
-                'username': user.username or '',
-                'name': user.name or user.username,
-                'email': user.email or '',
-                'wechat': user.wechat or '',
-                'phone': user.phone or ''
-            }
-        return super().get_form_initial(step)
-
-    def get_form(self, step=None, data=None, files=None):
-        form = super().get_form(step, data, files)
-        form.instance = self.request.user
-
-        if isinstance(form, forms.UserMFAForm):
-            choices = form.fields["mfa_level"].choices
-            if self.request.user.mfa_force_enabled:
-                choices = [(k, v) for k, v in choices if k == 2]
-            else:
-                choices = [(k, v) for k, v in choices if k in [0, 1]]
-            form.fields["mfa_level"].choices = choices
-            form.fields["mfa_level"].initial = self.request.user.mfa_level
-
-        return form
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        choices = form.cleaned_data.get('mfa_level')
+        # 强制启用后用户无法手动关闭
+        if self.request.user.mfa_force_enabled:
+            user.is_first_login = False
+        else:
+            user.mfa_level = choices
+            user.is_first_login = False
+        user.save()
+        return super().form_valid(form)

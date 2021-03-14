@@ -16,128 +16,228 @@
 
 {% block content %}
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="validation">
             <div class="col-lg-12">
                 <div class="card wizard-content">
                     <div class="card-body">
-                        <div class="d-flex flex-wrap">
-                            <div>
-                                <h4 class="card-title">{% trans 'First Login' %}</h4>
-                                <h6 class="card-subtitle">{% trans "Successful login for the first time! Please complete your personal information" %}</h6>
-                            </div>
-                        </div>
-
-                        <div class="wizard tab-wizard wizard-circle">
-                            <div class="steps clearfix">
-                                <ul role="tablist">
-                                    {% for step in wizard.steps.all %}
-                                        <li role="tab" class="{% ifequal step wizard.steps.first %}first{% endifequal %} {% ifequal step wizard.steps.current %}current{% else %}disabled{% endifequal %} {% ifequal step wizard.steps.last %}last{% endifequal %}"
-                                            aria-disabled="false" aria-selected="true">
-                                            <a class="fl_goto" name="wizard_goto_step" data-goto="{{ step }}">
-                                   <span class="number">
-                                       {% ifequal step '0' %}
-                                           <span class="step">1</span>
-                                           <h6>{% trans "Profile" %}</h6>
-                                       {% endifequal %}
-                                       {% ifequal step '1' %}
-                                           <span class="step">2</span>
-                                           <h6>{% trans "MFA" %}</h6>
-                                       {% endifequal %}
-                                       {% ifequal step '2' %}
-                                           <span class="step">3</span>
-                                           <h6>{% trans "Finish" %}</h6>
-                                       {% endifequal %}
-                                       {% ifequal step '3' %}
-                                           <span class="step">4</span>
-                                           <h6>{% trans "Finish" %}</h6>
-                                       {% endifequal %}
-                                   </span>
-                                            </a>
-                                        </li>
-                                    {% endfor > %}
-                                </ul>
-                            </div>
-                            <div class="content clearfix">
-                                <div class="">
-                                    <form action="" method="post" class="validation-wizard wizard-circle m-t-40"
-                                          id="fl_form" style="padding-left: 40px;">
-                                        {% csrf_token %}
-                                        {{ wizard.management_form }}
-                                        {% if form.finish_description %}
-                                            <b>{{ form.finish_description }}</b>
-                                            <br>
-                                            <input type="checkbox" id="acceptTerms">
-                                            <label for="acceptTerms"
-                                                   style="margin-top:20px">{% trans "I agree with the terms and conditions." %}</label>
-                                            <p id="noTerms" class="red-fonts"
-                                               style="visibility: hidden; font-size: 10px; margin-top: 10px;">
-                                                * {% trans 'Please choose the terms and conditions.' %}</p>
-                                        {% endif %}
-
-                                        {% bootstrap_form wizard.form %}
-
-                                        {% if form.mfa_description %}
-                                            <p class="text-danger">{{ form.mfa_description }}</p>
-                                        {% endif %}
-
-                                        {% if form.pubkey_description %}
-                                            <span>或者：</span>
-                                            <a type="button" id="btn-reset-pubkey">{{ form.pubkey_description }}</a>
-                                        {% endif %}
-
-                                    </form>
-
+                        <h4 class="card-title">{% trans 'First Login' %}</h4>
+                        <h6 class="card-subtitle">{% trans "Successful login for the first time! Please complete your personal information" %}</h6>
+                        <form id="fl_form" method="post" class="validation-wizard wizard-circle">{% csrf_token %}
+                            <!-- Step 1 -->
+                            <h6>{% trans "Profile" %}</h6>
+                            <section>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="{{ form.username.id_for_label }}"> {{ form.username.label }} : <span class="text-danger">*</span> </label>
+                                            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value }}" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="{{ form.email.id_for_label }}"> {{ form.email.label }} : <span class="text-danger">*</span> </label>
+                                            <input type="text" class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" value="{{ form.email.value }}" required disabled>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="actions carousel slide">
-                                <ul>
-                                    {% if wizard.steps.prev %}
-                                        <li>
-                                            <a class="fl_goto" name="wizard_goto_step" data-goto="{{ wizard.steps.prev }}">{% trans "Previous" %}</a>
-                                        </li>
-                                    {% endif %}
-
-                                    {% if wizard.steps.next %}
-                                        <li><a id="fl_submit">{% trans "Next" %}</a></li>
-                                    {% else %}
-                                        <li><a id="fl_submit">{% trans "Finish" %}</a></li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-
-                        </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="{{ form.name.id_for_label }}"> {{ form.name.label }} : <span class="text-danger">*</span> </label>
+                                            <input type="text" class="form-control" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" value="{{ form.name.value }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="{{ form.wechat.id_for_label }}"> {{ form.wechat.label }} : </label>
+                                            <input type="text" class="form-control" id="{{ form.wechat.id_for_label }}" name="{{ form.wechat.html_name }}" value="{{ form.wechat.value }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="{{ form.phone.id_for_label }}"> {{ form.phone.label }} : </label>
+                                            <input type="text" class="form-control" id="{{ form.phone.id_for_label }}" name="{{ form.phone.html_name }}" value="{{ form.phone.value }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Step 2 -->
+                            <h6>{% trans "MFA" %}</h6>
+                            <section>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ form.mfa_level.label }} :</label>
+                                            <div class="radio-list">
+                                                <label class="custom-control custom-radio">
+                                                    <input id="{id_1-mfa_level_0" name="{{ form.mfa_level.html_name }}" type="radio" {% if form.mfa_level.value == 0 %}checked{% endif %} value="0" class="custom-control-input">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">{% trans "Disable" %}</span>
+                                                </label>
+                                                <label class="custom-control custom-radio">
+                                                    <input id="id_1-mfa_level_1" name="{{ form.mfa_level.html_name }}" type="radio" {% if form.mfa_level.value == 1 %}checked{% endif %} value="1" class="custom-control-input">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">{% trans "Enable" %}</span>
+                                                </label>
+                                            </div>
+                                            <small class="form-text text-muted">{{ form.mfa_level.help_text }}</small>
+                                        </div>
+                                        <p class="text-danger">{{ form.mfa_description }}</p>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Step 3 -->
+                            <h6>{% trans "Terms of Use" %}</h6>
+                            <section>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <p class="m-t-10">{{ form.finish_description }}</p><br>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="checkbox" id="acceptTerms" name="terms" class="filled-in chk-col-cyan">
+                                            <label for="acceptTerms">{% trans "I have read and agree to the relevant terms of service and privacy policy" %}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Step 4 -->
+                            <h6>{% trans "Finish" %}</h6>
+                            <section>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <p>{% trans 'Welcome to use the cloudhelper platform software and services!' %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </form>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block custom_foot_js %}
-<script>
-    $(document).on('click', ".fl_goto", function(){
-        let $form = $('#fl_form');
-        $('<input />', {'name': 'wizard_goto_step', 'value': $(this).data('goto'), 'type': 'hidden'}).appendTo($form);
-        $form.submit();
-        return false;
-    }).on('click', '#fl_submit', function(){
-        let isFinish = $('#fl_submit').html() === "{% trans 'Finish' %}";
-        let noChecked = !$('#acceptTerms').prop('checked');
-        if ( isFinish && noChecked){
-            $('#noTerms').css('visibility', 'visible');
-        }
-        else{
-            $('#fl_form').submit();
+    <script src="{% static 'assets/plugins/wizard/jquery.steps.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/wizard/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/toast-master/js/jquery.toast.js' %}"></script>
+    <script>
+        $(document).on('click', ".fl_goto", function () {
+            let $form = $('#fl_form');
+            $('<input />', {
+                'name': 'wizard_goto_step',
+                'value': $(this).data('goto'),
+                'type': 'hidden'
+            }).appendTo($form);
+            $form.submit();
             return false;
-        }
-    }).on('click', '#btn-reset-pubkey', function () {
-        let the_url = '';
-        window.open(the_url, "_blank");
-        $('#fl_form').submit();
-    })
+        }).on('click', '#fl_submit', function () {
+            let isFinish = $('#fl_submit').html() === "{% trans 'Submit' %}";
+            let noChecked = !$('#acceptTerms').prop('checked');
 
-</script>
+            if (isFinish || $('#acceptTerms').prop('checked')) {
+                console.log(isFinish)
+                console.log($('#acceptTerms').prop('checked'))
+            }
+            if (isFinish && noChecked) {
+                $('#noTerms').css('visibility', 'visible');
+            } else {
+                $('#fl_form').submit();
+                return false;
+            }
+        }).on('click', '#btn-reset-pubkey', function () {
+            let the_url = '';
+            window.open(the_url, "_blank");
+            $('#fl_form').submit();
+        })
+
+
+        let wizard = $("#fl_form")
+        let form = wizard.show();
+
+        wizard.steps({
+            headerTag: "h6",
+            bodyTag: "section",
+            transitionEffect: "fade",
+            titleTemplate: '<span class="step">#index#</span> #title#',
+            labels: {
+                finish: "Submit"
+            },
+            /*步骤更改之前进行验证，默认验证结果是true*/
+            onStepChanging: function (event, currentIndex, newIndex) {
+                return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) < 18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden", form.valid())
+            },
+            /*点击 提交 前 触发的函数，默认验证结果是false */
+            onFinishing: function (event, currentIndex) {
+                console.log(event)
+                console.log(currentIndex)
+                return form.validate().settings.ignore = ":disabled", form.valid()
+            },
+            /*点击 提交 后触发的函数*/
+            onFinished: function (event, currentIndex) {
+                console.log(event)
+                console.log(currentIndex)
+                wizard.submit()
+                $.toast({
+                    heading: "{% trans 'Congratulations!' %}",
+                    text: "{% trans 'Your personal information has been modified successfully.' %}",
+                    position: 'top-right',
+                    loaderBg: '#ff6849',
+                    icon: 'info',
+                    hideAfter: 5000,
+                    stack: 6
+                });
+            }
+        });
+        wizard.validate({
+            ignore: "input[type=hidden]",
+            errorClass: "text-danger",
+            successClass: "text-success",
+            highlight: function (element, errorClass) {
+                $(element).removeClass(errorClass)
+            },
+            unhighlight: function (element, errorClass) {
+                $(element).removeClass(errorClass)
+            },
+            errorPlacement: function (error, element) {
+                if (element.is(':radio') || element.is(':checkbox')) {
+                    //let eid = element.attr('name');
+                    error.appendTo(element.parent());
+                } else {
+                    error.insertAfter(element)
+                }
+            },
+            rules: {
+                email: {
+                    email: !0
+                },
+                name: {
+                    required: true
+                },
+                mfa_level: {
+                    required: true
+                },
+                terms: {
+                    required: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "{% trans 'This name is required.' %}"
+                },
+                mfa_level: {
+                    required: "{% trans 'Please select at least one' %}"
+                },
+                terms: {
+                    required: "{% trans 'Please agree to the terms of service first.' %}"
+                }
+            }
+        })
+
+    </script>
 {% endblock %}

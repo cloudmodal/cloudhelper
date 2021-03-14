@@ -91,7 +91,7 @@ class AssetSerializer(BulkOrgResourceModelSerializer):
             'cpu_model', 'cpu_count', 'cpu_cores', 'cpu_vcpus', 'memory',
             'disk_total', 'disk_info', 'os', 'os_version', 'os_arch',
             'hostname_raw', 'comment', 'created_by', 'date_created',
-            'hardware_info', 'connectivity',
+            'hardware_info', 'connectivity', 'region'
         ]
         read_only_fields = (
             'vendor', 'model', 'sn', 'cpu_model', 'cpu_count',

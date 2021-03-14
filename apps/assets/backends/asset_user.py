@@ -49,8 +49,8 @@ class AssetUserBackend(BaseBackend):
                 related_assets = [
                     assets_map.get(i) for i in assets_user_assets_map.get(asset_user.id) if i in assets_map
                 ]
-            for asset in related_assets:
-                instance = asset_user.construct_to_authbook(asset)
-                instance.backend = cls.backend
-                instances.append(instance)
+            # for asset in related_assets:
+                # instance = asset_user.construct_to_authbook(asset)
+                # instance.backend = cls.backend
+                # instances.append(instance)
         return instances

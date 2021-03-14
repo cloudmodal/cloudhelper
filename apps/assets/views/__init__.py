@@ -12,5 +12,6 @@
 """
 from .user import *
 from .tags import *
-from .config import *
 from .asset import *
+from .region import *
+from .config import *

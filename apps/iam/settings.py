@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
 
     'rest_framework',
-    # 'drf_yasg',
+    'mptt',
     'captcha',
     'django_filters',
     'corsheaders',

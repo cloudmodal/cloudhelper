@@ -10,12 +10,8 @@
 @time: 2020/5/9 17:05
 @desc:
 """
-from django.urls import path, re_path
-# from rest_framework_nested import routers
-# from rest_framework.routers import DefaultRouter
+from django.urls import path
 from rest_framework_bulk.routes import BulkRouter
-
-from common import api as capi
 
 from .. import api
 
@@ -23,6 +19,7 @@ app_name = 'assets'
 
 router = BulkRouter()
 router.register(r'tags', api.TagsViewSet, 'tags')
+router.register(r'region', api.RegionViewSet, 'region')
 router.register(r'assets', api.AssetViewSet, 'asset')
 router.register(r'asset-users', api.AssetUserViewSet, 'asset-user')
 router.register(r'admin-users', api.AdminUserViewSet, 'admin-user')

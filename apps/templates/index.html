@@ -927,23 +927,11 @@
     <script src="{% static 'js/dashboard.js' %}"></script>
     <script>
         $(document).ready(function () {
-
-            var arrs = [];
-
-            var arrvalue;//用于存放取出的数组的值
-
-            for (var i = 0; i < arrs.length; i++) {
-
-                arrvalue = arrs[i];//数组的索引是从0开始的
-
-                console.log(arrvalue.name);//把取出的值打印在控制台上
-
-            }
             // earning donut chart
-            let credentials_type = {{ credentials_type|safe }};
+            let credentials = {{ credentials_type|safe }};
             let arr = [];
-            for (let i = 0; i < credentials_type.length; i++) {
-                arr.push(credentials_type[i].colors)
+            for (let i = 0; i < credentials.length; i++) {
+                arr.push(credentials[i].colors)
             }
             Morris.Donut({
                 element: 'morris-donut-chart',

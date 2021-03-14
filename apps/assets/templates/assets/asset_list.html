@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 
+{% block modal_id %}add-contact{% endblock %}
 {% block head_title %}{% trans action %}{% endblock %}
 
 {% block bread_crumbs %}
@@ -16,6 +17,8 @@
     </style>
     <!--alerts CSS -->
     <link href="{% static 'assets/plugins/sweetalert/sweetalert.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/plugins/zTree/css/metroStyle/metroStyle.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap-validator/css/bootstrapValidator.min.css' %}">
     <script src="{% static 'assets/plugins/sweetalert/sweetalert.min.js' %}"></script>
 {% endblock %}
 
@@ -24,72 +27,72 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3 col-xs-12">
-                                <h4 class="card-title">{% trans "Asset tree" %}</h4>
-                                <div id="treeview1" class=""></div>
-                            </div>
-                            <div class="col-md-9 col-xs-12">
-                                <div class="card-body">
-                                    <table id="asset_list_table" class="table m-t-30 table-hover contact-list">
-                                        <thead>
-                                        <tr>
-                                            <th class="text-center">
-                                                <input id="check_all" type="checkbox" class="ipt_check_all chk-col-light-blue">
-                                                <label for="check_all"></label>
-                                            </th>
-                                            <th class="text-center">{% trans 'Hostname' %}</th>
-                                            <th class="text-center">{% trans 'IP' %}</th>
-                                            <th class="text-center">{% trans 'Hardware' %}</th>
-                                            <th class="text-center">{% trans 'Reachable' %}</th>
-                                            <th class="text-center">{% trans 'Action' %}</th>
-                                        </tr>
-                                        </thead>
-                                        <div class="m-t-40">
-                                            <div class="d-flex">
-                                                <div class="mr-auto">
-                                                    <div class="form-group">
-                                                        <button id="demo-btn-addrow" class="btn btn-primary btn-sm btn-create-asset">
-                                                            <i class="icon wb-plus" aria-hidden="true"></i>{% trans "Create asset" %}
-                                                        </button>
-                                                        <small>{% trans "Enter asset information" %}</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <tbody></tbody>
-                                    </table>
-                                    <div id="actions" class="hide">
-                                        <div class="input-group">
-                                            <select class="form-control m-b" style="width: auto" id="slct_bulk_update">
-                                                <option value="delete">{% trans 'Delete selected' %}</option>
-                                                <option value="update">{% trans 'Update selected' %}</option>
-{#                                                <option value="remove">{% trans 'Remove from this node' %}</option>#}
-                                                <option value="deactive">{% trans 'Deactive selected' %}</option>
-                                                <option value="active">{% trans 'Active selected' %}</option>
-                                            </select>
-                                            <div class="input-group-btn pull-left" style="padding-left: 5px;">
-                                                <button id='btn_bulk_update' style="height: 32px;" class="btn btn-sm btn-primary">
-                                                    {% trans 'Submit' %}
-                                                </button>
-                                            </div>
+                    <!-- .left-right-aside-column-->
+                    <div class="contact-page-aside">
+                        <!-- .left-aside-column-->
+                        <div class="left-aside bg-light-part">
+                            <div class="align-self-center">
+                                        <h4 class="card-title m-t-10">{% trans "Region" %} </h4>
+                                    </div>
+                            <ul class="ztree" id="regionTree"></ul>
+                        </div>
+                        <!-- /.left-aside-column-->
+                        <div class="right-aside ">
+                            <div class="right-page-header">
+                                <div class="d-flex">
+                                    <div class="align-self-center">
+                                        <h4 class="card-title m-t-10">{% trans action %} </h4>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div class=" btn-group-sm">
+                                            <button type="button" class="btn btn-outline-info waves-effect waves-light" data-toggle="modal" data-target="#import_modal" tabindex="0">
+                                                <span class="btn-label"><i class="fa fa-upload"></i></span>{% trans "Import" %}
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary waves-effect waves-light">
+                                                <span class="btn-label"><i class="fa fa-download"></i></span>{% trans "Export" %}
+                                            </button>
+                                            <button type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="modal" data-target="#update_modal" tabindex="0">
+                                                <span class="btn-label"><i class="fa fa-exchange"></i></span>{% trans "Update" %}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="table-responsive">
+                                <table id="asset_list_table" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <input id="check_all" type="checkbox" class="ipt_check_all chk-col-light-blue">
+                                            <label for="check_all"></label>
+                                        </th>
+                                        <th>{% trans 'Hostname' %}</th>
+                                        <th>{% trans 'IP' %}</th>
+                                        <th>{% trans 'Hardware' %}</th>
+                                        <th>{% trans 'Reachable' %}</th>
+                                        <th>{% trans 'Action' %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <!-- .left-aside-column-->
                         </div>
+                        <!-- /.left-right-aside-column-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% include 'assets/_asset_update_modal.html' %}
+    {% include 'assets/_asset_import_modal.html' %}
+    {% include 'assets/_asset_region_create_model.html' %}
 {% endblock %}
 
 {% block custom_foot_js %}
-    <!-- Treeview Plugin JavaScript -->
-    <script src="{% static 'assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/bootstrap-validator/js/bootstrapValidator.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/zTree/js/jquery.ztree.core.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/zTree/js/jquery.ztree.exedit.min.js' %}"></script>
 
     <script>
         let asset_table, show = 0;
@@ -151,8 +154,85 @@
             return asset_table
         }
 
+        let inited = false;
+        let showMenu = false;
+        let zTree, rMenu = null;
+        let treeUrl = '{% url 'api-assets:region-list' %}';
+
+        function initRegionTree(options) {
+            let setting = {
+                view: {
+                    addHoverDom: addHoverDom,
+                    removeHoverDom: removeHoverDom,
+                    dblClickExpand: false,
+                    showLine: true
+                },
+                data: {
+                    simpleData: {
+                        enable: true,
+                        pIdKey: "parent",
+                    }
+                },
+                async: {
+                    enable: true,
+                    url: treeUrl,
+                    //autoParam: ["id=key", "name=n", "level=lv"],
+                    type: 'get'
+                },
+                edit: {
+                    enable: true,
+                    editNameSelectAll: true,
+                    showRemoveBtn: true,
+                    showRenameBtn: true,
+
+                    //drag: {
+                    //    isCopy: true,
+                    //    isMove: true
+                    //}
+                },
+                callback: {
+                    //onRightClick: OnRightClick,
+                    beforeRemove: beforeRemove,
+                    beforeClick: beforeClick,
+                    onRename: onRename,
+                    onSelected: options.onSelected || defaultCallback("On selected"),
+                    beforeDrag: beforeDrag,
+                    onDrag: onDrag,
+                    beforeDrop: beforeDrop,
+                    onDrop: onDrop,
+                    beforeAsync: options.beforeAsync || defaultCallback("Before async")
+                }
+            };
+            $.get(treeUrl, function (data, status) {
+                if (status === "success") {
+                    zTree = $.fn.zTree.init($("#regionTree"), setting, data);
+                }
+
+
+                inited = true;
+            });
+
+            if (inited) {
+                return
+            }
+
+            if (options.showMenu) {
+                showMenu = true;
+                rMenu = $("#rMenu");
+            }
+            if (options.otherMenu) {
+                $(".menu-actions").append(options.otherMenu)
+            }
+            return zTree
+        }
+
         $(document).ready(function () {
             initTable();
+            initRegionTree({
+                onSelected: onNodeSelected,
+                showMenu: true,
+                otherMenu: ``
+            });
         }).on('click', '.btn-create-asset', function () {
             let url = "{% url 'assets:asset-create' %}";
             window.open(url, '_self');
@@ -169,7 +249,6 @@
         }).on('click', '#btn_bulk_update', function () {
             let action = $('#slct_bulk_update').val();
             let id_list = asset_table.selected;
-            console.log(id_list)
             if (id_list.length === 0) {
                 return false;
             }
@@ -177,12 +256,6 @@
             let data = {
                 'resources': id_list
             };
-
-            function refreshPage() {
-                setTimeout(function () {
-                    window.location.reload();
-                }, 300);
-            }
 
             function reloadTable() {
                 asset_table.ajax.reload();
@@ -228,9 +301,9 @@
                     closeOnConfirm: false
                 }, function () {
                     function success(data) {
-                        url = setUrlParam(the_url, 'spm', data.spm);
+                        //url = setUrlParam(the_url, 'spm', data.spm);
                         requestApi({
-                            url: url,
+                            url: setUrlParam(the_url, 'spm', data.spm),
                             method: 'DELETE',
                             success: function () {
                                 let msg = "{% trans 'Asset Deleted.' %}";
@@ -295,5 +368,194 @@
             }
             $(".ipt_check_all").prop("checked", false)
         })
+
+        function onNodeSelected(event, treeNode) {
+            zTree.expandNode(treeNode, true);
+            let url = asset_table.ajax.url();
+            url = setUrlParam(url, "region_id", treeNode.id);
+            asset_table.ajax.url(url);
+            asset_table.ajax.reload();
+        }
+
+        function beforeClick(treeId, treeNode, clickFlag) {
+            return true;
+        }
+
+        function onBodyMouseDown(event) {
+            if (!(event.target.id === "rMenu" || $(event.target).parents("#rMenu").length > 0)) {
+                rMenu.css({"visibility": "hidden"});
+            }
+        }
+
+        function onRename(event, treeId, treeNode, isCancel) {
+            let url = "{% url 'api-assets:region-detail' pk=DEFAULT_PK %}".replace("{{ DEFAULT_PK }}", treeNode.id);
+            let data = {"name": treeNode.name};
+            if (isCancel) {
+                return
+            }
+            requestApi({
+                url: url,
+                body: JSON.stringify(data),
+                method: "PATCH",
+                success_message: "{% trans 'Rename success' %}",
+                success: function () {
+                    //let assets_amount = treeNode.meta.node.assets_amount;
+                    //if (!assets_amount) {
+                    //    assets_amount = 0;
+                    //}
+                    //treeNode.name = treeNode.name + ' (' + 0 + ')';
+                    zTree.updateNode(treeNode);
+                },
+            })
+        }
+
+        function beforeDrag() {
+            return true
+        }
+
+        function beforeDrop(treeId, treeNodes, targetNode, moveType) {
+            let treeNodesNames = [];
+            $.each(treeNodes, function (index, value) {
+                treeNodesNames.push(value.name);
+            });
+
+            let msg = "你想移动节点: `" + treeNodesNames.join(",") + "` 到 `" + targetNode.name + "` 下吗?";
+            return confirm(msg);
+        }
+
+        function onDrag(event, treeId, treeNodes) {
+        }
+
+        function onDrop(event, treeId, treeNodes, targetNode, moveType) {
+            let treeNodesIds = [];
+            $.each(treeNodes, function (index, value) {
+                treeNodesIds.push(value.meta.node.id);
+            });
+
+            let the_url = "{% url 'api-assets:region-detail' pk=DEFAULT_PK %}".replace("{{ DEFAULT_PK }}", targetNode.meta.node.id);
+            let body = {nodes: treeNodesIds};
+            requestApi({
+                url: the_url,
+                method: "PUT",
+                body: JSON.stringify(body)
+            })
+        }
+
+        function defaultCallback(action) {
+            function logging() {
+                console.log(action)
+            }
+
+            return logging
+        }
+
+        function addHoverDom(treeId, treeNode) {
+            let sObj = $("#" + treeNode.tId + "_span"); //获取节点信息
+            if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+            let addStr = "<span class='button add' id='addBtn_" + treeNode.tId + "' title='add node' data-toggle=\"modal\" data-target=\"#create_modal\" οnfοcus='this.blur();'></span>";
+            sObj.after(addStr); //加载添加按钮
+            let btn = $("#addBtn_" + treeNode.tId);
+            //绑定添加事件，并定义添加操作
+            if (btn) btn.bind("click", function () {
+                // 验证表单
+                $('#btn_create_confirm').click(function () {
+                    // 验证表单信息
+                    let bootstrapValidator = $("#fm_create").data('bootstrapValidator');
+                    bootstrapValidator.validate();
+                    if (bootstrapValidator.isValid())
+                        $("#fm_create").submit();
+                    else return
+                    let formData = {};
+                    let data = $("#fm_create").serializeArray();
+                    $.each(data, function () {
+                        formData[this.name] = this.value;
+                        formData.parent = treeNode.id;
+                    });
+                    requestApi({
+                        url: '{% url 'api-assets:region-list' %}',
+                        method: 'POST',
+                        body: JSON.stringify(formData),
+                        success_message: "{% trans 'Create success' %}",
+                        success: function (data) {
+                            zTree.addNodes(treeNode, {id: data.id, pId: treeNode.id, name: data.name}); //页面上添加节点
+                            let node = zTree.getNodeByParam("id", data.id, null); //根据新的id找到新添加的节点
+                            zTree.selectNode(node); //让新添加的节点处于选中状态
+                            // 清空表单
+                            $("#fm_create").data('bootstrapValidator').resetForm(true);
+                            // 手动关闭弹窗
+                            $('#create_modal').modal('hide')
+                        }
+                    })
+                });
+            })
+        }
+
+        function removeHoverDom(treeId, treeNode) {
+            $("#addBtn_" + treeNode.tId).unbind().remove();
+        }
+
+        function beforeRemove(treeId, treeNode) {
+            zTree.selectNode(treeNode);
+            swal({
+                title: "{% trans 'Are you sure?' %}",
+                text: "{% trans 'This will delete the selected region !!!' %}",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: "{% trans 'Cancel' %}",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "{% trans 'Confirm' %}",
+                closeOnConfirm: false
+            },function (isConfirm) {
+                if (isConfirm) {
+                    let the_url = "{% url 'api-assets:region-detail' pk=DEFAULT_PK %}".replace("{{ DEFAULT_PK }}", treeNode.id);
+                    $.ajax({
+                        url: the_url,
+                        method: "DELETE",
+                        success: function () {
+                            zTree.removeNode(treeNode);
+                        }
+                    });
+                    let msg = "{% trans 'Your region has been deleted.' %}"
+                    swal("{% trans 'Deleted!' %}", msg, "success");
+                } else {
+                    let msg = "{% trans 'Region Deleting failed.' %}"
+                    swal("{% trans 'Region Delete' %}", msg, "error");
+                }
+            })
+            return false
+        }
+
+        $('#fm_create').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    message: "{% trans 'The name is required and cannot be empty' %}",
+                    validators: {
+                        notEmpty: {
+                            message: "{% trans 'The name is required and cannot be empty' %}"
+                        },
+                        stringLength: {
+                            min: 1,
+                            max: 30,
+                            message: "{% trans 'The name must be more than 1 and less than 30 characters long' %}"
+                        },
+                        regexp: {
+                            regexp: /^[\u4E00-\u9FA5a-zA-Z0-9_]+$/,
+                            message: "{% trans 'The name can only consist of alphabetical, number, dot and underscore' %}"
+                        },
+                    }
+                },
+            }
+        })
+
+        $('#create_modal').on('hidden.bs.modal', function () {
+            $(':input', '#fm_create').not(':button,:submit,:reset').val('').removeAttr('checked').removeAttr('checked');
+        });
+
     </script>
 {% endblock %}

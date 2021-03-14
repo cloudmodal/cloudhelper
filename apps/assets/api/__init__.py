@@ -12,6 +12,7 @@
 """
 from .tags import *
 from .asset import *
+from .region import *
 from .asset_user import *
 from .admin_user import *
 from .asset_config import *

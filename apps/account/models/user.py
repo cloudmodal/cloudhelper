@@ -43,11 +43,6 @@ class AuthMixin:
     def password_raw(self):
         raise AttributeError('Password raw is not a readable attribute')
 
-    #: Use this attr to set user object password, example
-    #: user = User(username='example', password_raw='password', ...)
-    #: It's equal:
-    #: user = User(username='example', ...)
-    #: user.set_password('password')
     @password_raw.setter
     def password_raw(self, password_raw_):
         self.set_password(password_raw_)
@@ -468,7 +463,7 @@ class User(AuthMixin, TokenMixin, RoleMixin, MFAMixin, AbstractUser):
         max_length=128, blank=True, verbose_name=_('Wechat')
     )
     phone = models.CharField(
-        max_length=20, unique=True, verbose_name=_('Phone')
+        max_length=20, unique=True, blank=True, null=True, verbose_name=_('Phone')
     )
     mfa_level = models.SmallIntegerField(
         default=0, choices=MFAMixin.MFA_LEVEL_CHOICES, verbose_name=_('MFA')
@@ -509,7 +504,7 @@ class User(AuthMixin, TokenMixin, RoleMixin, MFAMixin, AbstractUser):
         return '{0.name}({0.username})'.format(self)
 
     def get_absolute_url(self):
-        return reverse('users:user-detail', args=(self.id,))
+        return reverse('account:user-detail', args=(self.id,))
 
     @property
     def groups_display(self):
@@ -579,17 +574,3 @@ class User(AuthMixin, TokenMixin, RoleMixin, MFAMixin, AbstractUser):
     class Meta:
         ordering = ['username']
         verbose_name = _("User")
-
-    #: Use this method initial user
-    @classmethod
-    def initial(cls):
-        from .group import UserGroup
-        user = cls(username='admin',
-                   email='admin@light2cloud.com',
-                   name=_('Administrator'),
-                   password_raw='admin',
-                   role='Admin',
-                   comment=_('Administrator is the super user of system'),
-                   created_by=_('System'))
-        user.save()
-        user.groups.add(UserGroup.initial())

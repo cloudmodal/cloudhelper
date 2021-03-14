@@ -135,6 +135,10 @@ class Asset(ProtocolsMixin, OrgModelMixin):
     is_active = models.BooleanField(
         default=True, verbose_name=_('Is active')
     )
+    region = models.ForeignKey(
+        'assets.region', on_delete=models.PROTECT, null=True,
+        related_name='assets_region', verbose_name=_("Region")
+    )
     # Auth
     admin_user = models.ForeignKey(
         'assets.AdminUser', on_delete=models.PROTECT, null=True,

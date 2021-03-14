@@ -13,4 +13,5 @@
 from .user import *
 from .tags import *
 from .asset import *
+from .region import *
 from .asset_config import *

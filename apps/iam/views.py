@@ -83,8 +83,11 @@ class IndexView(PermissionsMixin, TemplateView):
         recent = timezone.now() - datetime.timedelta(days=30)
         total = self.get_asset_count()
         new = Asset.objects.filter(date_created__gte=recent).count()
-        sums = new / total * 100
-        return sums
+        if total > 0:
+            sums = new / total * 100
+            return sums
+        else:
+            return 0
 
     def get_online_user_count_percentage(self):
         """

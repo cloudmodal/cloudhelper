@@ -48,5 +48,8 @@ urlpatterns = [
     path('tags/', views.TagsListView.as_view(), name='tags-list'),
     path('tags/create/', views.TagsCreateView.as_view(), name='tags-create'),
     path('tags/<uuid:pk>/update/', views.TagsUpdateView.as_view(), name='tags-update'),
-    path('tags/<uuid:pk>/delete/', views.TagsDeleteView.as_view(), name='tags-delete'),
+
+    path('region/', views.RegionListView.as_view(), name='region-list'),
+    path('region/create/', views.RegionCreateView.as_view(), name='region-create'),
+    path('region/<uuid:pk>/update/', views.RegionUpdateView.as_view(), name='region-update'),
 ]

@@ -169,7 +169,7 @@ class UserUpdateForm(UserCreateUpdateFormMixin):
 
 class UserProfileForm(forms.ModelForm):
     username = forms.CharField(disabled=True, label=_("Username"))
-    name = forms.CharField(disabled=True, label=_("Name"))
+    name = forms.CharField(label=_("Name"))
     email = forms.CharField(disabled=True)
 
     class Meta:
@@ -189,15 +189,16 @@ class UserMFAForm(forms.ModelForm):
         'When enabled, '
         'you will enter the MFA binding process the next time you log in. '
         'you can also directly bind in '
-        '"personal information -> quick modification -> change MFA Settings"!')
+        '"profile -> setting -> MFA Settings"!')
 
     class Meta:
         model = User
         fields = ['mfa_level']
         widgets = {'mfa_level': forms.RadioSelect()}
         help_texts = {
-            'mfa_level': _('* Enable MFA authentication '
-                           'to make the account more secure.'),
+            'mfa_level': _(
+                '* Enable MFA authentication to make the account more secure.'
+            )
         }
 
 
@@ -380,3 +381,34 @@ class UserGroupForm(OrgModelForm):
 
 class FileForm(forms.Form):
     file = forms.FileField()
+
+
+class UserFirstLoginForm(forms.ModelForm):
+    username = forms.CharField(disabled=True, label=_("Username"))
+    name = forms.CharField(label=_("Name"))
+    email = forms.CharField(disabled=True)
+    mfa_description = _(
+        'When enabled, '
+        'you will enter the MFA binding process the next time you log in. '
+        'you can also directly bind in '
+        '"profile -> setting -> MFA Settings"!')
+    finish_description = _(
+        'In order to protect you and your company, '
+        'please keep your account, '
+        'password and key sensitive information properly. '
+        '(for example: setting complex password, enabling MFA authentication)'
+    )
+    terms = forms.CheckboxInput()
+
+    class Meta:
+        model = User
+        fields = [
+            'username', 'name', 'email',
+            'wechat', 'phone', 'mfa_level'
+        ]
+        widgets = {'mfa_level': forms.RadioSelect()}
+        help_texts = {
+            'mfa_level': _(
+                '* Enable MFA authentication to make the account more secure.'
+            )
+        }

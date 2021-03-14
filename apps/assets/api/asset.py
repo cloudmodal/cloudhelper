@@ -23,7 +23,7 @@ from ..models import Asset  # Node
 from .. import serializers
 # from ..tasks import update_asset_hardware_info_manual, \
 #     test_asset_connectivity_manual
-# from ..filters import AssetByNodeFilterBackend, LabelFilterBackend
+from ..filters import AssetByRegionFilterBackend, TagsFilterBackend
 
 
 logger = get_logger(__file__)
@@ -44,7 +44,7 @@ class AssetViewSet(OrgBulkModelViewSet):
     ordering_fields = ("hostname", "ip", "port", "cpu_cores")
     serializer_class = serializers.AssetSerializer
     permission_classes = (IsOrgAdminOrAppUser,)
-    # extra_filter_backends = [AssetByNodeFilterBackend, LabelFilterBackend]
+    extra_filter_backends = [AssetByRegionFilterBackend, TagsFilterBackend]
 
     # def set_assets_node(self, assets):
     #     if not isinstance(assets, list):
@@ -92,19 +92,3 @@ class AssetViewSet(OrgBulkModelViewSet):
 #         return Response({"task": task.id})
 
 
-# class AssetGatewayApi(generics.RetrieveAPIView):
-#     permission_classes = (IsOrgAdminOrAppUser,)
-#     serializer_class = serializers.GatewayWithAuthSerializer
-#     model = Asset
-#
-#     def retrieve(self, request, *args, **kwargs):
-#         asset_id = kwargs.get('pk')
-#         asset = get_object_or_404(Asset, pk=asset_id)
-#
-#         if asset.domain and \
-#                 asset.domain.gateways.filter(protocol='ssh').exists():
-#             gateway = random.choice(asset.domain.gateways.filter(protocol='ssh'))
-#             serializer = serializers.GatewayWithAuthSerializer(instance=gateway)
-#             return Response(serializer.data)
-#         else:
-#             return Response({"msg": "Not have gateway"}, status=404)

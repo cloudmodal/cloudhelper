@@ -1,0 +1,33 @@
+{% extends '_modal.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block modal_id %}create_modal{% endblock %}
+
+{% block modal_class %}modal-lg{% endblock %}
+
+{% block modal_confirm_id %}btn_create_confirm{% endblock %}
+
+{% block modal_title%}{% trans "Create region" %}{% endblock %}
+
+{% block modal_body %}
+    <form class="form-horizontal form-material" method="post" id="fm_create">
+        <div class="form-group">
+            <div class="col-md-12 m-b-20">
+                <input type="text" class="form-control" name="name" placeholder="{% trans 'name' %}">
+            </div>
+            <div class="col-md-12 m-b-20">
+                <input type="text" class="form-control" name="owner" placeholder="{% trans 'owner' %}">
+            </div>
+            <div class="col-md-12 m-b-20">
+                <input type="text" class="form-control" name="telephone" placeholder="{% trans 'telephone' %}">
+            </div>
+            <div class="col-md-12 m-b-20">
+                <input type="text" class="form-control" name="address" placeholder="{% trans 'address' %}">
+            </div>
+            <div class="col-md-12 m-b-20">
+                <textarea class="form-control" rows="5" name="comment" placeholder="{% trans 'comment' %}"></textarea>
+            </div>
+        </div>
+    </form>
+{% endblock %}
