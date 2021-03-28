@@ -1,0 +1,5656 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-21 15:37+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/access/api/credentials_v1.py:135
+msgid "'{}', Role not found or access denied"
+msgstr ""
+
+#: apps/access/forms.py:32 apps/access/forms.py:107 apps/access/forms.py:124
+#: apps/access/templates/access/credentials_detail.html:107
+msgid "Secret Access Key"
+msgstr ""
+
+#: apps/access/forms.py:34 apps/access/forms.py:127
+msgid ""
+"Leave the secret access key blank to keep the same value, otherwise specify "
+"a new secret access key."
+msgstr "将访问密钥留空以保持相同的值，否则指定新的秘密访问密钥。"
+
+#: apps/access/forms.py:43 apps/access/forms.py:97
+msgid "Access Key IDs must be 20 characters."
+msgstr "访问密钥ID必须为20个字符。"
+
+#: apps/access/forms.py:50 apps/access/forms.py:114 apps/access/forms.py:134
+msgid "Secret Access Keys must be 40 characters."
+msgstr "Secret Access Keys 必须为40个字符。"
+
+#: apps/access/forms.py:152
+msgid "Not a valid role ARN."
+msgstr "不是有效的角色ARN。"
+
+#: apps/access/forms.py:192
+msgid "External id"
+msgstr "外部ID"
+
+#: apps/access/models/aliyun_credential.py:32
+#: apps/access/models/amazon_credential.py:26
+#: apps/access/models/credentials.py:27
+#: apps/access/models/google_credential.py:32
+#: apps/access/models/tencent_credential.py:35 apps/account/forms.py:349
+#: apps/account/models/user.py:156 apps/account/models/user.py:581
+#: apps/account/serializers/group.py:31
+#: apps/account/templates/group/user_group_detail.html:57
+#: apps/account/templates/group/user_group_list.html:27
+#: apps/account/templates/users/user_list.html:8 apps/account/views/user.py:257
+#: apps/assets/models/tags.py:24 apps/audits/models.py:38
+#: apps/audits/models.py:51 apps/authentication/models.py:54
+#: apps/tickets/models/ticket.py:44 apps/tickets/models/ticket.py:156
+msgid "User"
+msgstr "用户"
+
+#: apps/access/models/aliyun_credential.py:47
+msgid "AliYun Credential"
+msgstr "阿里云凭证"
+
+#: apps/access/models/amazon_credential.py:39
+msgid "Choose local roles"
+msgstr "选择本地角色"
+
+#: apps/access/models/amazon_credential.py:41
+msgid ""
+"For how to configure local roles, please refer to the <a href='https://docs."
+"aws.amazon.com/cli/?id=docs_gateway' target='_blank'>AWS CLI</a> "
+"configuration and introduction"
+msgstr ""
+"有关如何配置本地角色，请参阅<a href='https://docs.aws.amazon.com/cli/?"
+"id=docs_gateway' target='_blank'>AWS CLI</a>AWS CLI </a>配置和简介"
+
+#: apps/access/models/amazon_credential.py:53
+msgid "Amazon Credential Role"
+msgstr "AWS凭证角色"
+
+#: apps/access/models/base.py:24 apps/access/models/statistics.py:34
+#: apps/access/templates/access/credentials_detail.html:52
+msgid "Credentials Name"
+msgstr "凭证名称"
+
+#: apps/access/models/base.py:33 apps/account/models/group.py:26
+#: apps/account/models/user.py:485
+#: apps/account/templates/group/user_group_detail.html:44
+#: apps/account/templates/group/user_group_list.html:28
+#: apps/account/templates/users/user_detail.html:201
+#: apps/account/templates/users/user_profile.html:145
+#: apps/assets/models/asset.py:194 apps/assets/models/base.py:54
+#: apps/assets/models/cmd_filter.py:33 apps/assets/models/cmd_filter.py:82
+#: apps/assets/models/config.py:42 apps/assets/models/tags.py:34
+#: apps/assets/templates/assets/admin_user_detail.html:55
+#: apps/assets/templates/assets/admin_user_list.html:22
+#: apps/assets/templates/assets/asset_detail.html:131
+#: apps/assets/templates/assets/system_user_list.html:25
+#: apps/organization/models.py:17 apps/settings/models.py:34
+msgid "Comment"
+msgstr "评论"
+
+#: apps/access/models/base.py:36 apps/access/models/statistics.py:45
+#: apps/account/models/group.py:27
+#: apps/account/templates/group/user_group_detail.html:40
+#: apps/assets/models/asset.py:190 apps/assets/models/base.py:57
+#: apps/assets/models/config.py:45 apps/assets/models/tags.py:36
+#: apps/assets/templates/assets/admin_user_detail.html:47
+#: apps/common/mixins/models.py:61 apps/organization/models.py:16
+msgid "Date created"
+msgstr "创建日期"
+
+#: apps/access/models/base.py:39 apps/access/models/statistics.py:48
+#: apps/assets/models/base.py:60 apps/assets/models/config.py:48
+#: apps/common/mixins/models.py:62
+msgid "Date updated"
+msgstr "更新日期"
+
+#: apps/access/models/base.py:42 apps/access/models/statistics.py:51
+#: apps/account/models/user.py:494 apps/account/serializers/group.py:43
+#: apps/account/templates/users/user_detail.html:139
+#: apps/assets/models/asset.py:186 apps/assets/models/base.py:63
+#: apps/assets/models/cmd_filter.py:36 apps/assets/models/cmd_filter.py:87
+#: apps/assets/models/config.py:51
+#: apps/assets/templates/assets/admin_user_detail.html:51
+#: apps/assets/templates/assets/asset_detail.html:123
+#: apps/common/mixins/models.py:60 apps/organization/models.py:15
+msgid "Created by"
+msgstr "创建者"
+
+#: apps/access/models/credentials.py:42
+msgid "Credential"
+msgstr "凭证"
+
+#: apps/access/models/google_credential.py:36
+msgid "Google Service Account Key JSON"
+msgstr ""
+
+#: apps/access/models/google_credential.py:45
+msgid "Google Credential"
+msgstr ""
+
+#: apps/access/models/statistics.py:26
+#: apps/access/templates/access/credentials_detail.html:147
+#: apps/access/templates/access/credentials_list.html:32
+#: apps/account/forms.py:172 apps/account/models/group.py:25
+#: apps/account/models/user.py:452 apps/account/serializers/user.py:318
+#: apps/account/templates/group/user_group_detail.html:32
+#: apps/account/templates/group/user_group_list.html:26
+#: apps/account/templates/users/_select_user_modal.html:16
+#: apps/account/templates/users/user_detail.html:48
+#: apps/account/templates/users/user_list.html:26
+#: apps/account/templates/users/user_profile.html:79
+#: apps/assets/forms/asset.py:31 apps/assets/forms/user.py:85
+#: apps/assets/forms/user.py:105 apps/assets/models/base.py:38
+#: apps/assets/models/cmd_filter.py:31 apps/assets/models/config.py:22
+#: apps/assets/templates/assets/admin_user_detail.html:39
+#: apps/assets/templates/assets/admin_user_list.html:19
+#: apps/assets/templates/assets/asset_config_list.html:21
+#: apps/assets/templates/assets/system_user_list.html:20
+#: apps/organization/models.py:11 apps/settings/models.py:29
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:32
+#: apps/settings/templates/settings/command_storage_create.html:41
+#: apps/settings/templates/settings/replay_storage_create.html:44
+#: apps/settings/templates/settings/terminal_setting.html:83
+#: apps/settings/templates/settings/terminal_setting.html:105
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:375
+msgid "Name"
+msgstr "名称"
+
+#: apps/access/models/statistics.py:30 apps/access/views/amazon.py:43
+#: apps/access/views/amazon.py:56 apps/access/views/amazon.py:79
+#: apps/access/views/amazon.py:96 apps/access/views/amazon.py:129
+#: apps/access/views/amazon.py:150 apps/access/views/amazon.py:192
+#: apps/assets/models/config.py:29 apps/templates/_left_side_bar.html:73
+#: apps/templates/_left_side_bar.html:76
+msgid "Credentials"
+msgstr "凭证"
+
+#: apps/access/models/statistics.py:59
+msgid "Credential Statistics"
+msgstr "凭证统计"
+
+#: apps/access/models/tencent_credential.py:50
+msgid "TenCent Credential"
+msgstr "腾讯云凭证"
+
+#: apps/access/serializers/base.py:53 apps/assets/serializers/base.py:53
+msgid ""
+"Not support openssh format key, using ssh-keygen -t rsa -m pem to generate"
+msgstr "暂不支持OPENSSH格式的密钥，使用 ssh-keygen -t rsa -m pem生成"
+
+#: apps/access/serializers/base.py:59 apps/assets/serializers/base.py:59
+msgid "private key invalid"
+msgstr "密钥不合法"
+
+#: apps/access/templates/access/_amazon.html:21
+#: apps/access/templates/access/_amazon_access_key.html:21
+#: apps/access/templates/access/amazon_access_key_create.html:21
+#: apps/access/templates/access/amazon_iam_role_create.html:94
+#: apps/access/templates/access/amazon_iam_role_update.html:21
+#: apps/access/templates/access/credentials_detail.html:47
+#: apps/tickets/models/ticket.py:33
+msgid "General"
+msgstr "一般"
+
+#: apps/access/templates/access/_amazon.html:25
+#: apps/access/templates/access/amazon_iam_role_create.html:98
+#: apps/access/templates/access/amazon_iam_role_update.html:25
+#: apps/access/templates/access/credentials_detail.html:117
+msgid "IAM Role Information"
+msgstr "IAM角色信息"
+
+#: apps/access/templates/access/_amazon.html:33
+#: apps/access/templates/access/_amazon_access_key.html:32
+#: apps/access/templates/access/amazon_access_key_create.html:31
+#: apps/access/templates/access/amazon_iam_role_create.html:104
+#: apps/access/templates/access/amazon_iam_role_update.html:31
+#: apps/assets/templates/assets/_system_user.html:61
+#: apps/assets/templates/assets/asset_create.html:86
+msgid "Other"
+msgstr "其它"
+
+#: apps/access/templates/access/_amazon.html:44
+#: apps/access/templates/access/_amazon_access_key.html:43
+#: apps/access/templates/access/amazon_access_key_create.html:42
+#: apps/access/templates/access/amazon_iam_role_create.html:115
+#: apps/access/templates/access/amazon_iam_role_update.html:42
+#: apps/account/templates/account/forgot_password.html:33
+#: apps/account/templates/group/user_group_create_update.html:43
+#: apps/account/templates/users/_user.html:64
+#: apps/account/templates/users/user_list.html:55
+#: apps/account/templates/users/user_password_update.html:64
+#: apps/account/templates/users/user_profile_update.html:52
+#: apps/assets/templates/assets/_system_user.html:73
+#: apps/assets/templates/assets/admin_user_create_update.html:41
+#: apps/assets/templates/assets/asset_config_create_update.html:36
+#: apps/assets/templates/assets/asset_create.html:96
+#: apps/assets/templates/assets/asset_list.html:76
+#: apps/assets/templates/assets/tags_create_update.html:31
+#: apps/audits/templates/audit/login_log_list.html:89
+#: apps/settings/templates/settings/basic_setting.html:65
+#: apps/settings/templates/settings/command_storage_create.html:80
+#: apps/settings/templates/settings/email_content_setting.html:55
+#: apps/settings/templates/settings/email_setting.html:66
+#: apps/settings/templates/settings/ldap_setting.html:67
+#: apps/settings/templates/settings/replay_storage_create.html:153
+#: apps/settings/templates/settings/security_setting.html:74
+#: apps/settings/templates/settings/terminal_setting.html:73
+msgid "Submit"
+msgstr "提交"
+
+#: apps/access/templates/access/_amazon.html:45
+#: apps/access/templates/access/_amazon_access_key.html:44
+#: apps/access/templates/access/amazon_access_key_create.html:43
+#: apps/access/templates/access/amazon_iam_role_create.html:116
+#: apps/access/templates/access/amazon_iam_role_update.html:43
+#: apps/account/templates/group/user_group_create_update.html:45
+#: apps/account/templates/users/_user.html:65
+#: apps/account/templates/users/user_detail.html:288
+#: apps/account/templates/users/user_password_update.html:65
+#: apps/account/templates/users/user_profile_update.html:53
+#: apps/assets/templates/assets/_system_user.html:74
+#: apps/assets/templates/assets/admin_user_create_update.html:42
+#: apps/assets/templates/assets/asset_config_create_update.html:37
+#: apps/assets/templates/assets/asset_create.html:97
+#: apps/assets/templates/assets/tags_create_update.html:32
+#: apps/settings/templates/settings/basic_setting.html:64
+#: apps/settings/templates/settings/command_storage_create.html:79
+#: apps/settings/templates/settings/email_content_setting.html:54
+#: apps/settings/templates/settings/email_setting.html:65
+#: apps/settings/templates/settings/ldap_setting.html:64
+#: apps/settings/templates/settings/replay_storage_create.html:152
+#: apps/settings/templates/settings/security_setting.html:73
+#: apps/settings/templates/settings/terminal_setting.html:71
+msgid "Reset"
+msgstr "重置"
+
+#: apps/access/templates/access/_amazon.html:46
+#: apps/access/templates/access/_amazon_access_key.html:45
+#: apps/access/templates/access/amazon_access_key_create.html:44
+#: apps/access/templates/access/amazon_iam_role_create.html:117
+#: apps/access/templates/access/amazon_iam_role_update.html:44
+#: apps/account/templates/group/user_group_create_update.html:47
+#: apps/account/templates/group/user_group_list.html:121
+#: apps/account/templates/users/_user.html:66
+#: apps/account/templates/users/user_detail.html:522
+#: apps/account/templates/users/user_detail.html:549
+#: apps/account/templates/users/user_detail.html:618
+#: apps/account/templates/users/user_list.html:269
+#: apps/assets/templates/assets/_system_user.html:75
+#: apps/assets/templates/assets/admin_user_create_update.html:43
+#: apps/assets/templates/assets/asset_config_create_update.html:38
+#: apps/assets/templates/assets/asset_config_list.html:143
+#: apps/assets/templates/assets/asset_create.html:98
+#: apps/assets/templates/assets/asset_list.html:227
+#: apps/assets/templates/assets/tags_create_update.html:33
+#: apps/settings/templates/settings/terminal_setting.html:166
+msgid "Cancel"
+msgstr "取消"
+
+#: apps/access/templates/access/_amazon.html:60
+#: apps/access/templates/access/_amazon_access_key.html:59
+#: apps/access/templates/access/amazon_access_key_create.html:58
+#: apps/access/templates/access/amazon_iam_role_create.html:132
+#: apps/access/templates/access/amazon_iam_role_update.html:59
+msgid "Help"
+msgstr "帮助"
+
+#: apps/access/templates/access/_amazon.html:63
+#: apps/access/templates/access/_amazon_access_key.html:62
+#: apps/access/templates/access/amazon_access_key_create.html:61
+#: apps/access/templates/access/amazon_iam_role_create.html:135
+#: apps/access/templates/access/amazon_iam_role_update.html:62
+msgid "Help Registering IAM Access Keys With CloudHelper"
+msgstr "帮助向CloudHelper注册IAM访问密钥"
+
+#: apps/access/templates/access/_amazon.html:81
+#: apps/access/templates/access/amazon_iam_role_create.html:153
+msgid "Copy successful"
+msgstr "复制成功"
+
+#: apps/access/templates/access/_amazon.html:84
+#: apps/access/templates/access/amazon_iam_role_create.html:156
+msgid "Copy failed, please copy manually"
+msgstr "复制失败，请手动复制"
+
+#: apps/access/templates/access/_amazon_access_key.html:25
+#: apps/access/templates/access/amazon_access_key_create.html:25
+#: apps/access/templates/access/credentials_detail.html:94
+msgid "Access Key Information"
+msgstr "访问密钥信息"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:15
+msgid "Instructions"
+msgstr "使用说明"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:21
+msgid "Sign in to the IAM Managment Console"
+msgstr "登录到IAM管理控制台"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:23
+msgid "Amazon China"
+msgstr "亚马逊中国"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:24
+#: venv/lib/python3.6/site-packages/django/utils/text.py:233
+msgid "or"
+msgstr "或"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:26
+#: apps/access/templates/access/credentials_detail.html:64
+#: apps/access/templates/access/credentials_list.html:89
+msgid "Amazon Standard"
+msgstr "亚马逊标准"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:28
+msgid "Click the blue \"Create role\" button."
+msgstr "点击蓝色的“创建角色”按钮。"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:29
+msgid "Under \"Select role type\", select \"Another AWS Account\"."
+msgstr "在“选择角色类型”下，选择“另一个AWS账户”。"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:30
+msgid "Enter the following information:"
+msgstr "输入以下信息："
+
+#: apps/access/templates/access/amazon_iam_role_create.html:36
+#: apps/account/models/user.py:447
+#: apps/account/templates/users/user_detail.html:78
+msgid "Account ID"
+msgstr "账户ID"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:39
+msgid "Copy account ID to clipboard"
+msgstr "将帐户ID复制到剪贴板"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:43
+msgid "region"
+msgstr "区域"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:47
+msgid "Require external ID"
+msgstr "需要外部ID"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:51
+#: apps/access/templates/access/credentials_detail.html:128
+msgid "External ID"
+msgstr "外部ID"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:54
+msgid "Copy External ID to clipboard"
+msgstr "将外部ID复制到剪贴板"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:58
+msgid "Require MFA"
+msgstr "需要MFA"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:65
+msgid "Click \"Next: Permissions\"."
+msgstr "单击“下一步：权限”。"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:67
+msgid ""
+"Select zero or more Managed Policies to attach to the role. Choose from:"
+msgstr "选择0个或多个托管策略来附加到该角色。从中选择："
+
+#: apps/access/templates/access/amazon_iam_role_create.html:69
+msgid ""
+"<strong>Recommended:</strong> Do not select any managed policies. Selecting "
+"this option is more secure, but you will need to return to your role and add "
+"permissions later."
+msgstr ""
+"<strong>推荐</ strong>：不要选择任何托管策略。选择此选项更为安全，但是稍后您"
+"将需要返回到您刚创建的角色并添加权限"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:70
+msgid ""
+"Or select the policy called \"PowerUserAccess\". Selecting this option gets "
+"you up and running quickly with CloudHelper, but gives CloudHelper too many "
+"permissions."
+msgstr ""
+"或选择名为“ PowerUserAccess”的策略。 选择此选项可以使您快速使用CloudHelper并"
+"运行，但是为CloudHelper提供的权限过大。"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:72
+msgid "Click \"Next: Review\"."
+msgstr "点击“下一步：查看”。"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:74
+msgid ""
+"Enter <mark>CloudHelper</mark> as your role name. The name does not really "
+"matter. It is for your reference."
+msgstr ""
+"输入<mark> CloudHelper </mark>作为您的角色名称。 名称并不重要。 供您参考。"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:75
+msgid "Click \"Create role\"."
+msgstr "点击“创建角色”。"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:76
+msgid ""
+"Select the newly created <mark>CloudHelper</mark> role in your roles list."
+msgstr "在角色列表中选择新创建的<mark> CloudHelper </mark>角色。"
+
+#: apps/access/templates/access/amazon_iam_role_create.html:77
+msgid ""
+"Find the \"Role ARN\" value in the \"Summary\" section. Copy and paste it "
+"below"
+msgstr "在“摘要”部分中找到“角色ARN”值。 复制并粘贴到下面"
+
+#: apps/access/templates/access/credentials_create.html:9
+#: apps/access/templates/access/credentials_detail.html:9
+#: apps/access/views/amazon.py:44
+msgid "Credentials list"
+msgstr "凭证列表"
+
+#: apps/access/templates/access/credentials_create.html:24
+#: apps/assets/forms/asset_config.py:31
+msgid "Amazon Web Services"
+msgstr "亚马逊网络服务"
+
+#: apps/access/templates/access/credentials_create.html:27
+msgid "Aliyun"
+msgstr "阿里云"
+
+#: apps/access/templates/access/credentials_create.html:30
+#: apps/assets/forms/asset_config.py:33
+msgid "Azure"
+msgstr ""
+
+#: apps/access/templates/access/credentials_create.html:33
+msgid "Google Cloud"
+msgstr ""
+
+#: apps/access/templates/access/credentials_create.html:36
+#: apps/assets/forms/asset_config.py:35
+msgid "Tencent Cloud"
+msgstr "腾讯云"
+
+#: apps/access/templates/access/credentials_create.html:39
+#: apps/assets/forms/asset_config.py:36
+msgid "HuaWei Cloud"
+msgstr "华为云"
+
+#: apps/access/templates/access/credentials_create.html:46
+msgid ""
+"CloudHerlper requires access to your Amazon Web Services account in order to "
+"run actions. You can choose to register an IAM Role or an Access Key. IAM "
+"Roles are more secure but are a little more work to setup. Access Keys are "
+"easier to setup, but are less secure."
+msgstr ""
+"CloudHerlper需要访问您的Amazon Web Services帐户才能运行操作。 您可以选择注册"
+"IAM角色或访问密钥。IAM角色更安全，但要设置的工作更多。 访问密钥更易于设置，但"
+"安全性较低。"
+
+#: apps/access/templates/access/credentials_create.html:49
+#: apps/access/templates/access/credentials_create.html:57
+msgid "Register an IAM Role"
+msgstr "注册IAM角色"
+
+#: apps/access/templates/access/credentials_create.html:51
+msgid ""
+"Registering an IAM cross-account access role is the most secure way to allow "
+"CloudHerlper to schedule your AWS resources."
+msgstr "注册IAM跨账户访问角色是允许CloudHerlper计划您的AWS资源的最安全方法。"
+
+#: apps/access/templates/access/credentials_create.html:55
+msgid ""
+"Once a trusted relationship is established, only CloudHerlper can access "
+"your resources. There are no access keys that could fall into the wrong "
+"hands. In addition, AWS ensures that IAM roles can only be accessed by the "
+"trusted AWS account."
+msgstr ""
+"建立信任关系后，只有CloudHerlper才能访问您的资源。访问密钥不会落入坏人手中。"
+"此外，AWS确保仅受信任的AWS帐户可以访问IAM角色。"
+
+#: apps/access/templates/access/credentials_create.html:59
+msgid "Note: IAM roles are not available in the Amazon GovCloud (US)."
+msgstr "注意：IAM角色在Amazon GovCloud（US）中不可用。"
+
+#: apps/access/templates/access/credentials_create.html:64
+#: apps/access/templates/access/credentials_create.html:73
+msgid "Register an Access Key"
+msgstr "注册访问密钥"
+
+#: apps/access/templates/access/credentials_create.html:66
+msgid ""
+"Access keys can be used to allow CloudHerlper to interact with your AWS "
+"resources. While not as secure as IAM roles, access keys can still be "
+"invalidated at any time to prevent possible abuse."
+msgstr ""
+"访问密钥可用于允许CloudHerlper与您的AWS资源进行交互。虽然访问密钥不如IAM角色"
+"安全，但仍可以随时使访问密钥失效，以防止可能的滥用。"
+
+#: apps/access/templates/access/credentials_create.html:70
+msgid ""
+"We highly recommend against using access keys from your Amazon Web Services "
+"master user. Please use access keys from an IAM user."
+msgstr ""
+"我们强烈建议不要使用您的Amazon Web服务主用户的访问密钥。请使用IAM用户的访问密"
+"钥。"
+
+#: apps/access/templates/access/credentials_create.html:82
+#: apps/access/templates/access/credentials_create.html:95
+msgid ""
+"CloudHerlper requires access to your Azure account in order to run actions."
+msgstr "CloudHerlper需要访问您的Azure帐户才能运行操作。"
+
+#: apps/access/templates/access/credentials_create.html:85
+#: apps/access/templates/access/credentials_create.html:87
+msgid "Register an Aliyun Credential"
+msgstr "注册阿里云凭证"
+
+#: apps/access/templates/access/credentials_create.html:98
+#: apps/access/templates/access/credentials_create.html:100
+msgid "Register an Azure Credential"
+msgstr "注册Azure凭据"
+
+#: apps/access/templates/access/credentials_create.html:108
+#: apps/access/templates/access/credentials_create.html:121
+#: apps/access/templates/access/credentials_create.html:135
+msgid ""
+"CloudHerlper requires access to your Google Cloud Platform account in order "
+"to run actions."
+msgstr "CloudHerlper需要访问您的Google Cloud Platform帐户才能运行操作。"
+
+#: apps/access/templates/access/credentials_create.html:111
+#: apps/access/templates/access/credentials_create.html:113
+#: apps/access/templates/access/credentials_create.html:124
+#: apps/access/templates/access/credentials_create.html:126
+#: apps/access/templates/access/credentials_create.html:138
+#: apps/access/templates/access/credentials_create.html:140
+msgid "Register a Google Service Account Key"
+msgstr "注册Google服务帐户密钥"
+
+#: apps/access/templates/access/credentials_create.html:154
+#: apps/access/templates/access/credentials_detail.html:168
+#: apps/access/templates/access/credentials_list.html:55
+msgid "Actions"
+msgstr "动作"
+
+#: apps/access/templates/access/credentials_detail.html:32
+#: apps/access/templates/access/credentials_detail.html:36
+#: apps/account/templates/group/user_group_list.html:74
+#: apps/account/templates/users/user_detail.html:218
+#: apps/account/templates/users/user_list.html:114
+#: apps/account/templates/users/user_profile.html:29
+#: apps/account/templates/users/user_profile.html:181
+#: apps/account/templates/users/user_profile.html:191
+#: apps/assets/templates/assets/_asset_user_list.html:76
+#: apps/assets/templates/assets/admin_user_list.html:59
+#: apps/assets/templates/assets/asset_config_list.html:93
+#: apps/assets/templates/assets/asset_detail.html:176
+#: apps/assets/templates/assets/asset_detail.html:179
+#: apps/assets/templates/assets/asset_list.html:134
+#: apps/assets/templates/assets/system_user_list.html:86
+#: apps/assets/templates/assets/tags_list.html:82 apps/audits/models.py:34
+msgid "Update"
+msgstr "更新"
+
+#: apps/access/templates/access/credentials_detail.html:40
+#: apps/account/templates/group/user_group_list.html:76
+#: apps/account/templates/users/user_detail.html:222
+#: apps/account/templates/users/user_list.html:121
+#: apps/account/templates/users/user_list.html:125
+#: apps/assets/templates/assets/admin_user_list.html:60
+#: apps/assets/templates/assets/asset_config_list.html:94
+#: apps/assets/templates/assets/asset_detail.html:184
+#: apps/assets/templates/assets/asset_detail.html:187
+#: apps/assets/templates/assets/asset_list.html:135
+#: apps/assets/templates/assets/system_user_list.html:87
+#: apps/assets/templates/assets/tags_list.html:83 apps/audits/models.py:35
+#: apps/settings/templates/settings/terminal_setting.html:93
+#: apps/settings/templates/settings/terminal_setting.html:115
+#: venv/lib/python3.6/site-packages/django/forms/formsets.py:375
+msgid "Delete"
+msgstr "删除"
+
+#: apps/access/templates/access/credentials_detail.html:58
+#: apps/access/templates/access/credentials_list.html:33
+msgid "Account Type"
+msgstr "账户类型"
+
+#: apps/access/templates/access/credentials_detail.html:62
+#: apps/access/templates/access/credentials_list.html:87
+msgid "Amazon China (Beijing, Ningxia)"
+msgstr "亚马逊中国（北京，宁夏）"
+
+#: apps/access/templates/access/credentials_detail.html:70
+msgid "Credentials Type"
+msgstr "凭证类型"
+
+#: apps/access/templates/access/credentials_detail.html:74
+#: apps/access/templates/access/credentials_list.html:96
+msgid "Amazon Access Key"
+msgstr ""
+
+#: apps/access/templates/access/credentials_detail.html:76
+#: apps/access/templates/access/credentials_list.html:98
+msgid "Amazon IAM Role"
+msgstr ""
+
+#: apps/access/templates/access/credentials_detail.html:82
+#: apps/audits/models.py:88 apps/audits/templates/audit/login_log_list.html:25
+#: apps/authentication/templates/authentication/_access_key.html:79
+msgid "Status"
+msgstr "状态"
+
+#: apps/access/templates/access/credentials_detail.html:85
+msgid "active"
+msgstr "活跃"
+
+#: apps/access/templates/access/credentials_detail.html:99
+msgid "Access Key ID"
+msgstr ""
+
+#: apps/access/templates/access/credentials_detail.html:122
+msgid "IAM Role ARN"
+msgstr ""
+
+#: apps/access/templates/access/credentials_detail.html:142
+msgid "Actions Using These Credentials"
+msgstr "使用这些凭证的操作"
+
+#: apps/access/templates/access/credentials_detail.html:148
+#: apps/assets/models/cmd_filter.py:66
+#: apps/audits/templates/audit/login_log_list.html:19
+#: apps/settings/templates/settings/command_storage_create.html:31
+#: apps/settings/templates/settings/replay_storage_create.html:31
+#: apps/settings/templates/settings/terminal_setting.html:84
+#: apps/settings/templates/settings/terminal_setting.html:106
+#: apps/tickets/models/ticket.py:68
+msgid "Type"
+msgstr "类型"
+
+#: apps/access/templates/access/credentials_list.html:20
+msgid "Register Credentials"
+msgstr "注册凭证"
+
+#: apps/access/templates/access/credentials_list.html:34
+msgid "Credential Type"
+msgstr "凭证类型"
+
+#: apps/access/templates/access/credentials_list.html:35
+msgid "Date Created"
+msgstr "创建时间"
+
+#: apps/access/views/amazon.py:57
+msgid "Create credentials"
+msgstr "创建凭证"
+
+#: apps/access/views/amazon.py:80
+msgid "Credentials detail"
+msgstr "凭证详情"
+
+#: apps/access/views/amazon.py:97
+msgid "Register Amazon Access Key"
+msgstr "注册亚马逊访问密钥"
+
+#: apps/access/views/amazon.py:130 apps/access/views/amazon.py:193
+msgid "Update Amazon IAM Role"
+msgstr "更新亚马逊 IAM角色"
+
+#: apps/access/views/amazon.py:151
+msgid "Register Amazon IAM Role"
+msgstr "注册亚马逊 IAM角色"
+
+#: apps/account/api/user.py:413
+msgid "Could not reset self otp, use profile reset instead"
+msgstr "无法重置自身otp，请改用配置文件重置"
+
+#: apps/account/api/user.py:519
+msgid "Account is not bound to MFA, no need to unbind"
+msgstr "帐户未绑定到MFA，无需解除绑定"
+
+#: apps/account/api/user.py:525
+msgid "Unbinding successfully, please log in again!"
+msgstr "解绑成功，请重新登录！"
+
+#: apps/account/api/user.py:531
+msgid ""
+"Unable to unbind, the account has been forcibly enabled by an administrator, "
+"please contact your administrator"
+msgstr ""
+"无法解除绑定，该帐户已被管理员强制启用，"
+"请与您的管理员联系"
+
+#: apps/account/errors.py:48 apps/account/errors.py:67
+#: apps/account/errors.py:73
+msgid "Incorrect authentication credentials."
+msgstr "身份验证时凭证不正确。"
+
+#: apps/account/errors.py:79
+msgid "Could not satisfy the request Accept header."
+msgstr "无法满足请求Accept标头。"
+
+#: apps/account/forms.py:24 apps/account/forms.py:171
+#: apps/account/models/user.py:450
+#: apps/account/templates/users/_select_user_modal.html:17
+#: apps/account/templates/users/user_detail.html:57
+#: apps/account/templates/users/user_list.html:27
+#: apps/account/templates/users/user_profile.html:75
+#: apps/assets/forms/user.py:86 apps/assets/forms/user.py:106
+#: apps/assets/models/base.py:40
+#: apps/assets/templates/assets/_asset_user_list.html:25
+#: apps/assets/templates/assets/admin_user_detail.html:43
+#: apps/assets/templates/assets/admin_user_list.html:20
+#: apps/assets/templates/assets/system_user_list.html:21
+#: apps/audits/models.py:81 apps/audits/templates/audit/login_log_list.html:18
+#: apps/authentication/forms.py:19
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:31
+msgid "Username"
+msgstr "用户名"
+
+#: apps/account/forms.py:26 apps/account/forms.py:52
+#: apps/account/serializers/user.py:326
+#: apps/account/templates/users/user_password_authentication.html:27
+#: apps/account/templates/users/user_password_update.html:37
+#: apps/account/templates/users/user_profile_update.html:29
+#: apps/account/templates/users/user_update.html:20
+#: apps/assets/forms/user.py:37 apps/assets/models/base.py:45
+#: apps/assets/serializers/asset_user.py:72 apps/authentication/forms.py:21
+#: apps/settings/forms.py:112
+msgid "Password"
+msgstr "密码"
+
+#: apps/account/forms.py:32 apps/account/serializers/user.py:280
+#: apps/authentication/forms.py:42
+msgid "MFA code"
+msgstr "MFA 验证码"
+
+#: apps/account/forms.py:57 apps/account/models/user.py:462
+#: apps/account/templates/users/_select_user_modal.html:18
+#: apps/account/templates/users/user_detail.html:113
+#: apps/account/templates/users/user_list.html:28
+#: apps/account/templates/users/user_profile.html:83
+msgid "Role"
+msgstr "角色"
+
+#: apps/account/forms.py:61 apps/account/models/user.py:498
+#: apps/account/templates/users/user_detail.html:148
+#: apps/account/templates/users/user_list.html:30
+#: apps/account/templates/users/user_profile.html:110
+msgid "Source"
+msgstr "来源"
+
+#: apps/account/forms.py:64 apps/account/forms.py:262
+#: apps/account/templates/users/user_update.html:30
+msgid "ssh public key"
+msgstr "ssh公钥"
+
+#: apps/account/forms.py:65 apps/account/forms.py:263
+msgid "ssh-rsa AAAA..."
+msgstr ""
+
+#: apps/account/forms.py:66
+msgid "Paste user id_rsa.pub here."
+msgstr "在此处粘贴用户id_rsa.pub。"
+
+#: apps/account/forms.py:81 apps/account/templates/users/user_detail.html:333
+msgid "Join user groups"
+msgstr "加入用户组"
+
+#: apps/account/forms.py:116 apps/account/forms.py:277
+msgid "Public key should not be the same as your old one."
+msgstr "公钥不应与您的旧密钥相同。"
+
+#: apps/account/forms.py:120 apps/account/forms.py:281
+#: apps/account/serializers/user.py:157
+msgid "Not a valid ssh public key"
+msgstr "无效的ssh公钥"
+
+#: apps/account/forms.py:133 apps/account/views/login.py:124
+#: apps/account/views/user.py:294
+msgid "* Your password does not meet the requirements"
+msgstr "* 您的密码不符合策略要求"
+
+#: apps/account/forms.py:154
+msgid "Generate a reset connection and send it to the user"
+msgstr "生成重置连接并发送给用户"
+
+#: apps/account/forms.py:155
+msgid "Set password"
+msgstr "设置密码"
+
+#: apps/account/forms.py:162
+msgid "Password strategy"
+msgstr "密码策略"
+
+#: apps/account/forms.py:183 apps/account/templates/account/first_login.html:40
+#: apps/account/templates/users/_user.html:52
+#: apps/account/templates/users/user_detail.html:31
+#: apps/account/templates/users/user_password_update.html:33
+#: apps/account/templates/users/user_profile.html:63
+#: apps/account/templates/users/user_profile_update.html:25
+#: apps/account/templates/users/user_profile_update.html:46
+#: apps/account/views/user.py:238
+#: apps/assets/templates/assets/admin_user_create_update.html:31
+#: apps/templates/_header_bar.html:366
+msgid "Profile"
+msgstr "简况"
+
+#: apps/account/forms.py:189
+msgid ""
+"When enabled, you will enter the MFA binding process the next time you log "
+"in. you can also directly bind in \"personal information -> quick "
+"modification -> change MFA Settings\"!"
+msgstr ""
+"启用时，您将在下次登录时进入MFA绑定过程。"
+"你也可以直接绑定“个人信息->快速修改->更改MFA设置”！"
+
+#: apps/account/forms.py:199
+msgid "* Enable MFA authentication to make the account more secure."
+msgstr "启用MFA二次身份验证可以使帐户更安全。"
+
+#: apps/account/forms.py:204 apps/account/models/user.py:474
+#: apps/account/templates/account/first_login.html:44 apps/audits/models.py:86
+#: apps/audits/templates/audit/login_log_list.html:23
+msgid "MFA"
+msgstr ""
+
+#: apps/account/forms.py:209
+msgid ""
+"In order to protect you and your company, please keep your account, password "
+"and key sensitive information properly. (for example: setting complex "
+"password, enabling MFA authentication)"
+msgstr ""
+"为了保护你和你的公司，请保管好您的帐户，密码和密钥敏感信息正确。"
+"（例如：设置复杂密码，启用MFA身份验证）"
+
+#: apps/account/forms.py:216 apps/account/templates/account/first_login.html:48
+#: apps/account/templates/account/first_login.html:52
+#: apps/account/templates/account/first_login.html:104
+#: apps/account/templates/account/first_login.html:127
+#: apps/account/templates/account/forgot_password.html:67
+msgid "Finish"
+msgstr "完成"
+
+#: apps/account/forms.py:222
+msgid "Old password"
+msgstr "旧密码"
+
+#: apps/account/forms.py:227
+msgid "New password"
+msgstr "新密码"
+
+#: apps/account/forms.py:232
+msgid "Confirm password"
+msgstr "确认密码"
+
+#: apps/account/forms.py:242
+msgid "Old password error"
+msgstr "旧密码错误"
+
+#: apps/account/forms.py:250
+msgid "Password does not match"
+msgstr "密码不匹配"
+
+#: apps/account/forms.py:260
+msgid "Automatically configure and download the SSH key"
+msgstr "自动配置和下载SSH密钥"
+
+#: apps/account/forms.py:264
+msgid "Paste your id_rsa.pub here."
+msgstr "在此处粘贴您的id_rsa.pub。"
+
+#: apps/account/forms.py:292 apps/account/models/user.py:482
+#: apps/assets/serializers/asset_user.py:76
+msgid "Public key"
+msgstr "公钥"
+
+#: apps/account/forms.py:298 apps/account/forms.py:303
+#: apps/account/forms.py:353
+msgid "Select users"
+msgstr "选择用户"
+
+#: apps/account/forms.py:323 apps/account/models/group.py:40
+#: apps/account/models/user.py:458
+#: apps/account/templates/group/user_group_create_update.html:9
+#: apps/account/templates/group/user_group_detail.html:8
+#: apps/account/templates/group/user_group_list.html:8
+#: apps/account/templates/users/_select_user_modal.html:19
+#: apps/account/templates/users/user_detail.html:324
+#: apps/account/templates/users/user_list.html:29
+#: apps/templates/_left_side_bar.html:68
+msgid "User group"
+msgstr "用户组"
+
+#: apps/account/models/user.py:61
+#, python-brace-format
+msgid "User auth from {self.source}, go there change password"
+msgstr "来自{self.source}的用户身份验证，请转到此处更改密码"
+
+#: apps/account/models/user.py:155 apps/account/models/user.py:589
+msgid "Administrator"
+msgstr "管理员"
+
+#: apps/account/models/user.py:157
+msgid "Application"
+msgstr "应用"
+
+#: apps/account/models/user.py:158
+msgid "Auditor"
+msgstr "审核员"
+
+#: apps/account/models/user.py:372
+#: apps/account/templates/users/user_profile.html:103
+#: apps/account/templates/users/user_profile.html:163
+#: apps/account/templates/users/user_profile.html:166
+msgid "Disable"
+msgstr "禁用"
+
+#: apps/account/models/user.py:373
+#: apps/account/templates/users/user_profile.html:101
+#: apps/account/templates/users/user_profile.html:170
+msgid "Enable"
+msgstr "启用"
+
+#: apps/account/models/user.py:374
+#: apps/account/templates/users/user_profile.html:99
+msgid "Force enable"
+msgstr "强制启用"
+
+#: apps/account/models/user.py:438
+msgid "Local"
+msgstr "本地"
+
+#: apps/account/models/user.py:454 apps/account/serializers/user.py:324
+#: apps/account/templates/users/user_detail.html:69
+#: apps/account/templates/users/user_profile.html:44
+#: apps/account/templates/users/user_profile.html:87
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:33
+msgid "Email"
+msgstr "邮箱"
+
+#: apps/account/models/user.py:465
+msgid "Avatar"
+msgstr "头像"
+
+#: apps/account/models/user.py:468
+#: apps/account/templates/users/user_detail.html:90
+msgid "Wechat"
+msgstr "微信"
+
+#: apps/account/models/user.py:471 apps/account/serializers/user.py:291
+#: apps/account/serializers/user.py:321
+#: apps/account/templates/users/user_detail.html:99
+#: apps/account/templates/users/user_profile.html:46
+msgid "Phone"
+msgstr "手机"
+
+#: apps/account/models/user.py:479 apps/assets/forms/user.py:40
+#: apps/assets/serializers/asset_user.py:80
+msgid "Private key"
+msgstr "私钥"
+
+#: apps/account/models/user.py:491
+#: apps/account/templates/users/user_detail.html:168
+#: apps/account/templates/users/user_profile.html:129
+msgid "Date expired"
+msgstr "过期日期"
+
+#: apps/account/models/user.py:502
+msgid "Date password last updated"
+msgstr "密码最后更新日期"
+
+#: apps/account/models/user.py:592
+msgid "Administrator is the super user of system"
+msgstr "管理员是系统的超级用户"
+
+#: apps/account/models/user.py:593 apps/assets/models/tags.py:23
+msgid "System"
+msgstr "系统"
+
+#: apps/account/serializers/group.py:61
+msgid "Auditors cannot be join in the user group"
+msgstr "审核员不能加入用户组"
+
+#: apps/account/serializers/group.py:80
+msgid "Users name"
+msgstr "用户名"
+
+#: apps/account/serializers/user.py:53
+msgid "Is first login"
+msgstr "第一次登陆"
+
+#: apps/account/serializers/user.py:54
+msgid "Is valid"
+msgstr "有效"
+
+#: apps/account/serializers/user.py:55
+msgid "Is expired"
+msgstr "过期"
+
+#: apps/account/serializers/user.py:56
+msgid "Avatar url"
+msgstr "头像网址"
+
+#: apps/account/serializers/user.py:64 apps/account/serializers/user.py:215
+msgid "the phone '{}' is incorrect"
+msgstr "电话'{}'不正确"
+
+#: apps/account/serializers/user.py:72
+msgid "Role limit to {}"
+msgstr "角色限制为{}"
+
+#: apps/account/serializers/user.py:84
+msgid "Password does not match security rules"
+msgstr "密码不符合安全规则"
+
+#: apps/account/serializers/user.py:141
+msgid "Groups name"
+msgstr "组名称"
+
+#: apps/account/serializers/user.py:142
+msgid "Source name"
+msgstr "来源名称"
+
+#: apps/account/serializers/user.py:143
+msgid "Role name"
+msgstr "角色名称"
+
+#: apps/account/serializers/user.py:144
+msgid "Organization name"
+msgstr "组织名"
+
+#: apps/account/serializers/user.py:266
+msgid "密码"
+msgstr ""
+
+#: apps/account/serializers/user.py:314
+msgid "Company"
+msgstr "公司"
+
+#: apps/account/serializers/user.py:328
+msgid "Terms of Service"
+msgstr "服务条款"
+
+#: apps/account/serializers/user.py:329
+msgid "Privacy Policy"
+msgstr "隐私政策"
+
+#: apps/account/templates/account/first_login.html:6
+#: apps/account/templates/account/first_login.html:9
+msgid "FirstLogin"
+msgstr ""
+
+#: apps/account/templates/account/first_login.html:25
+msgid "First Login"
+msgstr "首次登录"
+
+#: apps/account/templates/account/first_login.html:26
+msgid ""
+"Successful login for the first time! Please complete your personal "
+"information"
+msgstr "首次成功登录！ 请完善您的个人信息"
+
+#: apps/account/templates/account/first_login.html:71
+msgid "I agree with the terms and conditions."
+msgstr "我接受相关条款"
+
+#: apps/account/templates/account/first_login.html:74
+msgid "Please choose the terms and conditions."
+msgstr "请选中条款"
+
+#: apps/account/templates/account/first_login.html:97
+msgid "Previous"
+msgstr "上一步"
+
+#: apps/account/templates/account/first_login.html:102
+#: apps/account/templates/users/user_otp_authentication.html:34
+#: apps/account/templates/users/user_otp_enable_bind.html:31
+#: apps/account/templates/users/user_otp_enable_install_app.html:39
+#: apps/account/templates/users/user_password_authentication.html:35
+#: apps/authentication/templates/authentication/login_otp.html:75
+msgid "Next"
+msgstr "下一步"
+
+#: apps/account/templates/account/forgot_password.html:5
+#: apps/account/templates/account/forgot_password.html:12
+msgid "Forgot password"
+msgstr "忘记密码"
+
+#: apps/account/templates/account/forgot_password.html:20
+msgid "Input your email, that will send a mail to your"
+msgstr "输入您的电子邮件，这将向您发送一封电子邮件"
+
+#: apps/account/templates/account/forgot_password.html:46
+msgid "Verify identity"
+msgstr "验证身份"
+
+#: apps/account/templates/account/forgot_password.html:63
+msgid "Recover password"
+msgstr "恢复密码"
+
+#: apps/account/templates/group/user_group_detail.html:23
+#: apps/account/views/group.py:93
+msgid "User group detail"
+msgstr "用户组详细信息"
+
+#: apps/account/templates/group/user_group_detail.html:36
+msgid "Create by"
+msgstr "创建者"
+
+#: apps/account/templates/group/user_group_detail.html:65
+msgid "Add user"
+msgstr "增加用户"
+
+#: apps/account/templates/group/user_group_detail.html:72
+#: apps/settings/templates/settings/terminal_setting.html:98
+#: apps/settings/templates/settings/terminal_setting.html:120
+msgid "Add"
+msgstr "增加"
+
+#: apps/account/templates/group/user_group_list.html:14
+#: apps/account/views/group.py:56
+msgid "Create user group"
+msgstr "创建用户组"
+
+#: apps/account/templates/group/user_group_list.html:29
+#: apps/account/templates/users/user_list.html:32
+#: apps/assets/models/cmd_filter.py:79
+#: apps/assets/templates/assets/_asset_user_list.html:29
+#: apps/assets/templates/assets/admin_user_list.html:23
+#: apps/assets/templates/assets/asset_config_list.html:28
+#: apps/assets/templates/assets/asset_list.html:48
+#: apps/assets/templates/assets/system_user_list.html:26
+#: apps/assets/templates/assets/tags_list.html:24 apps/audits/models.py:39
+#: apps/settings/templates/settings/terminal_setting.html:85
+#: apps/settings/templates/settings/terminal_setting.html:107
+msgid "Action"
+msgstr "动作"
+
+#: apps/account/templates/group/user_group_list.html:117
+#: apps/account/templates/users/user_detail.html:518
+#: apps/account/templates/users/user_detail.html:545
+#: apps/account/templates/users/user_detail.html:614
+#: apps/account/templates/users/user_list.html:265
+#: apps/assets/templates/assets/asset_list.html:223
+msgid "Are you sure?"
+msgstr "你确定吗？"
+
+#: apps/account/templates/group/user_group_list.html:118
+msgid "This will delete the selected groups !!!"
+msgstr "这将删除选定的组！！！"
+
+#: apps/account/templates/group/user_group_list.html:123
+#: apps/account/templates/users/user_detail.html:524
+#: apps/account/templates/users/user_detail.html:551
+#: apps/account/templates/users/user_detail.html:574
+#: apps/account/templates/users/user_detail.html:620
+#: apps/account/templates/users/user_list.html:271
+#: apps/assets/templates/assets/asset_config_list.html:145
+#: apps/assets/templates/assets/asset_list.html:229
+#: apps/settings/templates/settings/terminal_setting.html:168
+#: apps/templates/_modal.html:18
+msgid "Confirm"
+msgstr "确认"
+
+#: apps/account/templates/group/user_group_list.html:127
+msgid "UserGroups Deleted."
+msgstr "用户组已删除。"
+
+#: apps/account/templates/group/user_group_list.html:128
+#: apps/account/templates/group/user_group_list.html:133
+msgid "UserGroups Delete"
+msgstr "用户组已删除"
+
+#: apps/account/templates/group/user_group_list.html:132
+msgid "UserGroup Deleting failed."
+msgstr "用户组删除失败"
+
+#: apps/account/templates/group/user_group_list.html:167
+#: apps/account/templates/group/user_group_list.html:198
+#: apps/account/templates/users/user_list.html:174
+#: apps/account/templates/users/user_list.html:206
+#: apps/assets/templates/assets/admin_user_list.html:114
+#: apps/assets/templates/assets/admin_user_list.html:145
+msgid "Please select file"
+msgstr "请选择文件"
+
+#: apps/account/templates/users/_base_login.html:15
+#: apps/authentication/templates/authentication/login.html:16
+#: apps/authentication/templates/authentication/login_otp.html:17
+msgid "CloudHelper"
+msgstr ""
+
+#: apps/account/templates/users/_select_user_modal.html:5
+msgid "Please Select User"
+msgstr "请选择用户"
+
+#: apps/account/templates/users/_select_user_modal.html:20
+msgid "Asset num"
+msgstr "资产编号"
+
+#: apps/account/templates/users/_select_user_modal.html:21
+#: apps/account/templates/users/user_detail.html:260
+#: apps/account/templates/users/user_profile.html:91
+#: apps/assets/templates/assets/asset_detail.html:192
+#: apps/authentication/models.py:28
+#: apps/authentication/templates/authentication/_access_key.html:49
+msgid "Active"
+msgstr "活动"
+
+#: apps/account/templates/users/_user.html:20
+#: apps/account/templates/users/user_detail.html:43
+#: apps/account/templates/users/user_password_authentication.html:14
+#: apps/account/templates/users/user_profile_update.html:40
+#: apps/assets/templates/assets/admin_user_create_update.html:21
+#: apps/assets/templates/assets/asset_config_create_update.html:20
+#: apps/assets/templates/assets/asset_config_list.html:22
+#: apps/templates/_left_side_bar.html:64
+msgid "Account"
+msgstr "帐户"
+
+#: apps/account/templates/users/_user.html:27
+#: apps/assets/templates/assets/_system_user.html:31
+#: apps/assets/templates/assets/asset_create.html:53
+msgid "Auth"
+msgstr ""
+
+#: apps/account/templates/users/_user.html:34
+#: apps/account/templates/users/user_detail.html:108
+#: apps/assets/templates/assets/admin_user_create_update.html:26
+msgid "Security and Role"
+msgstr "安全和角色"
+
+#: apps/account/templates/users/_user_update_pk_modal.html:4
+msgid "Update User SSH Public Key"
+msgstr "更新用户SSH公钥"
+
+#: apps/account/templates/users/user_create.html:21
+#: apps/account/templates/users/user_password_update.html:55
+#: apps/account/templates/users/user_update.html:13
+msgid "Your password must satisfy"
+msgstr "您的密码必须满足"
+
+#: apps/account/templates/users/user_create.html:23
+#: apps/account/templates/users/user_password_update.html:56
+#: apps/account/templates/users/user_update.html:14
+msgid "Password strength"
+msgstr "密码强度"
+
+#: apps/account/templates/users/user_create.html:45
+msgid "Your password is too short"
+msgstr "您的密码太短了"
+
+#: apps/account/templates/users/user_create.html:46
+msgid "Your password is too long"
+msgstr "您的密码太长啦"
+
+#: apps/account/templates/users/user_create.html:47
+msgid "Your password contains an invalid character"
+msgstr "您的密码包含无效的字符"
+
+#: apps/account/templates/users/user_create.html:48
+msgid "Do not use your email as your password"
+msgstr "不要使用您的邮箱作为密码"
+
+#: apps/account/templates/users/user_create.html:49
+msgid "Your password cannot contain your username"
+msgstr "您的密码不能包含您的密码"
+
+#: apps/account/templates/users/user_create.html:50
+msgid "Use different character classes"
+msgstr "使用不同的字符类型"
+
+#: apps/account/templates/users/user_create.html:51
+msgid "Too many repetitions"
+msgstr "重复次数过多"
+
+#: apps/account/templates/users/user_create.html:52
+msgid "Your password contains sequences"
+msgstr "您的密码包含序列"
+
+#: apps/account/templates/users/user_create.html:53
+msgid "Errors:"
+msgstr "错误："
+
+#: apps/account/templates/users/user_create.html:54
+#: apps/account/templates/users/user_password_update.html:98
+#: apps/account/templates/users/user_update.html:55
+msgid "Very weak"
+msgstr "非常弱"
+
+#: apps/account/templates/users/user_create.html:55
+#: apps/account/templates/users/user_password_update.html:99
+#: apps/account/templates/users/user_update.html:56
+msgid "Weak"
+msgstr "弱"
+
+#: apps/account/templates/users/user_create.html:56
+#: apps/account/templates/users/user_password_update.html:100
+#: apps/account/templates/users/user_update.html:57
+msgid "Normal"
+msgstr "正常"
+
+#: apps/account/templates/users/user_create.html:57
+#: apps/account/templates/users/user_password_update.html:101
+#: apps/account/templates/users/user_update.html:58
+msgid "Medium"
+msgstr "中"
+
+#: apps/account/templates/users/user_create.html:58
+#: apps/account/templates/users/user_password_update.html:102
+#: apps/account/templates/users/user_update.html:59
+msgid "Strong"
+msgstr "强"
+
+#: apps/account/templates/users/user_create.html:59
+#: apps/account/templates/users/user_password_update.html:103
+#: apps/account/templates/users/user_update.html:60
+msgid "Very strong"
+msgstr "非常强"
+
+#: apps/account/templates/users/user_detail.html:8
+#: apps/account/views/user.py:69 apps/templates/_left_side_bar.html:67
+msgid "User list"
+msgstr "用户列表"
+
+#: apps/account/templates/users/user_detail.html:28
+msgid "Summary"
+msgstr "摘要"
+
+#: apps/account/templates/users/user_detail.html:34
+msgid "Security credentials"
+msgstr "安全凭证"
+
+#: apps/account/templates/users/user_detail.html:121
+#: apps/account/templates/users/user_profile.html:95
+#: apps/authentication/templates/authentication/login_otp.html:17
+msgid "MFA certification"
+msgstr "MFA 认证"
+
+#: apps/account/templates/users/user_detail.html:125
+msgid "Force enabled"
+msgstr "强制启用"
+
+#: apps/account/templates/users/user_detail.html:127 apps/audits/models.py:72
+#: apps/settings/models.py:33
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:192
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:492
+msgid "Enabled"
+msgstr "已启用"
+
+#: apps/account/templates/users/user_detail.html:129 apps/audits/models.py:71
+msgid "Disabled"
+msgstr "已禁用"
+
+#: apps/account/templates/users/user_detail.html:160
+#: apps/account/templates/users/user_profile.html:114
+#: apps/assets/templates/assets/asset_detail.html:127
+msgid "Date joined"
+msgstr "加入日期"
+
+#: apps/account/templates/users/user_detail.html:179
+#: apps/account/templates/users/user_profile.html:124
+msgid "Last password updated"
+msgstr "上次密码更新"
+
+#: apps/account/templates/users/user_detail.html:188
+#: apps/account/templates/users/user_profile.html:119
+msgid "Last login"
+msgstr "上次登录"
+
+#: apps/account/templates/users/user_detail.html:253
+#: apps/assets/templates/assets/asset_detail.html:170
+msgid "Quick modify"
+msgstr "快速修改"
+
+#: apps/account/templates/users/user_detail.html:272
+msgid "Force enabled MFA"
+msgstr "强制启用MFA"
+
+#: apps/account/templates/users/user_detail.html:283
+msgid "Reset MFA"
+msgstr "重置MFA"
+
+#: apps/account/templates/users/user_detail.html:294
+msgid "Send reset password mail"
+msgstr "发送重置密码邮件"
+
+#: apps/account/templates/users/user_detail.html:300
+msgid "Send"
+msgstr "发送"
+
+#: apps/account/templates/users/user_detail.html:307
+#: apps/account/templates/users/user_detail.html:598
+msgid "Unblock user"
+msgstr "解除用户"
+
+#: apps/account/templates/users/user_detail.html:311
+msgid "Unblock"
+msgstr "解除"
+
+#: apps/account/templates/users/user_detail.html:346
+msgid "Join"
+msgstr "加入"
+
+#: apps/account/templates/users/user_detail.html:441
+#: apps/account/templates/users/user_detail.html:468
+#: apps/assets/templates/assets/asset_detail.html:254
+msgid "Update successfully!"
+msgstr "更新成功！"
+
+#: apps/account/templates/users/user_detail.html:450
+msgid "Goto profile page enable MFA"
+msgstr "转动个人中心启用MFA"
+
+#: apps/account/templates/users/user_detail.html:507
+msgid "An e-mail has been sent to the user`s mailbox."
+msgstr "一封电子邮件已经发送至user`s邮箱"
+
+#: apps/account/templates/users/user_detail.html:508
+#: apps/common/send_email.py:128
+msgid "Reset password"
+msgstr "重置密码"
+
+#: apps/account/templates/users/user_detail.html:519
+msgid "This will reset the user password and send a reset mail"
+msgstr "这将重置用户密码，并发送重置确认邮件"
+
+#: apps/account/templates/users/user_detail.html:534
+msgid ""
+"The reset-ssh-public-key E-mail has been sent successfully. Please inform "
+"the user to update his new ssh public key."
+msgstr ""
+"已成功发送重置ssh公钥电子邮件。"
+"请通知用户更新他的新ssh公钥。"
+
+#: apps/account/templates/users/user_detail.html:535
+msgid "Reset SSH public key"
+msgstr "重置SSH公钥"
+
+#: apps/account/templates/users/user_detail.html:546
+msgid "This will reset the user public key and send a reset mail"
+msgstr "这将重置用户公共密钥并发送重置邮件"
+
+#: apps/account/templates/users/user_detail.html:564
+msgid "Successfully updated the SSH public key."
+msgstr "成功更新了SSH公钥。"
+
+#: apps/account/templates/users/user_detail.html:565
+#: apps/account/templates/users/user_detail.html:569
+msgid "User SSH public key update"
+msgstr "用户SSH公钥更新"
+
+#: apps/account/templates/users/user_detail.html:595 apps/audits/models.py:77
+#: apps/authentication/templates/authentication/_access_key_modal.html:10
+#: apps/templates/flash_message_standalone.html:61
+msgid "Success"
+msgstr "成功"
+
+#: apps/account/templates/users/user_detail.html:615
+msgid "After unlocking the user, the user can log in normally."
+msgstr "解锁用户后，用户可以正常登录。"
+
+#: apps/account/templates/users/user_detail.html:629
+msgid "Reset user MFA success"
+msgstr "重置用户MFA成功"
+
+#: apps/account/templates/users/user_list.html:14 apps/account/views/user.py:86
+msgid "Create user"
+msgstr "创建用户"
+
+#: apps/account/templates/users/user_list.html:31
+msgid "Validity"
+msgstr "有效期"
+
+#: apps/account/templates/users/user_list.html:48
+#: apps/assets/templates/assets/asset_list.html:68
+msgid "Delete selected"
+msgstr "删除所选"
+
+#: apps/account/templates/users/user_list.html:49
+#: apps/assets/templates/assets/asset_list.html:69
+msgid "Update selected"
+msgstr "更新所选"
+
+#: apps/account/templates/users/user_list.html:50
+#: apps/assets/templates/assets/asset_list.html:71
+msgid "Deactive selected"
+msgstr "停用所选"
+
+#: apps/account/templates/users/user_list.html:51
+#: apps/assets/templates/assets/asset_list.html:72
+msgid "Active selected"
+msgstr "激活所选"
+
+#: apps/account/templates/users/user_list.html:116
+msgid "Edit"
+msgstr "编辑"
+
+#: apps/account/templates/users/user_list.html:221
+msgid "Please select at least one row!"
+msgstr "请至少选择中一行数据！"
+
+#: apps/account/templates/users/user_list.html:266
+msgid "This will delete the selected users !!!"
+msgstr "这将删除选定的用户！！！"
+
+#: apps/account/templates/users/user_list.html:278
+msgid "User Deleted."
+msgstr "用户已删除"
+
+#: apps/account/templates/users/user_list.html:279
+#: apps/account/templates/users/user_list.html:284
+msgid "User Delete"
+msgstr "删除用户"
+
+#: apps/account/templates/users/user_list.html:283
+msgid "User Deleting failed."
+msgstr "删除用户失败"
+
+#: apps/account/templates/users/user_list.html:349
+#: apps/authentication/templates/authentication/_access_key.html:121
+msgid "User is active"
+msgstr "用户处于活动状态"
+
+#: apps/account/templates/users/user_list.html:352
+msgid "User is expired"
+msgstr "用户已过期"
+
+#: apps/account/templates/users/user_list.html:355
+msgid "User is inactive"
+msgstr "用户不活跃"
+
+#: apps/account/templates/users/user_otp_authentication.html:6
+#: apps/account/templates/users/user_password_authentication.html:5
+#: apps/account/templates/users/user_password_authentication.html:11
+msgid "Authenticate"
+msgstr "认证"
+
+#: apps/account/templates/users/user_otp_authentication.html:16
+#: apps/authentication/templates/authentication/login_otp.html:52
+msgid ""
+"The account protection has been opened, please complete the following "
+"operations according to the prompts"
+msgstr "帐号保护已打开，请根据提示完成以下操作"
+
+#: apps/account/templates/users/user_otp_authentication.html:19
+#: apps/authentication/templates/authentication/login_otp.html:58
+msgid "Open Authenticator and enter the 6-bit dynamic code"
+msgstr "打开身份验证器并输入6位动态代码"
+
+#: apps/account/templates/users/user_otp_authentication.html:28
+#: apps/account/templates/users/user_otp_authentication.html:29
+#: apps/account/templates/users/user_otp_enable_bind.html:28
+#: apps/authentication/templates/authentication/login_otp.html:68
+msgid "Six figures"
+msgstr "六位数"
+
+#: apps/account/templates/users/user_otp_authentication.html:41
+msgid "Unbind"
+msgstr "解除绑定"
+
+#: apps/account/templates/users/user_otp_enable_bind.html:5
+msgid "Bind"
+msgstr "绑定"
+
+#: apps/account/templates/users/user_otp_enable_bind.html:11
+msgid ""
+"Use the mobile Google Authenticator application to scan the following qr "
+"code for a 6-bit verification code"
+msgstr "使用身份验证器应用程序扫描以下二维码以查找6位验证码"
+
+#: apps/account/templates/users/user_otp_enable_install_app.html:5
+msgid "Install"
+msgstr "安装"
+
+#: apps/account/templates/users/user_otp_enable_install_app.html:11
+msgid ""
+"Download and install the Microsoft Authenticator or Google Authenticator "
+"application on your phone"
+msgstr "在手机上下载并安装Microsoft Authenticator或Google Authenticator应用程序"
+
+#: apps/account/templates/users/user_otp_enable_install_app.html:16
+msgid "Android downloads"
+msgstr "安卓下载"
+
+#: apps/account/templates/users/user_otp_enable_install_app.html:17
+msgid "iPhone downloads"
+msgstr "苹果下载"
+
+#: apps/account/templates/users/user_otp_enable_install_app.html:31
+msgid ""
+"After installation, click the next step to enter the binding page (if "
+"installed, go to the next step directly)."
+msgstr "安装后，单击下一步进入绑定页面（如果已安装，请直接转到下一步）。"
+
+#: apps/account/templates/users/user_password_authentication.html:13
+msgid "Security token validation"
+msgstr "安全令牌验证"
+
+#: apps/account/templates/users/user_password_authentication.html:15
+msgid "Follow these steps to complete the binding operation"
+msgstr "请按照以下步骤完成绑定操作"
+
+#: apps/account/templates/users/user_profile.html:48
+msgid "Address"
+msgstr "地址"
+
+#: apps/account/templates/users/user_profile.html:66
+#: apps/settings/models.py:128
+msgid "Setting"
+msgstr "设置"
+
+#: apps/account/templates/users/user_profile.html:106
+msgid "Administrator Settings force MFA login"
+msgstr "管理员设置强制MFA登录"
+
+#: apps/account/templates/users/user_profile.html:133
+msgid "User groups"
+msgstr "用户组"
+
+#: apps/account/templates/users/user_profile.html:157
+msgid "Set MFA"
+msgstr "设置MFA"
+
+#: apps/account/templates/users/user_profile.html:178
+msgid "Update MFA"
+msgstr "更新MFA"
+
+#: apps/account/templates/users/user_profile.html:188
+msgid "Update password"
+msgstr "更新密码"
+
+#: apps/account/templates/users/user_update.html:22
+#: apps/account/views/login.py:56 apps/account/views/login.py:117
+msgid "User auth from {}, go there change password"
+msgstr "来自{}的用户身份验证，请转到此处更改密码"
+
+#: apps/account/templates/users/user_update.html:32
+msgid "User auth from {}, ssh key login is not supported"
+msgstr "来自{}的用户身份验证，不支持ssh密钥登录"
+
+#: apps/account/views/group.py:38 apps/account/views/group.py:55
+#: apps/account/views/group.py:73 apps/account/views/group.py:92
+#: apps/account/views/group.py:109 apps/account/views/login.py:163
+#: apps/account/views/user.py:68 apps/account/views/user.py:85
+#: apps/account/views/user.py:129 apps/account/views/user.py:196
+#: apps/account/views/user.py:224 apps/account/views/user.py:277
+#: apps/account/views/user.py:312
+msgid "Users"
+msgstr "用户"
+
+#: apps/account/views/group.py:39
+msgid "User group list"
+msgstr "用户组列表"
+
+#: apps/account/views/group.py:74
+msgid "Update user group"
+msgstr "更新用户组列表"
+
+#: apps/account/views/group.py:110
+msgid "User group granted asset"
+msgstr "用户组授予的资产"
+
+#: apps/account/views/login.py:53
+msgid "Email address invalid, please input again"
+msgstr "邮箱地址无效，请重新输入"
+
+#: apps/account/views/login.py:69
+msgid "Send reset password message"
+msgstr "发送重置密码信息"
+
+#: apps/account/views/login.py:70
+msgid "Send reset password mail success, login your mail box and follow it "
+msgstr "成功发送重置密码邮件，登录您的邮箱并查看"
+
+#: apps/account/views/login.py:83
+msgid "Reset password success"
+msgstr "重置密码成功"
+
+#: apps/account/views/login.py:84
+msgid "Reset password success, return to login page"
+msgstr "重置密码成功，返回到登录页面"
+
+#: apps/account/views/login.py:99 apps/account/views/login.py:115
+msgid "Token invalid or expired"
+msgstr "令牌无效或已过期"
+
+#: apps/account/views/login.py:111
+msgid "Password not same"
+msgstr "密码不一样"
+
+#: apps/account/views/login.py:163
+msgid "First login"
+msgstr "首次登入"
+
+#: apps/account/views/user.py:130
+msgid "Update user"
+msgstr "更新用户"
+
+#: apps/account/views/user.py:148
+msgid "Bulk update user success"
+msgstr "批量更新用户成功"
+
+#: apps/account/views/user.py:176
+msgid "Bulk update user"
+msgstr "批量更新用户"
+
+#: apps/account/views/user.py:197
+msgid "User detail"
+msgstr "用户详情"
+
+#: apps/account/views/user.py:225
+msgid "User granted assets"
+msgstr "用户授予的资产"
+
+#: apps/account/views/user.py:258
+msgid "Profile setting"
+msgstr "简况设置"
+
+#: apps/account/views/user.py:278
+msgid "Password update"
+msgstr "密码更新"
+
+#: apps/account/views/user.py:313
+msgid "Public key update"
+msgstr "公钥更新"
+
+#: apps/account/views/user.py:356
+msgid "Password invalid"
+msgstr "密码无效"
+
+#: apps/account/views/user.py:406 apps/account/views/user.py:431
+#: apps/authentication/errors.py:54
+msgid "MFA code invalid, or ntp sync server time"
+msgstr "MFA代码无效，或ntp同步服务器时间"
+
+#: apps/account/views/user.py:461
+msgid "MFA enable success"
+msgstr "MFA启用成功"
+
+#: apps/account/views/user.py:462
+msgid "MFA enable success, return login page"
+msgstr "MFA启用成功，正在跳转至登录页"
+
+#: apps/account/views/user.py:464
+msgid "MFA disable success"
+msgstr "MFA禁用成功"
+
+#: apps/account/views/user.py:465
+msgid "MFA disable success, return login page"
+msgstr "MFA禁用成功，返回登录页面"
+
+#: apps/assets/api/asset_sync.py:45
+msgid "Assets are syncing"
+msgstr "资产正在同步"
+
+#: apps/assets/const.py:5 apps/common/const.py:30
+msgid "Cannot contain special characters: [ {} ]"
+msgstr "不能包含特殊字符：[{}]"
+
+#: apps/assets/const.py:11 apps/common/const.py:35
+msgid "* The contains characters that are not allowed"
+msgstr "* 包含不允许的字符"
+
+#: apps/assets/forms/asset.py:35 apps/assets/models/asset.py:126
+#: apps/settings/templates/settings/replay_storage_create.html:59
+msgid "Port"
+msgstr "端口"
+
+#: apps/assets/forms/asset.py:56 apps/assets/forms/asset.py:85
+#: apps/assets/forms/asset.py:117 apps/assets/models/asset.py:182
+#: apps/assets/templates/assets/asset_create.html:57
+#: apps/assets/templates/assets/asset_create.html:60
+#: apps/assets/templates/assets/asset_create.html:62
+msgid "Tags"
+msgstr "标签"
+
+#: apps/assets/forms/asset.py:62 apps/assets/forms/asset.py:91
+msgid ""
+"root or other NOPASSWD sudo privilege user existed in asset,If asset is "
+"windows or other set any one, more see admin user left menu"
+msgstr "资源中存在根用户或其他NOPASSWD sudo特权用户如果资产是windows或其他设置的任何一个，请参阅管理员用户左菜单"
+
+#: apps/assets/forms/asset.py:65 apps/assets/forms/asset.py:94
+msgid "Windows 2016 RDP protocol is different, If is window 2016, set it"
+msgstr "Windows 2016 RDP协议不同，如果是windows 2016，请设置它"
+
+#: apps/assets/forms/asset.py:101 apps/assets/forms/asset.py:105
+#: apps/assets/forms/tags.py:25
+msgid "Select assets"
+msgstr "选择资产"
+
+#: apps/assets/forms/asset.py:120 apps/assets/serializers/system_user.py:48
+msgid "Node"
+msgstr "节点"
+
+#: apps/assets/forms/asset_config.py:32
+msgid "AliYun"
+msgstr "阿里云"
+
+#: apps/assets/forms/asset_config.py:34
+msgid "Google Cloud Platform"
+msgstr "谷歌云平台"
+
+#: apps/assets/forms/tags.py:23 apps/assets/models/asset.py:275
+#: apps/assets/models/authbook.py:33 apps/assets/serializers/admin_user.py:42
+#: apps/assets/serializers/asset_user.py:91
+#: apps/assets/serializers/system_user.py:49
+#: apps/assets/templates/assets/admin_user_list.html:21
+#: apps/assets/templates/assets/asset_detail.html:24
+#: apps/assets/templates/assets/system_user_list.html:24
+#: apps/assets/templates/assets/tags_list.html:23
+msgid "Asset"
+msgstr "资产"
+
+#: apps/assets/forms/user.py:36
+msgid "Password or private key passphrase"
+msgstr "密码或私钥密码"
+
+#: apps/assets/forms/user.py:52
+msgid "Invalid private key, Only support RSA/DSA format key"
+msgstr "私钥无效，仅支持RSA / DSA格式密钥"
+
+#: apps/assets/forms/user.py:63
+msgid "Password and private key file must be input one"
+msgstr "密码和私钥文件必须输入一个"
+
+#: apps/assets/forms/user.py:108 apps/assets/models/cmd_filter.py:42
+#: apps/assets/models/user.py:121
+#: apps/assets/templates/assets/_system_user.html:56
+msgid "Command filter"
+msgstr "命令过滤器"
+
+#: apps/assets/forms/user.py:113
+msgid "Auto push system user to asset"
+msgstr "自动将用户推送到资产"
+
+#: apps/assets/forms/user.py:114
+msgid ""
+"1-100, High level will be using login asset as default, if user was granted "
+"more than 2 system user"
+msgstr ""
+
+#: apps/assets/forms/user.py:116
+msgid ""
+"If you choose manual login mode, you do not need to fill in the username and "
+"password."
+msgstr ""
+
+#: apps/assets/forms/user.py:118
+msgid "Use comma split multi command, ex: /bin/whoami,/bin/ifconfig"
+msgstr "使用逗号分割多个命令，例如：/bin/whoami，/bin/ifconfig"
+
+#: apps/assets/models/asset.py:101 apps/assets/serializers/asset_user.py:37
+#: apps/assets/templates/assets/_asset_user_list.html:24
+#: apps/assets/templates/assets/asset_detail.html:61
+#: apps/assets/templates/assets/asset_list.html:45
+#: apps/audits/templates/audit/login_log_list.html:21
+#: apps/settings/forms.py:142
+msgid "IP"
+msgstr ""
+
+#: apps/assets/models/asset.py:105
+msgid "Instance ID"
+msgstr "实例ID"
+
+#: apps/assets/models/asset.py:109
+msgid "Instance Type"
+msgstr "实例类型"
+
+#: apps/assets/models/asset.py:113
+msgid "Instance State"
+msgstr "实例状态"
+
+#: apps/assets/models/asset.py:116 apps/assets/serializers/asset_user.py:36
+#: apps/assets/templates/assets/_asset_user_list.html:23
+#: apps/assets/templates/assets/asset_detail.html:57
+#: apps/assets/templates/assets/asset_list.html:44 apps/settings/forms.py:141
+msgid "Hostname"
+msgstr "主机名"
+
+#: apps/assets/models/asset.py:120 apps/assets/models/user.py:104
+#: apps/assets/templates/assets/asset_detail.html:69
+#: apps/assets/templates/assets/system_user_list.html:22
+msgid "Protocol"
+msgstr "协议"
+
+#: apps/assets/models/asset.py:124
+#: apps/assets/templates/assets/asset_detail.html:101
+msgid "Platform"
+msgstr "平台"
+
+#: apps/assets/models/asset.py:129
+#: apps/assets/templates/assets/asset_detail.html:65
+msgid "Public IP"
+msgstr "公有子网"
+
+#: apps/assets/models/asset.py:133
+msgid "Private IP"
+msgstr "私有子网"
+
+#: apps/assets/models/asset.py:136 apps/assets/models/authbook.py:36
+#: apps/assets/models/cmd_filter.py:32 apps/assets/models/tags.py:33
+#: apps/assets/templates/assets/asset_detail.html:111
+#: apps/authentication/models.py:60
+msgid "Is active"
+msgstr "活跃"
+
+#: apps/assets/models/asset.py:141 apps/assets/models/config.py:36
+#: apps/assets/models/user.py:73
+#: apps/assets/templates/assets/asset_detail.html:73
+#: apps/templates/_left_side_bar.html:85
+msgid "Admin user"
+msgstr "管理用户"
+
+#: apps/assets/models/asset.py:145
+#: apps/assets/templates/assets/asset_detail.html:115
+msgid "Serial number"
+msgstr "序列号"
+
+#: apps/assets/models/asset.py:148
+msgid "CPU model"
+msgstr "CPU型号"
+
+#: apps/assets/models/asset.py:151
+msgid "CPU count"
+msgstr "CPU数量"
+
+#: apps/assets/models/asset.py:154
+msgid "CPU cores"
+msgstr "CPU核心"
+
+#: apps/assets/models/asset.py:157
+msgid "CPU vcpus"
+msgstr ""
+
+#: apps/assets/models/asset.py:160
+#: apps/assets/templates/assets/asset_detail.html:93
+msgid "Memory"
+msgstr "内存"
+
+#: apps/assets/models/asset.py:163
+msgid "Disk total"
+msgstr "磁盘总数"
+
+#: apps/assets/models/asset.py:166
+msgid "Disk info"
+msgstr "磁盘信息"
+
+#: apps/assets/models/asset.py:169
+#: apps/assets/templates/assets/asset_detail.html:105
+msgid "OS"
+msgstr "系统"
+
+#: apps/assets/models/asset.py:172
+msgid "OS version"
+msgstr "系统版本"
+
+#: apps/assets/models/asset.py:175
+msgid "OS arch"
+msgstr ""
+
+#: apps/assets/models/asset.py:178
+msgid "Hostname raw"
+msgstr "原始主机名"
+
+#: apps/assets/models/authbook.py:34
+msgid "Latest version"
+msgstr "最新版本"
+
+#: apps/assets/models/authbook.py:35
+#: apps/assets/templates/assets/_asset_user_list.html:26
+msgid "Version"
+msgstr "版本"
+
+#: apps/assets/models/authbook.py:45
+msgid "AuthBook"
+msgstr "授权书"
+
+#: apps/assets/models/base.py:48
+msgid "SSH private key"
+msgstr "SSH私钥"
+
+#: apps/assets/models/base.py:51
+msgid "SSH public key"
+msgstr "SSH公钥"
+
+#: apps/assets/models/cmd_filter.py:49
+msgid "Regex"
+msgstr "正则表达式"
+
+#: apps/assets/models/cmd_filter.py:50
+msgid "Command"
+msgstr "命令"
+
+#: apps/assets/models/cmd_filter.py:55
+msgid "Deny"
+msgstr "拒绝"
+
+#: apps/assets/models/cmd_filter.py:56
+msgid "Allow"
+msgstr "允许"
+
+#: apps/assets/models/cmd_filter.py:62
+msgid "Filter"
+msgstr "过滤"
+
+#: apps/assets/models/cmd_filter.py:69 apps/assets/models/user.py:99
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:457
+msgid "Priority"
+msgstr "优先"
+
+#: apps/assets/models/cmd_filter.py:70
+msgid "1-100, the higher will be match first"
+msgstr "1-100，较高者优先"
+
+#: apps/assets/models/cmd_filter.py:74
+msgid "Content"
+msgstr "内容"
+
+#: apps/assets/models/cmd_filter.py:75
+msgid "One line one command"
+msgstr "一行一条命令"
+
+#: apps/assets/models/cmd_filter.py:92
+msgid "Command filter rule"
+msgstr "命令过滤规则"
+
+#: apps/assets/models/config.py:25
+msgid "Cloud Account"
+msgstr "云账户"
+
+#: apps/assets/models/config.py:32
+#: apps/assets/templates/assets/asset_config_list.html:23
+#: apps/settings/templates/settings/replay_storage_create.html:136
+msgid "Region"
+msgstr "区域"
+
+#: apps/assets/models/config.py:39
+#: apps/assets/templates/assets/asset_config_list.html:24
+msgid "State"
+msgstr "状态"
+
+#: apps/assets/models/config.py:59
+msgid "Asset Config"
+msgstr "资产配置"
+
+#: apps/assets/models/tags.py:27
+#: apps/assets/templates/assets/asset_detail.html:147
+#: apps/assets/templates/assets/tags_list.html:21
+msgid "Key"
+msgstr ""
+
+#: apps/assets/models/tags.py:28
+#: apps/assets/templates/assets/asset_detail.html:148
+#: apps/assets/templates/assets/tags_list.html:22 apps/settings/models.py:30
+msgid "Value"
+msgstr "值"
+
+#: apps/assets/models/tags.py:31
+msgid "Category"
+msgstr "类别"
+
+#: apps/assets/models/user.py:91
+msgid "Automatic login"
+msgstr "自动登录"
+
+#: apps/assets/models/user.py:92
+msgid "Manually login"
+msgstr "手动登录"
+
+#: apps/assets/models/user.py:96 apps/assets/views/asset.py:46
+#: apps/assets/views/asset.py:102 apps/assets/views/asset.py:129
+#: apps/assets/views/asset.py:169 apps/assets/views/asset.py:191
+#: apps/assets/views/config.py:42 apps/assets/views/config.py:59
+#: apps/assets/views/config.py:76 apps/assets/views/config.py:93
+#: apps/assets/views/tags.py:36 apps/assets/views/tags.py:54
+#: apps/assets/views/tags.py:82 apps/assets/views/user.py:43
+#: apps/assets/views/user.py:60 apps/assets/views/user.py:78
+#: apps/assets/views/user.py:95 apps/assets/views/user.py:119
+#: apps/assets/views/user.py:139 apps/assets/views/user.py:156
+#: apps/assets/views/user.py:173 apps/assets/views/user.py:189
+msgid "Assets"
+msgstr "资产"
+
+#: apps/assets/models/user.py:107
+#: apps/assets/templates/assets/_system_user.html:47
+msgid "Auto push"
+msgstr "自动推送"
+
+#: apps/assets/models/user.py:110
+msgid "Sudo"
+msgstr ""
+
+#: apps/assets/models/user.py:113
+msgid "Shell"
+msgstr ""
+
+#: apps/assets/models/user.py:117
+#: apps/assets/templates/assets/system_user_list.html:23
+msgid "Login mode"
+msgstr "登录模式"
+
+#: apps/assets/models/user.py:162 apps/templates/_left_side_bar.html:86
+msgid "System user"
+msgstr "系统用户"
+
+#: apps/assets/models/utils.py:29
+msgid "Unreachable"
+msgstr "无法到达"
+
+#: apps/assets/models/utils.py:30
+#: apps/assets/templates/assets/asset_list.html:47
+msgid "Reachable"
+msgstr "可到达"
+
+#: apps/assets/models/utils.py:31 apps/audits/utils.py:59
+#: venv/lib/python3.6/site-packages/django/forms/widgets.py:709
+msgid "Unknown"
+msgstr "未知"
+
+#: apps/assets/serializers/asset.py:36
+msgid "Protocol format should {}/{}"
+msgstr "协议格式应 {}/{}"
+
+#: apps/assets/serializers/asset.py:53
+msgid "Protocol duplicate: {}"
+msgstr "协议副本：{}"
+
+#: apps/assets/serializers/asset.py:78
+#: apps/assets/templates/assets/asset_create.html:33
+msgid "Protocols"
+msgstr "通讯协议"
+
+#: apps/assets/serializers/asset.py:79 apps/assets/serializers/asset.py:153
+#: apps/assets/serializers/asset_user.py:38
+#: apps/assets/templates/assets/_asset_user_list.html:27
+msgid "Connectivity"
+msgstr "连接性"
+
+#: apps/assets/serializers/asset.py:105
+msgid "Hardware info"
+msgstr "硬件信息"
+
+#: apps/assets/serializers/asset.py:106
+#: apps/organization/mixins/serializers.py:35
+msgid "Org name"
+msgstr "组织名"
+
+#: apps/assets/serializers/asset_user.py:40
+msgid "Backend"
+msgstr "后端"
+
+#: apps/assets/serializers/system_user.py:50
+msgid "Login mode display"
+msgstr "登录模式显示"
+
+#: apps/assets/serializers/system_user.py:94
+msgid "* Automatic login mode must fill in the username."
+msgstr "* 自动登录模式必须填写用户名。"
+
+#: apps/assets/serializers/system_user.py:105
+msgid "Password or private key required"
+msgstr "需要密码或私钥"
+
+#: apps/assets/templates/assets/_asset_user_list.html:28
+msgid "Datetime"
+msgstr "日期"
+
+#: apps/assets/templates/assets/_asset_user_list.html:42
+#: apps/assets/templates/assets/asset_list.html:98
+msgid "Test datetime: "
+msgstr "测试日期："
+
+#: apps/assets/templates/assets/_asset_user_list.html:75
+msgid "View"
+msgstr "试图"
+
+#: apps/assets/templates/assets/_asset_user_list.html:77
+#: apps/assets/templates/assets/asset_detail.html:217
+msgid "Test"
+msgstr "测试"
+
+#: apps/assets/templates/assets/_asset_user_list.html:78
+msgid "Push"
+msgstr "推送"
+
+#: apps/assets/templates/assets/_system_user.html:8
+#: apps/assets/views/user.py:140
+msgid "System user list"
+msgstr "系统用户列表"
+
+#: apps/assets/templates/assets/_system_user.html:23
+#: apps/assets/templates/assets/asset_create.html:22
+msgid "Basic"
+msgstr "基本"
+
+#: apps/assets/templates/assets/_system_user.html:35
+msgid "Auto generate key"
+msgstr "自动生成密钥"
+
+#: apps/assets/templates/assets/admin_user_create_update.html:7
+#: apps/assets/templates/assets/admin_user_detail.html:8
+#: apps/assets/views/user.py:44
+msgid "Admin user list"
+msgstr "管理用户列表"
+
+#: apps/assets/templates/assets/admin_user_detail.html:22
+msgid "Detail"
+msgstr "详情"
+
+#: apps/assets/templates/assets/admin_user_detail.html:28
+msgid "Assets list"
+msgstr "资产列表"
+
+#: apps/assets/templates/assets/admin_user_list.html:31
+#: apps/assets/views/user.py:61
+msgid "Create admin user"
+msgstr "创建管理员"
+
+#: apps/assets/templates/assets/asset_config_create_update.html:7
+msgid "Asset config list"
+msgstr "资产配置列表"
+
+#: apps/assets/templates/assets/asset_config_list.html:25
+msgid ""
+"Pull asset button: Manually trigger the cloud vendor's host to update to the "
+"asset list. By default, it will be automatically updated every 6 hours."
+msgstr "拉取资产按钮：手动触发云供应商的主机以更新到资产列表。 默认情况下，它将每6小时自动更新一次。"
+
+#: apps/assets/templates/assets/asset_config_list.html:26
+msgid "Synchronous"
+msgstr "同步"
+
+#: apps/assets/templates/assets/asset_config_list.html:37
+msgid "Add config"
+msgstr "增加配置"
+
+#: apps/assets/templates/assets/asset_config_list.html:52
+#: apps/assets/templates/assets/tags_list.html:48
+msgid "Understand more"
+msgstr "了解更多"
+
+#: apps/assets/templates/assets/asset_config_list.html:56
+#: apps/assets/templates/assets/tags_list.html:52
+msgid "AWS Region Link"
+msgstr "AWS区域链接"
+
+#: apps/assets/templates/assets/asset_config_list.html:60
+#: apps/assets/templates/assets/tags_list.html:56
+msgid "Aliyun regional links"
+msgstr "阿里云区域链接"
+
+#: apps/assets/templates/assets/asset_config_list.html:64
+#: apps/assets/templates/assets/tags_list.html:60
+msgid "Tencent Cloud Regional Link"
+msgstr "腾讯云区域链接"
+
+#: apps/assets/templates/assets/asset_config_list.html:87
+msgid "Pull asset"
+msgstr "拉取资产"
+
+#: apps/assets/templates/assets/asset_config_list.html:125
+msgid "Error"
+msgstr "错误"
+
+#: apps/assets/templates/assets/asset_config_list.html:125
+msgid "Pull assets failed"
+msgstr "拉取资产失败"
+
+#: apps/assets/templates/assets/asset_config_list.html:139
+msgid "Input assets manually"
+msgstr "手动输入资产"
+
+#: apps/assets/templates/assets/asset_config_list.html:140
+msgid ""
+"Obtain the EC2 server information in the open state and enter it into the "
+"CMDB. For details, see the backend log"
+msgstr "获取处于打开状态的服务器信息，并将其输入到CMDB中。 有关详细信息，请参阅后端日志"
+
+#: apps/assets/templates/assets/asset_detail.html:8
+#: apps/assets/views/asset.py:47 apps/templates/_left_side_bar.html:88
+msgid "Asset list"
+msgstr "资产列表"
+
+#: apps/assets/templates/assets/asset_detail.html:32
+#: apps/assets/views/asset.py:192
+msgid "Asset detail"
+msgstr "资产详情"
+
+#: apps/assets/templates/assets/asset_detail.html:38
+msgid "Asset user list"
+msgstr "资产用户列表"
+
+#: apps/assets/templates/assets/asset_detail.html:44
+msgid "Asset tags"
+msgstr "资产标签"
+
+#: apps/assets/templates/assets/asset_detail.html:77
+msgid "Domain"
+msgstr "域"
+
+#: apps/assets/templates/assets/asset_detail.html:81
+msgid "Vendor"
+msgstr "制造商"
+
+#: apps/assets/templates/assets/asset_detail.html:85
+msgid "Model"
+msgstr "型号"
+
+#: apps/assets/templates/assets/asset_detail.html:89
+msgid "CPU"
+msgstr ""
+
+#: apps/assets/templates/assets/asset_detail.html:97
+msgid "Disk"
+msgstr "磁盘"
+
+#: apps/assets/templates/assets/asset_detail.html:119
+msgid "Asset number"
+msgstr "资产编号"
+
+#: apps/assets/templates/assets/asset_detail.html:206
+msgid "Refresh hardware"
+msgstr "刷新硬件"
+
+#: apps/assets/templates/assets/asset_detail.html:209
+msgid "Refresh"
+msgstr "刷新"
+
+#: apps/assets/templates/assets/asset_detail.html:214
+msgid "Test connective"
+msgstr "测试连接"
+
+#: apps/assets/templates/assets/asset_list.html:46
+msgid "Hardware"
+msgstr "硬件"
+
+#: apps/assets/templates/assets/asset_list.html:56
+#: apps/assets/views/asset.py:103
+msgid "Create asset"
+msgstr "创建资产"
+
+#: apps/assets/templates/assets/asset_list.html:58
+msgid "Enter asset information"
+msgstr "输入资产信息"
+
+#: apps/assets/templates/assets/asset_list.html:224
+msgid "This will delete the selected assets !!!"
+msgstr "删除选择资产"
+
+#: apps/assets/templates/assets/asset_list.html:238
+msgid "Asset Deleted."
+msgstr "资产详情"
+
+#: apps/assets/templates/assets/asset_list.html:239
+#: apps/assets/templates/assets/asset_list.html:248
+msgid "Asset Delete"
+msgstr "删除资产"
+
+#: apps/assets/templates/assets/asset_list.html:247
+msgid "Asset Deleting failed."
+msgstr "删除资产失败"
+
+#: apps/assets/templates/assets/system_user_list.html:34
+#: apps/assets/views/user.py:157
+msgid "Create system user"
+msgstr "创建系统用户"
+
+#: apps/assets/templates/assets/system_user_list.html:49
+msgid "Understand system user"
+msgstr "了解系统用户"
+
+#: apps/assets/templates/assets/system_user_list.html:54
+msgid "System user refers to a user who can log in to the server."
+msgstr "系统用户是指可以登录服务器的用户"
+
+#: apps/assets/templates/assets/system_user_list.html:55
+msgid "to know more information"
+msgstr "了解更多信息"
+
+#: apps/assets/templates/assets/tags_create_update.html:7
+#: apps/assets/views/tags.py:37 apps/templates/_left_side_bar.html:87
+msgid "Tags list"
+msgstr "标签列表"
+
+#: apps/assets/templates/assets/tags_list.html:33
+msgid "Create tags"
+msgstr "创建标签"
+
+#: apps/assets/views/asset.py:130
+msgid "Update asset"
+msgstr "更新资产"
+
+#: apps/assets/views/asset.py:142
+msgid "Bulk update asset success"
+msgstr "批量更新资产成功"
+
+#: apps/assets/views/asset.py:170
+msgid "Bulk update asset"
+msgstr "批量更新资产"
+
+#: apps/assets/views/config.py:43
+msgid "Assets config"
+msgstr "资产配置"
+
+#: apps/assets/views/config.py:60
+msgid "Create asset config"
+msgstr "创建资产配置"
+
+#: apps/assets/views/config.py:77
+msgid "Update asset config"
+msgstr "更新资产配置"
+
+#: apps/assets/views/config.py:94
+msgid "Asset config detail"
+msgstr "资产配置详情"
+
+#: apps/assets/views/tags.py:55
+msgid "Create label"
+msgstr "创建标签"
+
+#: apps/assets/views/tags.py:65
+msgid "Tips: Avoid using label names reserved internally: {}"
+msgstr "提示: 请避免使用内部预留标签名: {}"
+
+#: apps/assets/views/tags.py:83
+msgid "Update label"
+msgstr "更新标签"
+
+#: apps/assets/views/user.py:79
+msgid "Update admin user"
+msgstr "更新管理用户"
+
+#: apps/assets/views/user.py:96 apps/assets/views/user.py:120
+msgid "Admin user detail"
+msgstr "管理用户详情"
+
+#: apps/assets/views/user.py:174
+msgid "Update system user"
+msgstr "更新系统用户"
+
+#: apps/assets/views/user.py:190
+msgid "System user detail"
+msgstr "系统用户详情"
+
+#: apps/assets/views/user.py:212
+msgid "assets"
+msgstr "资产"
+
+#: apps/assets/views/user.py:213
+msgid "System user asset"
+msgstr "系统用户资产"
+
+#: apps/audits/models.py:33
+#, fuzzy
+#| msgid "Created"
+msgid "Create"
+msgstr "创建"
+
+#: apps/audits/models.py:40
+msgid "Resource Type"
+msgstr "资源类型"
+
+#: apps/audits/models.py:41
+msgid "Resource"
+msgstr "资源"
+
+#: apps/audits/models.py:42 apps/audits/models.py:53
+msgid "Remote addr"
+msgstr "远程地址"
+
+#: apps/audits/models.py:52
+msgid "Change by"
+msgstr ""
+
+#: apps/audits/models.py:73
+msgid "-"
+msgstr ""
+
+#: apps/audits/models.py:78
+msgid "Failed"
+msgstr "失败的"
+
+#: apps/audits/models.py:82
+#, fuzzy
+#| msgid "Login with OpenID"
+msgid "Login type"
+msgstr "使用OpenID登录"
+
+#: apps/audits/models.py:83
+#, fuzzy
+#| msgid "Login confirm"
+msgid "Login ip"
+msgstr "登录确认"
+
+#: apps/audits/models.py:84
+#, fuzzy
+#| msgid "Login count"
+msgid "Login city"
+msgstr "登录次数"
+
+#: apps/audits/models.py:85
+#, fuzzy
+#| msgid "Username"
+msgid "User agent"
+msgstr "用户名"
+
+#: apps/audits/models.py:87 apps/audits/templates/audit/login_log_list.html:24
+msgid "Reason"
+msgstr "原因"
+
+#: apps/audits/models.py:89
+msgid "Date login"
+msgstr "登录日期"
+
+#: apps/audits/templates/audit/login_log_list.html:17
+msgid "ID"
+msgstr ""
+
+#: apps/audits/templates/audit/login_log_list.html:20
+msgid "UA"
+msgstr ""
+
+#: apps/audits/templates/audit/login_log_list.html:22
+#: apps/authentication/models.py:78
+msgid "City"
+msgstr "城市"
+
+#: apps/audits/templates/audit/login_log_list.html:26
+msgid "Date"
+msgstr "日期"
+
+#: apps/audits/templates/audit/login_log_list.html:42
+#, fuzzy
+#| msgid "Online users"
+msgid "Select user"
+msgstr "在线用户"
+
+#: apps/audits/templates/audit/login_log_list.html:51
+#: apps/templates/rest_framework/filters/search.html:2
+msgid "Search"
+msgstr "搜索"
+
+#: apps/audits/templates/audit/login_log_list.html:85
+msgid "Export"
+msgstr "导出"
+
+#: apps/audits/views.py:75 apps/audits/views.py:112 apps/audits/views.py:157
+msgid "Audits"
+msgstr "审核"
+
+#: apps/audits/views.py:76 apps/templates/_left_side_bar.html:100
+msgid "Operate log"
+msgstr "操作记录"
+
+#: apps/audits/views.py:113
+msgid "Password change log"
+msgstr "密码变更记录"
+
+#: apps/audits/views.py:158 apps/templates/_left_side_bar.html:99
+msgid "Login log"
+msgstr "登录记录"
+
+#: apps/authentication/backends/api.py:61
+msgid "Invalid signature header. No credentials provided."
+msgstr "无效的签名头。 没有提供凭证。"
+
+#: apps/authentication/backends/api.py:64
+msgid "Invalid signature header. Signature string should not contain spaces."
+msgstr "签名头无效。签名字符串不应包含空格。"
+
+#: apps/authentication/backends/api.py:71
+msgid "Invalid signature header. Format like AccessKeyId:Signature"
+msgstr "签名头无效。格式类似AccessKeyId:签名"
+
+#: apps/authentication/backends/api.py:75
+msgid ""
+"Invalid signature header. Signature string should not contain invalid "
+"characters."
+msgstr "无效的签名头。签名字符串不应包含无效字符。"
+
+#: apps/authentication/backends/api.py:95
+#: apps/authentication/backends/api.py:110
+msgid "Invalid signature."
+msgstr "签名无效。"
+
+#: apps/authentication/backends/api.py:102
+msgid "HTTP header: Date not provide or not %a, %d %b %Y %H:%M:%S GMT"
+msgstr ""
+
+#: apps/authentication/backends/api.py:106
+msgid "Expired, more than 15 minutes"
+msgstr "已过期，超过15分钟"
+
+#: apps/authentication/backends/api.py:113
+msgid "User disabled."
+msgstr "用户已禁用"
+
+#: apps/authentication/backends/api.py:128
+msgid "Invalid token header. No credentials provided."
+msgstr "无效的令牌头。没有提供凭据。"
+
+#: apps/authentication/backends/api.py:131
+msgid "Invalid token header. Sign string should not contain spaces."
+msgstr "无效的令牌头。符号字符串不能包含空格。"
+
+#: apps/authentication/backends/api.py:137
+msgid ""
+"Invalid token header. Sign string should not contain invalid characters."
+msgstr "无效的令牌头。符号字符串不应包含无效字符。"
+
+#: apps/authentication/backends/api.py:147
+msgid "Invalid token or cache refreshed."
+msgstr "无效的令牌或缓存已刷新"
+
+#: apps/authentication/errors.py:31
+msgid "验证码错误"
+msgstr ""
+
+#: apps/authentication/errors.py:32
+msgid "用户名和/或密码不正确"
+msgstr ""
+
+#: apps/authentication/errors.py:33
+msgid "MFA authentication failed"
+msgstr "MFA 认证失败"
+
+#: apps/authentication/errors.py:34
+msgid "用户不存在"
+msgstr ""
+
+#: apps/authentication/errors.py:35
+msgid "密码已过期"
+msgstr ""
+
+#: apps/authentication/errors.py:36
+msgid "禁用或过期"
+msgstr ""
+
+#: apps/authentication/errors.py:37
+msgid "这个账号未激活"
+msgstr ""
+
+#: apps/authentication/errors.py:47
+msgid "No session found, check your cookie"
+msgstr "会话已变更，刷新页面"
+
+#: apps/authentication/errors.py:49
+#, python-brace-format
+msgid ""
+"登录失败, 用户名或密码错误，注意：您还可以尝试{times_try}次，(超过{times_try}"
+"次该账户将被锁定{block_time}分钟！)"
+msgstr ""
+
+#: apps/authentication/errors.py:52
+msgid "该帐户已被锁定(请与管理员联系以将其解锁，或在{}分钟后重试)"
+msgstr ""
+
+#: apps/authentication/errors.py:56
+msgid "MFA required"
+msgstr ""
+
+#: apps/authentication/errors.py:57
+msgid "需要登录确认"
+msgstr ""
+
+#: apps/authentication/errors.py:58
+msgid "Wait login confirm ticket for accept"
+msgstr "等待登录复核处理"
+
+#: apps/authentication/errors.py:59
+msgid "Login confirm ticket was {}"
+msgstr "登录复核 {}"
+
+#: apps/authentication/forms.py:25
+msgid "Remember Me"
+msgstr "记住账号"
+
+#: apps/authentication/models.py:48
+msgid "Private Token"
+msgstr "ssh密钥"
+
+#: apps/authentication/models.py:57
+msgid "Reviewers"
+msgstr "审批人"
+
+#: apps/authentication/models.py:68 apps/tickets/models/ticket.py:34
+msgid "Login confirm"
+msgstr "登录确认"
+
+#: apps/authentication/templates/authentication/_access_key.html:5
+msgid ""
+"Use access keys to make secure REST or HTTP Query protocol requests to "
+"CloudHelper service APIs.For your protection, you should never share your "
+"secret keys with anyone.As a best practice, we recommend frequent key "
+"rotation."
+msgstr ""
+"使用访问密钥提交安全的 REST 或 HTTP 查询协议请求。为了您的安全，请不要与任何"
+"人分享您的密钥。作为最佳做法，我们建议经常更换密钥。"
+
+#: apps/authentication/templates/authentication/_access_key.html:6
+msgid "Learn more"
+msgstr "了解更多"
+
+#: apps/authentication/templates/authentication/_access_key.html:15
+#: apps/authentication/templates/authentication/_access_key.html:17
+#: apps/authentication/templates/authentication/_access_key_modal.html:6
+msgid "Create access key"
+msgstr "创建访问密钥"
+
+#: apps/authentication/templates/authentication/_access_key.html:51
+msgid "Make inactive"
+msgstr "停用"
+
+#: apps/authentication/templates/authentication/_access_key.html:55
+msgid "Inactive"
+msgstr "非活动"
+
+#: apps/authentication/templates/authentication/_access_key.html:57
+msgid "Make active"
+msgstr "激活"
+
+#: apps/authentication/templates/authentication/_access_key.html:76
+#: apps/authentication/templates/authentication/_access_key.html:148
+msgid "Access key ID"
+msgstr "访问密钥ID"
+
+#: apps/authentication/templates/authentication/_access_key.html:77
+msgid "Created"
+msgstr "创建"
+
+#: apps/authentication/templates/authentication/_access_key.html:78
+msgid "Last used"
+msgstr "最后使用"
+
+#: apps/authentication/templates/authentication/_access_key.html:149
+msgid "Secret access key"
+msgstr "隐秘访问密钥"
+
+#: apps/authentication/templates/authentication/_access_key_modal.html:12
+msgid ""
+"This is the only time that the secret access keys can be viewed or "
+"downloaded. You cannot recover them later. However, you can create new "
+"access keys at any time."
+msgstr ""
+"这是 仅有的 一次查看或下载私有访问密钥的机会。以后您无法恢复它们。"
+"不过，您随时可以创建新的访问密钥。"
+
+#: apps/authentication/templates/authentication/_access_key_modal.html:14
+msgid "Download .csv file"
+msgstr "下载 .csv 文件"
+
+#: apps/authentication/templates/authentication/_access_key_modal.html:19
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:171
+#: apps/templates/_modal.html:17 apps/tickets/models/ticket.py:94
+msgid "Close"
+msgstr "关闭"
+
+#: apps/authentication/templates/authentication/login.html:16
+msgid "Sign-in"
+msgstr "登入"
+
+#: apps/authentication/templates/authentication/login.html:61
+msgid "Remember me"
+msgstr "记住账号"
+
+#: apps/authentication/templates/authentication/login.html:64
+msgid "Forgot pwd"
+msgstr "忘记密码"
+
+#: apps/authentication/templates/authentication/login.html:70
+#: apps/templates/sub/_sub_header_bar.html:23
+msgid "Log In"
+msgstr "登录"
+
+#: apps/authentication/templates/authentication/login.html:76
+msgid "Login with Google"
+msgstr "使用谷歌登录"
+
+#: apps/authentication/templates/authentication/login.html:79
+msgid "Login with Amazon"
+msgstr "使用AWS登录"
+
+#: apps/authentication/templates/authentication/login.html:82
+msgid "Login with Github"
+msgstr "使用Github登录"
+
+#: apps/authentication/templates/authentication/login.html:85
+msgid "Login with OpenID"
+msgstr "使用OpenID登录"
+
+#: apps/authentication/templates/authentication/login.html:93
+msgid "Don't have an account"
+msgstr "没有帐号"
+
+#: apps/authentication/templates/authentication/login.html:94
+#: apps/templates/sub/_sub_header_bar.html:20
+msgid "Sign Up"
+msgstr "注册"
+
+#: apps/authentication/templates/authentication/login_otp.html:79
+msgid "Can't provide security? Please contact the administrator!"
+msgstr "如果不能提供MFA验证码，请联系管理员!"
+
+#: apps/authentication/utils.py:78
+msgid ""
+"The access key has reached the upper limit and a new access key cannot be "
+"generated."
+msgstr "访问密钥已达到上限，无法生成新的访问密钥。"
+
+#: apps/authentication/utils.py:90
+#, fuzzy
+#| msgid ""
+#| "This is the only time that the secret access keys can be viewed or "
+#| "downloaded. You cannot recover them later. However, you can create new "
+#| "access keys at any time."
+msgid ""
+"This is the only opportunity to view or download the private access key. You "
+"cannot restore them later. However, you can always create a new access key"
+msgstr ""
+"这是 仅有的 一次查看或下载私有访问密钥的机会。以后您无法恢复它们。不过，您随"
+"时可以创建新的访问密钥。"
+
+#: apps/authentication/views/login.py:69
+msgid "Please enable cookies and try again."
+msgstr "请启用浏览器的Cookie，然后重试"
+
+#: apps/authentication/views/login.py:156
+msgid ""
+"Wait for <b>{}</b> confirm, You also can copy link to her/him <br/>\n"
+"                  Don't close this page"
+msgstr ""
+"等待 <b>{}</b> 确认, 你也可以复制链接发给他/她 <br/>\n"
+"                  不要关闭本页面"
+
+#: apps/authentication/views/login.py:161
+msgid "No ticket found"
+msgstr "没有发现工单"
+
+#: apps/authentication/views/login.py:184
+msgid "Logout success"
+msgstr "退出成功"
+
+#: apps/authentication/views/login.py:185
+msgid "Logout success, return login page"
+msgstr "退出成功，返回到登录页面"
+
+#: apps/common/const.py:16
+#, python-format
+msgid "%(name)s was created successfully"
+msgstr "%(name)s 创建成功"
+
+#: apps/common/const.py:17
+#, python-format
+msgid "%(name)s was updated successfully"
+msgstr "%(name)s 更新成功"
+
+#: apps/common/const.py:19
+#, python-format
+msgid "%(credentials_name)s was created successfully"
+msgstr "%(credentials_name)s 创建成功"
+
+#: apps/common/const.py:20
+#, python-format
+msgid "%(credentials_name)s was updated successfully"
+msgstr "%(credentials_name)s 更新成功"
+
+#: apps/common/fields/form.py:44
+msgid "Not a valid json"
+msgstr "不是合法json"
+
+#: apps/common/fields/form.py:46
+msgid "Not a string type"
+msgstr "不是字符类型"
+
+#: apps/common/fields/model.py:89
+msgid "Marshal dict data to char field"
+msgstr "将dict数据打包到char字段"
+
+#: apps/common/fields/model.py:93
+msgid "Marshal dict data to text field"
+msgstr "将dict数据封送至文本字段"
+
+#: apps/common/fields/model.py:105
+msgid "Marshal list data to char field"
+msgstr "将元数据列出数据到char字段"
+
+#: apps/common/fields/model.py:109
+msgid "Marshal list data to text field"
+msgstr "将数据编组到文本字段"
+
+#: apps/common/fields/model.py:113
+msgid "Marshal data to char field"
+msgstr "将数据编组为char字段"
+
+#: apps/common/fields/model.py:117
+msgid "Marshal data to text field"
+msgstr "将数据封送至文本字段"
+
+#: apps/common/fields/model.py:133
+msgid "Encrypt field using Secret Key"
+msgstr "使用密钥加密字段"
+
+#: apps/common/gateway.py:84
+msgid "与LogInspect失去联系"
+msgstr ""
+
+#: apps/common/gateway.py:91
+msgid "统一码编码错误"
+msgstr ""
+
+#: apps/common/mixins/models.py:44
+msgid "is discard"
+msgstr "被废弃"
+
+#: apps/common/mixins/models.py:45
+msgid "discard time"
+msgstr "废弃时间"
+
+#: apps/common/send_email.py:28
+#, python-format
+msgid ""
+"\n"
+"        <div>\n"
+"            <p>您的帐户已成功创建</p>\n"
+"            <div>\n"
+"                用户: %(username)s\n"
+"                <br/>\n"
+"                设置密码: <a href=\"%(rest_password_url)s?token="
+"%(rest_password_token)s\">点击这里设置您的密码</a> \n"
+"                (此链接有效期为1个小时。 过期后, <a href="
+"\"%(forget_password_url)s?email=%(email)s\">重新请求</a>)\n"
+"            </div>\n"
+"            <div>\n"
+"                <p>---</p>\n"
+"                <a href=\"%(login_url)s\">直接登录</a>\n"
+"            </div>\n"
+"        </div>\n"
+"        "
+msgstr ""
+
+#: apps/common/send_email.py:62
+msgid "Security Code"
+msgstr "安全码"
+
+#: apps/common/send_email.py:84 apps/common/send_email.py:105
+msgid "Create account successfully"
+msgstr "创建账户成功"
+
+#: apps/common/send_email.py:148
+msgid "Security notice"
+msgstr "安全通知"
+
+#: apps/common/send_email.py:169
+msgid "Expiration notice"
+msgstr "过期通知"
+
+#: apps/common/send_email.py:186
+msgid "SSH Key Reset"
+msgstr "重置ssh密钥"
+
+#: apps/common/utils/common.py:36
+msgid "Incorrect mobile."
+msgstr "手机号不正确"
+
+#: apps/common/validators.py:21
+msgid "Special char not allowed"
+msgstr "不允许使用特殊字符"
+
+#: apps/common/validators.py:33
+msgid "This field must be unique."
+msgstr "该字段必须唯一"
+
+#: apps/iam/api.py:23
+msgid "OK"
+msgstr ""
+
+#: apps/organization/mixins/models.py:53
+#: apps/organization/mixins/serializers.py:34 apps/organization/models.py:30
+msgid "Organization"
+msgstr "组织"
+
+#: apps/settings/api.py:34
+msgid "Test mail sent to {}, please check"
+msgstr ""
+
+#: apps/settings/api.py:73
+msgid "Test ldap success"
+msgstr ""
+
+#: apps/settings/api.py:104
+msgid "LDAP attr map not valid"
+msgstr ""
+
+#: apps/settings/api.py:113
+msgid "Match {} s users"
+msgstr ""
+
+#: apps/settings/api.py:223
+msgid "Get ldap users is None"
+msgstr ""
+
+#: apps/settings/api.py:230
+#, fuzzy
+#| msgid "Create account successfully"
+msgid "Imported {} users successfully"
+msgstr "创建账户成功"
+
+#: apps/settings/api.py:261 apps/settings/api.py:297
+msgid ""
+"Error: Account invalid (Please make sure the information such as Access key "
+"or Secret key is correct)"
+msgstr ""
+
+#: apps/settings/api.py:267 apps/settings/api.py:303
+#, fuzzy
+#| msgid "Create access key"
+msgid "Create succeed"
+msgstr "创建访问密钥"
+
+#: apps/settings/api.py:285 apps/settings/api.py:323
+#: apps/settings/templates/settings/terminal_setting.html:154
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete succeed"
+msgstr "删除"
+
+#: apps/settings/forms.py:58
+msgid "Current SITE URL"
+msgstr ""
+
+#: apps/settings/forms.py:62
+msgid "User Guide URL"
+msgstr ""
+
+#: apps/settings/forms.py:63
+msgid "User first login update profile done redirect to it"
+msgstr ""
+
+#: apps/settings/forms.py:66
+msgid "Email Subject Prefix"
+msgstr ""
+
+#: apps/settings/forms.py:67
+msgid "Tips: Some word will be intercept by mail provider"
+msgstr ""
+
+#: apps/settings/forms.py:73
+msgid "SMTP host"
+msgstr ""
+
+#: apps/settings/forms.py:75
+msgid "SMTP port"
+msgstr ""
+
+#: apps/settings/forms.py:77
+msgid "SMTP user"
+msgstr ""
+
+#: apps/settings/forms.py:80
+msgid "SMTP password"
+msgstr ""
+
+#: apps/settings/forms.py:82
+msgid "Tips: Some provider use token except password"
+msgstr ""
+
+#: apps/settings/forms.py:85
+msgid "Send user"
+msgstr ""
+
+#: apps/settings/forms.py:87
+msgid "Tips: Send mail account, default SMTP account as the send account"
+msgstr ""
+
+#: apps/settings/forms.py:91
+#, fuzzy
+#| msgid "Test connective"
+msgid "Test recipient"
+msgstr "测试连接"
+
+#: apps/settings/forms.py:92
+msgid "Tips: Used only as a test mail recipient"
+msgstr ""
+
+#: apps/settings/forms.py:95
+msgid "Use SSL"
+msgstr ""
+
+#: apps/settings/forms.py:96
+msgid "If SMTP port is 465, may be select"
+msgstr ""
+
+#: apps/settings/forms.py:99
+msgid "Use TLS"
+msgstr ""
+
+#: apps/settings/forms.py:100
+msgid "If SMTP port is 587, may be select"
+msgstr ""
+
+#: apps/settings/forms.py:106
+msgid "LDAP server"
+msgstr ""
+
+#: apps/settings/forms.py:109
+msgid "Bind DN"
+msgstr ""
+
+#: apps/settings/forms.py:116
+#, fuzzy
+#| msgid "User"
+msgid "User OU"
+msgstr "用户"
+
+#: apps/settings/forms.py:117
+msgid "Use | split User OUs"
+msgstr ""
+
+#: apps/settings/forms.py:121
+msgid "User search filter"
+msgstr ""
+
+#: apps/settings/forms.py:122
+#, python-format
+msgid "Choice may be (cn|uid|sAMAccountName)=%(user)s)"
+msgstr ""
+
+#: apps/settings/forms.py:125
+msgid "User attr map"
+msgstr ""
+
+#: apps/settings/forms.py:127
+msgid ""
+"User attr map present how to map LDAP user attr to jumpserver, username,name,"
+"email is jumpserver attr"
+msgstr ""
+
+#: apps/settings/forms.py:136
+msgid "Enable LDAP auth"
+msgstr ""
+
+#: apps/settings/forms.py:145
+msgid "All"
+msgstr ""
+
+#: apps/settings/forms.py:146
+msgid "Auto"
+msgstr ""
+
+#: apps/settings/forms.py:153
+msgid "Password auth"
+msgstr ""
+
+#: apps/settings/forms.py:156
+msgid "Public key auth"
+msgstr ""
+
+#: apps/settings/forms.py:159
+msgid "Heartbeat interval"
+msgstr ""
+
+#: apps/settings/forms.py:160
+msgid "Units: seconds"
+msgstr ""
+
+#: apps/settings/forms.py:163
+msgid "List sort by"
+msgstr ""
+
+#: apps/settings/forms.py:166
+msgid "List page size"
+msgstr ""
+
+#: apps/settings/forms.py:169
+msgid "Session keep duration"
+msgstr ""
+
+#: apps/settings/forms.py:170
+msgid ""
+"Units: days, Session, record, command will be delete if more than duration, "
+"only in database"
+msgstr ""
+
+#: apps/settings/forms.py:174
+msgid "Telnet login regex"
+msgstr ""
+
+#: apps/settings/forms.py:175
+msgid "ex: Last\\s*login|success|成功"
+msgstr ""
+
+#: apps/settings/forms.py:186
+msgid "MFA Secondary certification"
+msgstr ""
+
+#: apps/settings/forms.py:188
+msgid ""
+"After opening, the user login must use MFA secondary authentication (valid "
+"for all users, including administrators)"
+msgstr ""
+
+#: apps/settings/forms.py:194
+msgid "Batch execute commands"
+msgstr ""
+
+#: apps/settings/forms.py:195
+msgid "Allow user batch execute commands"
+msgstr ""
+
+#: apps/settings/forms.py:198
+msgid "Service account registration"
+msgstr ""
+
+#: apps/settings/forms.py:199
+msgid ""
+"Allow using bootstrap token register service account, when terminal setup, "
+"can disable it"
+msgstr ""
+
+#: apps/settings/forms.py:205
+msgid "Limit the number of login failures"
+msgstr ""
+
+#: apps/settings/forms.py:209
+msgid "No logon interval"
+msgstr ""
+
+#: apps/settings/forms.py:211
+msgid ""
+"Tip: (unit/minute) if the user has failed to log in for a limited number of "
+"times, no login is allowed during this time interval."
+msgstr ""
+
+#: apps/settings/forms.py:218
+msgid "Connection max idle time"
+msgstr ""
+
+#: apps/settings/forms.py:220
+msgid "If idle time more than it, disconnect connection Unit: minute"
+msgstr ""
+
+#: apps/settings/forms.py:226
+#, fuzzy
+#| msgid "Expiration notice"
+msgid "Password expiration time"
+msgstr "过期通知"
+
+#: apps/settings/forms.py:228
+msgid ""
+"Tip: (unit: day) If the user does not update the password during the time, "
+"the user password will expire failure;The password expiration reminder mail "
+"will be automatic sent to the user by system within 5 days (daily) before "
+"the password expires"
+msgstr ""
+
+#: apps/settings/forms.py:237
+msgid "Password minimum length"
+msgstr ""
+
+#: apps/settings/forms.py:241
+msgid "Must contain capital letters"
+msgstr ""
+
+#: apps/settings/forms.py:243
+msgid ""
+"After opening, the user password changes and resets must contain uppercase "
+"letters"
+msgstr ""
+
+#: apps/settings/forms.py:248
+msgid "Must contain lowercase letters"
+msgstr ""
+
+#: apps/settings/forms.py:249
+msgid ""
+"After opening, the user password changes and resets must contain lowercase "
+"letters"
+msgstr ""
+
+#: apps/settings/forms.py:254
+msgid "Must contain numeric characters"
+msgstr ""
+
+#: apps/settings/forms.py:255
+msgid ""
+"After opening, the user password changes and resets must contain numeric "
+"characters"
+msgstr ""
+
+#: apps/settings/forms.py:260
+msgid "Must contain special characters"
+msgstr ""
+
+#: apps/settings/forms.py:261
+msgid ""
+"After opening, the user password changes and resets must contain special "
+"characters"
+msgstr ""
+
+#: apps/settings/forms.py:268
+#, fuzzy
+#| msgid "Create system user"
+msgid "Create user email subject"
+msgstr "创建系统用户"
+
+#: apps/settings/forms.py:269
+msgid ""
+"Tips: When creating a user, send the subject of the email (eg:Create account "
+"successfully)"
+msgstr ""
+
+#: apps/settings/forms.py:273
+#, fuzzy
+#| msgid "Create asset config"
+msgid "Create user honorific"
+msgstr "创建资产配置"
+
+#: apps/settings/forms.py:274
+msgid "Tips: When creating a user, send the honorific of the email (eg:Hello)"
+msgstr ""
+
+#: apps/settings/forms.py:279
+msgid "Create user email content"
+msgstr ""
+
+#: apps/settings/forms.py:280
+msgid "Tips:When creating a user, send the content of the email"
+msgstr ""
+
+#: apps/settings/forms.py:283
+msgid "Signature"
+msgstr ""
+
+#: apps/settings/forms.py:284
+msgid "Tips: Email signature (eg:jumpserver)"
+msgstr ""
+
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:7
+#, fuzzy
+#| msgid "Asset user list"
+msgid "LDAP user list"
+msgstr "资产用户列表"
+
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:9
+msgid "Please submit the LDAP configuration before import"
+msgstr ""
+
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:26
+#, fuzzy
+#| msgid "Refresh"
+msgid "Refresh cache"
+msgstr "刷新"
+
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:34
+msgid "Existing"
+msgstr ""
+
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:41
+msgid "Loading"
+msgstr ""
+
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:144
+msgid ""
+"User is not currently selected, please check the user you want to import"
+msgstr ""
+
+#: apps/settings/templates/settings/_ldap_list_users_modal.html:172
+msgid "Import"
+msgstr ""
+
+#: apps/settings/templates/settings/basic_setting.html:15
+#: apps/settings/templates/settings/email_content_setting.html:15
+#: apps/settings/templates/settings/email_setting.html:15
+#: apps/settings/templates/settings/ldap_setting.html:15
+#: apps/settings/templates/settings/security_setting.html:15
+#: apps/settings/templates/settings/terminal_setting.html:16
+#: apps/settings/templates/settings/terminal_setting.html:49
+#: apps/settings/views.py:21
+msgid "Basic setting"
+msgstr ""
+
+#: apps/settings/templates/settings/basic_setting.html:18
+#: apps/settings/templates/settings/email_content_setting.html:18
+#: apps/settings/templates/settings/email_setting.html:18
+#: apps/settings/templates/settings/ldap_setting.html:18
+#: apps/settings/templates/settings/security_setting.html:18
+#: apps/settings/templates/settings/terminal_setting.html:20
+#: apps/settings/views.py:48
+msgid "Email setting"
+msgstr ""
+
+#: apps/settings/templates/settings/basic_setting.html:21
+#: apps/settings/templates/settings/email_content_setting.html:21
+#: apps/settings/templates/settings/email_setting.html:21
+#: apps/settings/templates/settings/ldap_setting.html:21
+#: apps/settings/templates/settings/security_setting.html:21
+#: apps/settings/templates/settings/terminal_setting.html:23
+#: apps/settings/views.py:188
+#, fuzzy
+#| msgid "main content"
+msgid "Email content setting"
+msgstr "主要内容"
+
+#: apps/settings/templates/settings/basic_setting.html:24
+#: apps/settings/templates/settings/email_content_setting.html:24
+#: apps/settings/templates/settings/email_setting.html:24
+#: apps/settings/templates/settings/ldap_setting.html:24
+#: apps/settings/templates/settings/security_setting.html:24
+#: apps/settings/templates/settings/terminal_setting.html:27
+#: apps/settings/views.py:75
+msgid "LDAP setting"
+msgstr ""
+
+#: apps/settings/templates/settings/basic_setting.html:27
+#: apps/settings/templates/settings/email_content_setting.html:27
+#: apps/settings/templates/settings/email_setting.html:27
+#: apps/settings/templates/settings/ldap_setting.html:27
+#: apps/settings/templates/settings/security_setting.html:27
+#: apps/settings/templates/settings/terminal_setting.html:31
+#: apps/settings/views.py:106
+msgid "Terminal setting"
+msgstr ""
+
+#: apps/settings/templates/settings/basic_setting.html:30
+#: apps/settings/templates/settings/email_content_setting.html:30
+#: apps/settings/templates/settings/email_setting.html:30
+#: apps/settings/templates/settings/ldap_setting.html:30
+#: apps/settings/templates/settings/security_setting.html:30
+#: apps/settings/templates/settings/security_setting.html:45
+#: apps/settings/templates/settings/terminal_setting.html:34
+#: apps/settings/views.py:161
+#, fuzzy
+#| msgid "Security notice"
+msgid "Security setting"
+msgstr "安全通知"
+
+#: apps/settings/templates/settings/command_storage_create.html:49
+msgid "Hosts"
+msgstr ""
+
+#: apps/settings/templates/settings/command_storage_create.html:52
+msgid "Tips: If there are multiple hosts, separate them with a comma (,)"
+msgstr ""
+
+#: apps/settings/templates/settings/command_storage_create.html:63
+msgid "Index"
+msgstr ""
+
+#: apps/settings/templates/settings/command_storage_create.html:70
+msgid "Doc type"
+msgstr ""
+
+#: apps/settings/templates/settings/email_content_setting.html:45
+#, fuzzy
+#| msgid "Create asset"
+msgid "Create User setting"
+msgstr "创建资产"
+
+#: apps/settings/templates/settings/email_setting.html:64
+#: apps/settings/templates/settings/ldap_setting.html:65
+#, fuzzy
+#| msgid "Test connective"
+msgid "Test connection"
+msgstr "测试连接"
+
+#: apps/settings/templates/settings/ldap_setting.html:66
+msgid "Bulk import"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:52
+msgid "Host"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:66
+msgid "Bucket"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:73
+#, fuzzy
+#| msgid "Create access key"
+msgid "Access key"
+msgstr "创建访问密钥"
+
+#: apps/settings/templates/settings/replay_storage_create.html:80
+msgid "Secret key"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:87
+msgid "Container name"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:94
+#, fuzzy
+#| msgid "Account Type"
+msgid "Account name"
+msgstr "账户类型"
+
+#: apps/settings/templates/settings/replay_storage_create.html:101
+#, fuzzy
+#| msgid "Account Type"
+msgid "Account key"
+msgstr "账户类型"
+
+#: apps/settings/templates/settings/replay_storage_create.html:108
+msgid "Endpoint"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:114
+#, python-brace-format
+msgid "OSS: http://{REGION_NAME}.aliyuncs.com"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:116
+msgid "Example: http://oss-cn-hangzhou.aliyuncs.com"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:118
+#, python-brace-format
+msgid "S3: http://s3.{REGION_NAME}.amazonaws.com"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:119
+#, python-brace-format
+msgid "S3(China): http://s3.{REGION_NAME}.amazonaws.com.cn"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:120
+msgid "Example: http://s3.cn-north-1.amazonaws.com.cn"
+msgstr "示例：http://s3.cn-north-1.amazonaws.com.cn"
+
+#: apps/settings/templates/settings/replay_storage_create.html:126
+msgid "Endpoint suffix"
+msgstr "端点后缀"
+
+#: apps/settings/templates/settings/replay_storage_create.html:141
+msgid "Beijing: cn-north-1"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:142
+msgid "Ningxia: cn-northwest-1"
+msgstr ""
+
+#: apps/settings/templates/settings/replay_storage_create.html:143
+msgid "More"
+msgstr "更多"
+
+#: apps/settings/templates/settings/replay_storage_create.html:247
+#, fuzzy
+#| msgid "Submit"
+msgid "Submitting"
+msgstr "提交"
+
+#: apps/settings/templates/settings/replay_storage_create.html:256
+msgid "Endpoint need contain protocol, ex: http"
+msgstr "端点需要包含协议，例如：http"
+
+#: apps/settings/templates/settings/security_setting.html:49
+msgid "Password check rule"
+msgstr "密码检查规则"
+
+#: apps/settings/templates/settings/terminal_setting.html:79
+msgid "Command storage"
+msgstr "命令存储"
+
+#: apps/settings/templates/settings/terminal_setting.html:101
+msgid "Replay storage"
+msgstr ""
+
+#: apps/settings/templates/settings/terminal_setting.html:157
+#, fuzzy
+#| msgid "Asset Deleting failed."
+msgid "Delete failed"
+msgstr "删除资产失败"
+
+#: apps/settings/templates/settings/terminal_setting.html:162
+msgid "Per page?"
+msgstr "你确定删除它吗？"
+
+#: apps/settings/views.py:20 apps/settings/views.py:47
+#: apps/settings/views.py:74 apps/settings/views.py:105
+#: apps/settings/views.py:133 apps/settings/views.py:146
+#: apps/settings/views.py:160 apps/settings/views.py:187
+#: apps/templates/_left_side_bar.html:109
+msgid "Settings"
+msgstr "设置"
+
+#: apps/settings/views.py:31 apps/settings/views.py:58
+#: apps/settings/views.py:85 apps/settings/views.py:118
+#: apps/settings/views.py:171 apps/settings/views.py:198
+#, fuzzy
+#| msgid "Create account successfully"
+msgid "Update setting successfully"
+msgstr "创建账户成功"
+
+#: apps/settings/views.py:134
+#, fuzzy
+#| msgid "Create tags"
+msgid "Create replay storage"
+msgstr "创建标签"
+
+#: apps/settings/views.py:147
+#, fuzzy
+#| msgid "Create tags"
+msgid "Create command storage"
+msgstr "创建标签"
+
+#: apps/templates/_header_bar.html:325
+msgid "German(Germany)"
+msgstr "德语"
+
+#: apps/templates/_header_bar.html:328
+msgid "Japanese"
+msgstr "日语"
+
+#: apps/templates/_header_bar.html:331
+msgid "French"
+msgstr "法语"
+
+#: apps/templates/_header_bar.html:334
+msgid "China"
+msgstr "中文"
+
+#: apps/templates/_header_bar.html:337
+msgid "English"
+msgstr "英语"
+
+#: apps/templates/_header_bar.html:376 apps/templates/_left_side_bar.html:24
+#: apps/templates/_left_side_bar.html:42
+#: venv/lib/python3.6/site-packages/rest_framework_swagger/templates/rest_framework_swagger/index.html:28
+msgid "Logout"
+msgstr "退出"
+
+#: apps/templates/_header_bar.html:383
+#, fuzzy
+#| msgid "Login count"
+msgid "Login"
+msgstr "登录次数"
+
+#: apps/templates/_header_bar.html:393
+msgid "Support"
+msgstr "支持"
+
+#: apps/templates/_header_bar.html:397
+#: apps/templates/sub/_sub_header_bar.html:41
+msgid "Documentation"
+msgstr "文档"
+
+#: apps/templates/_header_bar.html:399
+msgid "Other Resources"
+msgstr "其他资源"
+
+#: apps/templates/_left_side_bar.html:53
+msgid "PERSONAL"
+msgstr "个人"
+
+#: apps/templates/_left_side_bar.html:56 apps/templates/base.html:56
+msgid "Home"
+msgstr "首页"
+
+#: apps/templates/_left_side_bar.html:59 apps/templates/index.html:5
+#: apps/templates/index.html:8
+msgid "Dashboard"
+msgstr "仪表盘"
+
+#: apps/templates/_left_side_bar.html:81
+msgid "CMBD"
+msgstr ""
+
+#: apps/templates/_left_side_bar.html:84
+msgid "Asset config"
+msgstr "资产配置"
+
+#: apps/templates/_left_side_bar.html:92
+msgid "AUDITS"
+msgstr "审核"
+
+#: apps/templates/_left_side_bar.html:96
+msgid "Operational audit"
+msgstr "运营审计"
+
+#: apps/templates/_left_side_bar.html:101
+msgid "Password log"
+msgstr "密码记录"
+
+#: apps/templates/_left_side_bar.html:106
+msgid "SYSTEM MANAGE AND SETTINGS"
+msgstr "系统管理和设置"
+
+#: apps/templates/_message.html:6
+msgid ""
+"\n"
+"                Your account has expired, please contact the administrator.\n"
+"            "
+msgstr ""
+"\n"
+"                您的账户已经过期，请与联系管理员。            "
+
+#: apps/templates/_message.html:13
+msgid "Your account will at"
+msgstr "您的账户将于"
+
+#: apps/templates/_message.html:13 apps/templates/_message.html:30
+msgid "expired. "
+msgstr "过期"
+
+#: apps/templates/_message.html:23
+#, python-format
+msgid ""
+"\n"
+"                Your password has expired, please click <a href="
+"\"%(user_password_update_url)s\"> this link </a> update password.\n"
+"            "
+msgstr ""
+"\n"
+"                您的密码已经过期，请点击 <a href="
+"\"%(user_password_update_url)s\"> 链接 </a> 更新密码\n"
+"        "
+
+#: apps/templates/_message.html:30
+msgid "Your password will at"
+msgstr "您的密码将于"
+
+#: apps/templates/_message.html:31
+#, python-format
+msgid ""
+"\n"
+"                please click <a href=\"%(user_password_update_url)s\"> this "
+"link </a> to update your password.\n"
+"            "
+msgstr ""
+"\n"
+"                请点击 <a href=\"%(user_password_update_url)s\"> 链接 </a> 更"
+"新密码\n"
+"        "
+
+#: apps/templates/_message.html:43
+#, python-format
+msgid ""
+"\n"
+"        Your information was incomplete. Please click <a href="
+"\"%(first_login_url)s\"> this link </a>to complete your information.\n"
+"        "
+msgstr ""
+"\n"
+"                你的信息不完整,请点击 <a href=\"%(first_login_url)s\"> 链接 "
+"</a> 完善个人信息\n"
+"                "
+
+#: apps/templates/_message.html:56
+#, python-format
+msgid ""
+"\n"
+"        Your ssh public key not set or expired. Please click <a href="
+"\"%(user_pubkey_update)s\"> this link </a>to update\n"
+"        "
+msgstr ""
+"\n"
+"                您的ssh密钥没有设置或已失效，请点击 <a href="
+"\"%(user_pubkey_update)s\"> 链接 </a> 更新\n"
+"        "
+
+#: apps/templates/_pagination.html:59
+msgid ""
+"Displays the results of items _START_ to _END_; A total of _TOTAL_ entries"
+msgstr "显示第 _START_ 至 _END_ 项结果; 总共 _TOTAL_ 项"
+
+#: apps/templates/flash_message_standalone.html:53
+msgid "Errors"
+msgstr "错误"
+
+#: apps/templates/flash_message_standalone.html:68
+msgid "Return"
+msgstr "返回"
+
+#: apps/templates/index.html:23
+msgid "All users"
+msgstr "所有用户"
+
+#: apps/templates/index.html:24 apps/templates/index.html:42
+msgid "New percentage"
+msgstr "新增用户占比"
+
+#: apps/templates/index.html:41
+msgid "All asset"
+msgstr "所有资产"
+
+#: apps/templates/index.html:59
+msgid "Online users"
+msgstr "在线用户"
+
+#: apps/templates/index.html:60 apps/templates/index.html:78
+msgid "Total percentage"
+msgstr "总占百分比"
+
+#: apps/templates/index.html:77
+msgid "Online sessions"
+msgstr "在线会话"
+
+#: apps/templates/index.html:99
+msgid "Monthly data overview"
+msgstr "每月数据概述"
+
+#: apps/templates/index.html:100
+msgid "History summary in one month"
+msgstr "一个月内的历史记录摘要"
+
+#: apps/templates/index.html:106
+msgid "Login count"
+msgstr "登录次数"
+
+#: apps/templates/index.html:111
+msgid "Active users"
+msgstr "活跃用户"
+
+#: apps/templates/index.html:134
+msgid "Credentials Stats"
+msgstr "凭证状态"
+
+#: apps/templates/rest_framework/admin.html:116
+#: apps/templates/rest_framework/base.html:136
+msgid "Extra Actions"
+msgstr "额外动作"
+
+#: apps/templates/rest_framework/admin.html:130
+#: apps/templates/rest_framework/base.html:150
+msgid "Filters"
+msgstr "筛选器"
+
+#: apps/templates/rest_framework/base.html:37
+msgid "navbar"
+msgstr "导航栏"
+
+#: apps/templates/rest_framework/base.html:75
+msgid "content"
+msgstr "内容"
+
+#: apps/templates/rest_framework/base.html:78
+msgid "request form"
+msgstr "请求表单"
+
+#: apps/templates/rest_framework/base.html:157
+msgid "main content"
+msgstr "主要内容"
+
+#: apps/templates/rest_framework/base.html:173
+msgid "request info"
+msgstr "请求内容"
+
+#: apps/templates/rest_framework/base.html:177
+msgid "response info"
+msgstr "返回内容"
+
+#: apps/templates/rest_framework/filters/ordering.html:3
+msgid "Ordering"
+msgstr "排序"
+
+#: apps/templates/rest_framework/horizontal/radio.html:4
+#: apps/templates/rest_framework/inline/radio.html:3
+#: apps/templates/rest_framework/vertical/radio.html:3
+msgid "None"
+msgstr "空"
+
+#: apps/templates/rest_framework/horizontal/select_multiple.html:4
+#: apps/templates/rest_framework/inline/select_multiple.html:3
+#: apps/templates/rest_framework/vertical/select_multiple.html:3
+msgid "No items to select."
+msgstr "没有可供选择的项目"
+
+#: apps/templates/sub/_sub_base.html:70
+msgid "Are you Satisfied with what we Offer"
+msgstr "您对我们的服务满意吗"
+
+#: apps/templates/sub/_sub_base.html:73
+msgid "Contact US"
+msgstr "联系我们"
+
+#: apps/templates/sub/_sub_header_bar.html:27
+msgid "CloudHelper Home"
+msgstr "CloudHelper 首页"
+
+#: apps/tickets/models/ticket.py:27 apps/tickets/models/ticket.py:96
+msgid "Open"
+msgstr "打开"
+
+#: apps/tickets/models/ticket.py:28
+msgid "Closed"
+msgstr "关闭"
+
+#: apps/tickets/models/ticket.py:39
+msgid "Approve"
+msgstr "同意"
+
+#: apps/tickets/models/ticket.py:40
+msgid "Reject"
+msgstr "拒绝"
+
+#: apps/tickets/models/ticket.py:46 apps/tickets/models/ticket.py:158
+msgid "User display name"
+msgstr "用户显示名称"
+
+#: apps/tickets/models/ticket.py:47
+msgid "Title"
+msgstr "标题"
+
+#: apps/tickets/models/ticket.py:48 apps/tickets/models/ticket.py:159
+msgid "Body"
+msgstr "内容"
+
+#: apps/tickets/models/ticket.py:49
+msgid "Meta"
+msgstr ""
+
+#: apps/tickets/models/ticket.py:52
+msgid "Assignee"
+msgstr "待处理人"
+
+#: apps/tickets/models/ticket.py:56
+msgid "Assignee display name"
+msgstr "处理人名称"
+
+#: apps/tickets/models/ticket.py:60
+msgid "Assignees"
+msgstr "待处理人"
+
+#: apps/tickets/models/ticket.py:63
+msgid "Assignees display name"
+msgstr "待处理人名称"
+
+#: apps/tickets/models/ticket.py:97
+msgid "{} {} this ticket"
+msgstr "{} {} 这个工单"
+
+#: apps/tickets/models/ticket.py:108
+msgid "this ticket"
+msgstr "这个工单"
+
+#: venv/lib/python3.6/site-packages/bootstrap4/components.py:17
+#: venv/lib/python3.6/site-packages/bootstrap4/templates/bootstrap4/form_errors.html:3
+#: venv/lib/python3.6/site-packages/bootstrap4/templates/bootstrap4/messages.html:4
+#, fuzzy
+#| msgid "Close"
+msgid "close"
+msgstr "关闭"
+
+#: venv/lib/python3.6/site-packages/botocore/docs/bcdoc/textwriter.py:469
+#, python-format
+msgid "[image: %s]"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/botocore/docs/bcdoc/textwriter.py:470
+msgid "[image]"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/contrib/messages/apps.py:7
+msgid "Messages"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/contrib/sitemaps/apps.py:7
+msgid "Site Maps"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/contrib/syndication/apps.py:7
+#, fuzzy
+#| msgid "Organization"
+msgid "Syndication"
+msgstr "组织"
+
+#: venv/lib/python3.6/site-packages/django/core/paginator.py:45
+msgid "That page number is not an integer"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/paginator.py:47
+msgid "That page number is less than 1"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/paginator.py:52
+msgid "That page contains no results"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:31
+#, fuzzy
+#| msgid "Not a valid role ARN."
+msgid "Enter a valid value."
+msgstr "不是有效的角色ARN。"
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:102
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:658
+#, fuzzy
+#| msgid "Not a valid role ARN."
+msgid "Enter a valid URL."
+msgstr "不是有效的角色ARN。"
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:154
+msgid "Enter a valid integer."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:165
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: venv/lib/python3.6/site-packages/django/core/validators.py:239
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:246
+msgid ""
+"Enter a valid 'slug' consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:255
+#: venv/lib/python3.6/site-packages/django/core/validators.py:275
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:260
+#: venv/lib/python3.6/site-packages/django/core/validators.py:276
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:270
+#: venv/lib/python3.6/site-packages/django/core/validators.py:274
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:304
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:310
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:342
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:351
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:361
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:376
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:395
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:290
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:325
+msgid "Enter a number."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:397
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:402
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:407
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:469
+#, python-format
+msgid ""
+"File extension '%(extension)s' is not allowed. Allowed extensions are: "
+"'%(allowed_extensions)s'."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/core/validators.py:521
+#, fuzzy
+#| msgid "Special char not allowed"
+msgid "Null characters are not allowed."
+msgstr "不允许使用特殊字符"
+
+#: venv/lib/python3.6/site-packages/django/db/models/base.py:1165
+#: venv/lib/python3.6/site-packages/django/forms/models.py:756
+msgid "and"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/base.py:1167
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:104
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:105
+#, fuzzy
+#| msgid "This field must be unique."
+msgid "This field cannot be null."
+msgstr "该字段必须唯一"
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:106
+#, fuzzy
+#| msgid "This field must be unique."
+msgid "This field cannot be blank."
+msgstr "该字段必须唯一"
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:111
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:128
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:905
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1772
+msgid "Integer"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:909
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1770
+#, python-format
+msgid "'%(value)s' value must be an integer."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:984
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1850
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:996
+#, python-format
+msgid "'%(value)s' value must be either True or False."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:997
+#, python-format
+msgid "'%(value)s' value must be either True, False, or None."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:999
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1040
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1104
+msgid "Comma-separated integers"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1153
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1155
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1298
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1158
+msgid "Date (without time)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1296
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1300
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1304
+msgid "Date (with time)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1452
+#, python-format
+msgid "'%(value)s' value must be a decimal number."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1454
+#, fuzzy
+#| msgid "Asset number"
+msgid "Decimal number"
+msgstr "资产编号"
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1593
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in [DD] [HH:[MM:]]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1596
+#, fuzzy
+#| msgid "Documentation"
+msgid "Duration"
+msgstr "文献资料"
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1646
+msgid "Email address"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1669
+msgid "File path"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1735
+#, python-format
+msgid "'%(value)s' value must be a float."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1737
+msgid "Floating point number"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1866
+msgid "IPv4 address"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1897
+msgid "IP address"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1977
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1978
+#, python-format
+msgid "'%(value)s' value must be either None, True or False."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:1980
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2015
+msgid "Positive integer"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2028
+msgid "Positive small integer"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2042
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2074
+msgid "Small integer"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2081
+msgid "Text"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2109
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2111
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2114
+msgid "Time"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2240
+msgid "URL"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2262
+msgid "Raw binary data"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2312
+#, python-format
+msgid "'%(value)s' is not a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/__init__.py:2314
+msgid "Universally unique identifier"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/files.py:221
+msgid "File"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/files.py:360
+msgid "Image"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:778
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:780
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:1007
+msgid "One-to-one relationship"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:1057
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:1058
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/db/models/fields/related.py:1100
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: venv/lib/python3.6/site-packages/django/forms/boundfield.py:146
+msgid ":?.!"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:53
+#, fuzzy
+#| msgid "This field must be unique."
+msgid "This field is required."
+msgstr "该字段必须唯一"
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:245
+msgid "Enter a whole number."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:396
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:1126
+#, fuzzy
+#| msgid "Not a valid role ARN."
+msgid "Enter a valid date."
+msgstr "不是有效的角色ARN。"
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:420
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:1127
+#, fuzzy
+#| msgid "Not a valid role ARN."
+msgid "Enter a valid time."
+msgstr "不是有效的角色ARN。"
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:442
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:471
+#, fuzzy
+#| msgid "Enter asset information"
+msgid "Enter a valid duration."
+msgstr "输入资产信息"
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:472
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:532
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:533
+msgid "No file was submitted."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:534
+msgid "The submitted file is empty."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:536
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:539
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:600
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:762
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:852
+#: venv/lib/python3.6/site-packages/django/forms/models.py:1270
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:853
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:968
+#: venv/lib/python3.6/site-packages/django/forms/models.py:1269
+msgid "Enter a list of values."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:969
+msgid "Enter a complete value."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/fields.py:1185
+msgid "Enter a valid UUID."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: venv/lib/python3.6/site-packages/django/forms/forms.py:86
+msgid ":"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/forms.py:212
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/formsets.py:91
+msgid "ManagementForm data is missing or has been tampered with"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/formsets.py:338
+#, python-format
+msgid "Please submit %d or fewer forms."
+msgid_plural "Please submit %d or fewer forms."
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/forms/formsets.py:345
+#, python-format
+msgid "Please submit %d or more forms."
+msgid_plural "Please submit %d or more forms."
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/forms/formsets.py:371
+#: venv/lib/python3.6/site-packages/django/forms/formsets.py:373
+#, fuzzy
+#| msgid "Ordering"
+msgid "Order"
+msgstr "排序"
+
+#: venv/lib/python3.6/site-packages/django/forms/models.py:751
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/models.py:755
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/models.py:761
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/models.py:770
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/models.py:1091
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/models.py:1158
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/models.py:1272
+#, python-format
+msgid "\"%(pk)s\" is not a valid value."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/utils.py:162
+#, python-format
+msgid ""
+"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/widgets.py:395
+msgid "Clear"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/widgets.py:396
+msgid "Currently"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/widgets.py:397
+msgid "Change"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/widgets.py:710
+msgid "Yes"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/forms/widgets.py:711
+msgid "No"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:788
+msgid "yes,no,maybe"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:817
+#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:834
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:836
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:838
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:840
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:842
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/template/defaultfilters.py:844
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:62
+msgid "p.m."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:63
+msgid "a.m."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:68
+msgid "PM"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:69
+msgid "AM"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:150
+msgid "midnight"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dateformat.py:152
+msgid "noon"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
+msgid "Monday"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
+msgid "Tuesday"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
+msgid "Wednesday"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
+msgid "Thursday"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:7
+msgid "Saturday"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:7
+msgid "Sunday"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:11
+#, fuzzy
+#| msgid "Status"
+msgid "Sat"
+msgstr "状态"
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
+msgid "January"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
+msgid "February"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
+#, fuzzy
+#| msgid "Search"
+msgid "March"
+msgstr "搜索"
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:14
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
+msgid "August"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
+#, fuzzy
+#| msgid "Remember Me"
+msgid "September"
+msgstr "记住账号"
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
+msgid "October"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:15
+msgid "November"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:16
+#, fuzzy
+#| msgid "Remember Me"
+msgid "December"
+msgstr "记住账号"
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
+msgid "jan"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
+msgid "feb"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
+msgid "mar"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
+msgid "apr"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
+msgid "may"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:19
+msgid "jun"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
+msgid "jul"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
+msgid "aug"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
+msgid "sep"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
+msgid "oct"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
+msgid "nov"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:20
+msgid "dec"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:23
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:24
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:25
+#, fuzzy
+#| msgid "Search"
+msgctxt "abbrev. month"
+msgid "March"
+msgstr "搜索"
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:26
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:27
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:28
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:29
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:30
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:33
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:37
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:38
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:39
+#, fuzzy
+#| msgid "Search"
+msgctxt "alt. month"
+msgid "March"
+msgstr "搜索"
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:40
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:41
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:42
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:43
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:44
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:45
+#, fuzzy
+#| msgid "Remember Me"
+msgctxt "alt. month"
+msgid "September"
+msgstr "记住账号"
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:47
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/dates.py:48
+#, fuzzy
+#| msgid "Remember Me"
+msgctxt "alt. month"
+msgid "December"
+msgstr "记住账号"
+
+#: venv/lib/python3.6/site-packages/django/utils/ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/text.py:67
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: venv/lib/python3.6/site-packages/django/utils/text.py:252
+#: venv/lib/python3.6/site-packages/django/utils/timesince.py:83
+msgid ", "
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/utils/timesince.py:14
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+
+#: venv/lib/python3.6/site-packages/django/utils/timesince.py:72
+msgid "0 minutes"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/csrf.py:110
+msgid "Forbidden"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/csrf.py:111
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/csrf.py:115
+msgid ""
+"You are seeing this message because this HTTPS site requires a 'Referer "
+"header' to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/csrf.py:120
+msgid ""
+"If you have configured your browser to disable 'Referer' headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for 'same-"
+"origin' requests."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/csrf.py:124
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the 'Referrer-Policy: no-referrer' header, please remove them. The "
+"CSRF protection requires the 'Referer' header to do strict referer checking. "
+"If you're concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" ...> for links to third-party sites."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/csrf.py:132
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/csrf.py:137
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for 'same-origin' requests."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/csrf.py:142
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:41
+msgid "No year specified"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:61
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:111
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:208
+msgid "Date out of range"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:90
+msgid "No month specified"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:142
+msgid "No day specified"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:188
+msgid "No week specified"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:338
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:367
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:589
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/dates.py:623
+#, python-format
+msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/list.py:67
+msgid "Page is not 'last', nor can it be converted to an int."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/list.py:72
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/generic/list.py:154
+#, python-format
+msgid "Empty list and '%(class_name)s.allow_empty' is False."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/static.py:40
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/static.py:42
+#, python-format
+msgid "\"%(path)s\" does not exist"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/static.py:80
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:6
+msgid "Django: the Web framework for perfectionists with deadlines."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:345
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:367
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:368
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:383
+#, fuzzy
+#| msgid "Documentation"
+msgid "Django Documentation"
+msgstr "文献资料"
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:384
+msgid "Topics, references, &amp; how-to's"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:395
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:396
+msgid "Get started with Django"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:407
+msgid "Django Community"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django/views/templates/default_urlconf.html:408
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:69
+msgid "Task (registered)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:73
+msgid "Task (custom)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:90
+msgid "Need name of task"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:96
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:572
+msgid "Only one can be set, in expires and expire_seconds"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:106
+#, python-format
+msgid "Unable to parse JSON: %s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:172
+#, python-brace-format
+msgid "{0} task{1} {2} successfully {3}"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:175
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:237
+msgid "was,were"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:184
+msgid "Enable selected tasks"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:190
+msgid "Disable selected tasks"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:202
+msgid "Toggle activity of selected tasks"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:222
+#, python-brace-format
+msgid "task \"{0}\" not found"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:234
+#, python-brace-format
+msgid "{0} task{1} {2} successfully run"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/admin.py:240
+msgid "Run selected tasks"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/apps.py:13
+msgid "Periodic Tasks"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:26
+msgid "Days"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:27
+msgid "Hours"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:28
+msgid "Minutes"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:29
+msgid "Seconds"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:30
+msgid "Microseconds"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:34
+msgid "Day"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:35
+msgid "Hour"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:36
+msgid "Minute"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:37
+msgid "Second"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:38
+msgid "Microsecond"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:58
+msgid "Solar Event"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:59
+msgid "The type of solar event when the job should run"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:63
+msgid "Latitude"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:64
+msgid "Run the task when the event happens at this latitude"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:69
+msgid "Longitude"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:70
+msgid "Run the task when the event happens at this longitude"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:77
+msgid "solar event"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:78
+msgid "solar events"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:127
+msgid "Number of Periods"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:128
+msgid "Number of interval periods to wait before running the task again"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:134
+msgid "Interval Period"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:135
+msgid "The type of period between task runs (Example: days)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:141
+msgid "interval"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:142
+msgid "intervals"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:170
+msgid "every {}"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:175
+msgid "every {} {}"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:186
+msgid "Clock Time"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:187
+msgid "Run the task at clocked time"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:193
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:493
+msgid "Set to False to disable the schedule"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:199
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:200
+msgid "clocked"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:242
+msgid "Minute(s)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:244
+msgid "Cron Minutes to Run. Use \"*\" for \"all\". (Example: \"0,30\")"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:249
+msgid "Hour(s)"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:251
+msgid "Cron Hours to Run. Use \"*\" for \"all\". (Example: \"8,20\")"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:256
+msgid "Day(s) Of The Week"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:258
+msgid "Cron Days Of The Week to Run. Use \"*\" for \"all\". (Example: \"0,5\")"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:264
+msgid "Day(s) Of The Month"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:266
+msgid ""
+"Cron Days Of The Month to Run. Use \"*\" for \"all\". (Example: \"1,15\")"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:272
+msgid "Month(s) Of The Year"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:274
+msgid ""
+"Cron Months Of The Year to Run. Use \"*\" for \"all\". (Example: \"0,6\")"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:281
+msgid "Cron Timezone"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:283
+msgid "Timezone to Run the Cron Schedule on.  Default is UTC."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:289
+msgid "crontab"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:290
+msgid "crontabs"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:376
+msgid "Short Description For This Task"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:381
+msgid ""
+"The Name of the Celery Task that Should be Run.  (Example: \"proj.tasks."
+"import_contacts\")"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:389
+msgid "Interval Schedule"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:390
+msgid ""
+"Interval Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:395
+msgid "Crontab Schedule"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:396
+msgid ""
+"Crontab Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:401
+msgid "Solar Schedule"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:402
+msgid ""
+"Solar Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:407
+msgid "Clocked Schedule"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:408
+msgid ""
+"Clocked Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:414
+msgid "Positional Arguments"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:416
+msgid "JSON encoded positional arguments (Example: [\"arg1\", \"arg2\"])"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:421
+msgid "Keyword Arguments"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:423
+msgid "JSON encoded keyword arguments (Example: {\"argument\": \"value\"})"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:429
+msgid "Queue Override"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:431
+msgid "Queue defined in CELERY_TASK_QUEUES. Leave None for default queuing."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:440
+msgid "Exchange"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:441
+msgid "Override Exchange for low-level AMQP routing"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:445
+msgid "Routing Key"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:446
+msgid "Override Routing Key for low-level AMQP routing"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:450
+msgid "AMQP Message Headers"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:451
+msgid "JSON encoded message headers for the AMQP message."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:459
+msgid ""
+"Priority Number between 0 and 255. Supported by: RabbitMQ, Redis (priority "
+"reversed, 0 is highest)."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:464
+#, fuzzy
+#| msgid "Expiration notice"
+msgid "Expires Datetime"
+msgstr "过期通知"
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:466
+msgid ""
+"Datetime after which the schedule will no longer trigger the task to run"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:471
+msgid "Expires timedelta with seconds"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:473
+msgid ""
+"Timedelta with seconds which the schedule will no longer trigger the task to "
+"run"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:479
+msgid "One-off Task"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:481
+msgid "If True, the schedule will only run the task a single time"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:485
+msgid "Start Datetime"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:487
+msgid "Datetime when the schedule should begin triggering the task to run"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:498
+msgid "Last Run Datetime"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:500
+msgid ""
+"Datetime that the schedule last triggered the task to run. Reset to None if "
+"enabled is set to False."
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:505
+msgid "Total Run Count"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:507
+msgid "Running count of how many times the schedule has triggered the task"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:512
+#, fuzzy
+#| msgid "Last used"
+msgid "Last Modified"
+msgstr "最后使用"
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:513
+msgid "Datetime that this PeriodicTask was last modified"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:517
+msgid "Description"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:519
+msgid "Detailed description about the details of this Periodic Task"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:528
+msgid "periodic task"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/django_celery_beat/models.py:529
+msgid "periodic tasks"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/kombu/transport/qpid.py:1301
+#, python-format
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/kombu/transport/qpid.py:1306
+#, python-format
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/kombu/transport/qpid.py:1324
+#, python-format
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/passlib/ext/django/utils.py:957
+msgid "algorithm"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/rest_framework_swagger/templates/rest_framework_swagger/index.html:30
+msgid "Session Login"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/rest_framework_swagger/templates/rest_framework_swagger/index.html:41
+msgid "You are logged in as: "
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/rest_framework_swagger/templates/rest_framework_swagger/index.html:43
+msgid "Viewing as an anoymous user"
+msgstr ""
+
+#: venv/lib/python3.6/site-packages/rest_framework_swagger/templates/rest_framework_swagger/index.html:55
+msgid "Powered by "
+msgstr ""
+
+#~ msgid "India"
+#~ msgstr "印度"
