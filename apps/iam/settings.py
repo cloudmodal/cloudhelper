@@ -63,9 +63,7 @@ INSTALLED_APPS = [
     'audits.apps.AuditsConfig',
     'ops.apps.OpsConfig',
     'common.apps.CommonConfig',
-
     'rest_framework',
-    'mptt',
     'captcha',
     'django_filters',
     'corsheaders',
